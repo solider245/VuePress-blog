@@ -26,7 +26,7 @@ cd speedtest-cli
 python setup.py install
 ```
 
-### 软件包安装
+### 软件包安装(推荐安装)
 ubuntu 
 `apt install speedtest-cli`
 
@@ -62,6 +62,11 @@ speedtest --list|grep 'China'
 ```
 ![20200729184307_24cfe3a07c0c0172fee9edfeb6c50786.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729184307_24cfe3a07c0c0172fee9edfeb6c50786.png)
 
+### 仅仅需要Ping，上传，下载的结果
+```shell
+speedtest --simple
+```
+![20200729185907_5d450fd532d35dab0fd8adc858698bc1.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729185907_5d450fd532d35dab0fd8adc858698bc1.png)
 
 ## 常见报错
 
