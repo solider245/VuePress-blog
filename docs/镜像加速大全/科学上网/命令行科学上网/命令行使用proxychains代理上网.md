@@ -61,5 +61,109 @@ whereis proxychains
 ```shell
 vim /etc/proxychains.conf
 ```
-s
 
+![20200729142302_eab57676f5c8db33e2d81d383f38ce4c.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729142302_eab57676f5c8db33e2d81d383f38ce4c.png)
+
+简单来说，把最后一行注销，然后修改成你代理所在的端口即可。
+
+## 软件使用
+> 使用前我们先进行测试
+
+### 测试
+
+![20200729143755_a73c8df1856d30e7995b88b2be7a1ff3.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729143755_a73c8df1856d30e7995b88b2be7a1ff3.png)
+如上图所示，使用两行命令来测试。
+
+```shell
+curl myip.ipip.net
+proxychains curl myip.ipip.net 
+```
+根据以上情况，即可判断软件已经安装成功，并且可以开始使用。
+
+### 全局使用
+```
+proxychains4 zsh # zsh可以换成你的shell
+```
+以上命令会打开一个终端，全局代理。
+![20200729143113_1e8b65ebc5fa94f2779ca5f70fd5909b.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729143113_1e8b65ebc5fa94f2779ca5f70fd5909b.png)
+如上图所示，在没用使用proxychains4的情况下，我这边的地理位置还是我的代理服务器所在位置。
+
+### 临时使用
+软件名称前加proxychains。
+```shell
+proxychains curl www.google.com
+```
+### 设置alias(别名)使用
+
+```shell
+alias pc="proxychains"
+```
+在你的配置文件里，添加以上命令，这样的话就可以快速的使用了。
+配置文件一般放在：
+* ~/.zhsrc
+* ~/.bashrc
+* ~/.bashrc_alias
+
+![20200729144516_0cdfad34297d82774cceaafbad41f27e.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729144516_0cdfad34297d82774cceaafbad41f27e.png)
+
+如上图所示。
+
+让我们下载一个仓库。
+![20200729145609_4772e0ab603b9fe352f5b28cb295edcd.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729145609_4772e0ab603b9fe352f5b28cb295edcd.png)
+如上图所示，速度达到了惊人的3.36M每秒。
+
+## 补充阅读
+
+### 注意事项
+>Proxychains支持HTTP（HTTP-Connect）、SOCKS4和SOCKS5三种类型的代理，需要注意的是：配置代理服务器只能使用ip地址，不能使用域名，否则会连不上。
+
+### Proxychains支持3种模式
+
+* **动态模式**
+按照配置的代理顺序连接，不存活的代理服务器会被跳过  
+* **严格模式**
+按照配置的代理顺序连接，必须保证所有代理服务器都是存活的，否则会连接失败  
+* **随机模式**
+随机选择一台代理服务器连接，也可以使用代理链
+
+### 不代理DNS
+>如果不需要代理DNS的话，可以注释掉proxy_dns这行。
+
+### proxychains命令其实是个脚本文件
+内容如下：
+```shell
+#!/bin/sh
+echo "ProxyChains-3.1 (http://proxychains.sf.net)"
+if [ $# = 0 ] ; then
+        echo "  usage:"
+        echo "          proxychains <prog> [args]"
+        exit
+fi
+export LD_PRELOAD=libproxychains.so.3
+exec "$@"
+```
+>它的目的是设置LD_PRELOAD环境变量，以便创建的新进程会加载libproxychains.so.3，这个so的作用是Hook Socket函数。因此，也可以在当前shell中执行：
+
+```shell
+export LD_PRELOAD=libproxychains.so.3
+```
+
+> 这样之后执行的命令都会使用代理访问。
+
+## 使用proxychains4本地回环访问绕过代理直连
+
+不过这个版本有个问题，配置代理后所有的连接都会走代理，包括对回环地址的访问。这并不是我们所期望的，幸好有个版本提供了解决方案。
+
+> git clone [https://github.com/rofl0r/proxychains](https://github.com/rofl0r/proxychains) cd proxychains ./configure make make install
+
+安装后在配置文件中加入：
+
+> localnet 127.0.0.0/255.0.0.0
+
+安装后的命令是proxychains4，因此可以和旧版本命令并存。这样对于回环地址就可以绕过代理，使用直连了。
+
+相对于Proxifier而言，这种方式还是弱了一点，毕竟有时候我们还是需要根据不同的情况使用不同的代理服务器。
+
+## 参考文献
+
+[Ubuntu安装Proxychains](https://cloud.tencent.com/developer/article/1157554)
