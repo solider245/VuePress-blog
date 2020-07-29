@@ -1,5 +1,5 @@
 ---
-title: 使用proxychains-ng代理转发终端命令 
+title: proxychains proxychains3.1 proxychains4 proxychains-ng的区别 
 description: 应该是目前能找到的最方便好用的办法了。
 ---
 
