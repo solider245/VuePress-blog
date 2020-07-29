@@ -17,6 +17,7 @@ description: 无插件配置是新手入门最好的配置
   - [Vim显示当前光标位置](#vim显示当前光标位置)
   - [Vim文件类型设置](#vim文件类型设置)
   - [Vim按键映射配置](#vim按键映射配置)
+  - [无插件vimrc地址](#无插件vimrc地址)
   - [参考文献](#参考文献)
 
 ## vim基础配置
@@ -258,6 +259,11 @@ cnoremap <C\-e\> <End>
 
 * ![vim按键映射](https://image.vimjc.com/images/linux-tricks-1.gif)
 
+
+## 无插件vimrc地址
+[带中文参考的vimrc](https://gist.github.com/xurenlu/5458034)
+[带部分中文参考的vimrc](https://github.com/wklken/vim-for-server/blob/master/vimrc)
+[一个将vimrc模块化的深圳老铁](https://github.com/VyronLee/vimrc)
 ## 参考文献
 
 [无插件Vim配置文件vimrc推荐与各VIM配置项解释](https://vimjc.com/vimrc.html#9%E3%80%81Vim%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84%E9%85%8D%E7%BD%AE)
