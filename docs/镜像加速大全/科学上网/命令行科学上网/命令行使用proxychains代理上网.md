@@ -3,6 +3,17 @@ title: 命令行使用proxychains代理上网
 description: 搞清楚了proxychains与proxychains4的区别，接下来让我们来使用这个工具
 ---
 # 命令行使用proxychains代理上网
+
+
+proxychains\-ng 是 proxychains 的加强版，主要有以下功能和不足：
+
+*   支持 http/https/socks4/socks5
+*   支持认证
+*   远端 dns 查询
+*   多种代理模式
+*   不支持 udp/icmp 转发
+*   少部分程序和在后台运行的可能无法代理
+
 >推荐小白直接使用proxychains。懂网络原理，有一定追求的可以使用proxychains4
 
 ## 软件安装
@@ -47,6 +58,10 @@ cd proxychains-ng
 ./configure
 sudo make && make install
 ```
+
+### 编译安装压缩包下载地址
+[proxychains4下载地址](https://sourceforge.net/projects/proxychains-ng/files/)
+![20200729151459_056f1ada1590d04237a4f07b26b80272.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729151459_056f1ada1590d04237a4f07b26b80272.png)
 ## 配置使用/etc/proxychains.conf
 
 ### 查找配置文件
@@ -108,6 +123,15 @@ alias pc="proxychains"
 
 如上图所示。
 
+### 代理终端
+
+如果想要 shell 中执行的命令自动使用代理，可以通过下面命令
+```shell
+proxychains4 -q /bin/bash
+proxychains4 -q /bin/zsh
+```
+ 
+
 让我们下载一个仓库。
 ![20200729145609_4772e0ab603b9fe352f5b28cb295edcd.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200729145609_4772e0ab603b9fe352f5b28cb295edcd.png)
 如上图所示，速度达到了惊人的3.36M每秒。
@@ -164,6 +188,22 @@ export LD_PRELOAD=libproxychains.so.3
 
 相对于Proxifier而言，这种方式还是弱了一点，毕竟有时候我们还是需要根据不同的情况使用不同的代理服务器。
 
+## 通过 proxychains -ng 创建代理
+
+使用 ProxyChains -NG 需要要先有代理，可以使用 SSH 建立隧道或使用 shadowsocks 建立代理
+
+### 创建 SSH 隧道代理
+
+```shell
+ssh -f -g -N -D1081 root@p1.oneops.co
+```
+*   `-f` 放到后台执行
+*   `-g` 允许远程 主机连接到本地转发端口
+*   `-N` 不执行远程命令
+*   `-D` 绑定转发端口
+
+
 ## 参考文献
 
 [Ubuntu安装Proxychains](https://cloud.tencent.com/developer/article/1157554)
+[在终端下使用ProxyChains-NG代理](https://www.oneops.co/2019/03/08/proxychains-ng.html)
