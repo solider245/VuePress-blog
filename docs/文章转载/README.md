@@ -1,5 +1,5 @@
 ---
-title: Git首页
-description: 主要记录Git常见问题以及解决办法
+title: 文章转载的首页
+description: 好的文章值得转载
 ---
-# Git大门在这里
+# 转载是非常重要的获取资源的手段
