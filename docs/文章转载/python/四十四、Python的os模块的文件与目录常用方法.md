@@ -2,6 +2,8 @@
 title: Python的os模块的文件与目录常用方法
 description: 主要是自带函数os模块的用法收集
 ---
+
+# Python的os模块的文件与目录常用方法
 Python的os模块提供了非常丰富的方法用来处理文件和目录。下面介绍在os模块中常用的方法。
 
 ![四十四、Python的os模块的文件与目录常用方法](http://p6-tt.byteimg.com/large/pgc-image/7e81bd0191cf4109ab6d799ed9252fb4?from=pc)
