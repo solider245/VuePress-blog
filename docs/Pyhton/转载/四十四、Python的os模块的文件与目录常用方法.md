@@ -1,19 +1,14 @@
-<!--
- * @Author: 中箭的吴起
- * @Date: 2020-07-29 22:00:31
- * @LastEditTime: 2020-07-29 22:00:31
- * @LastEditors: 中箭的吴起
- * @Description: 
- * @FilePath: \solider245.github.io\docs\Pyhton\转载\四十四、Python的os模块的文件与目录常用方法.md
- * @日行一善，每日一码
---> 
+---
+title: Python的os模块的文件与目录常用方法
+description: 主要是自带函数os模块的用法收集
+---
 Python的os模块提供了非常丰富的方法用来处理文件和目录。下面介绍在os模块中常用的方法。
 
 ![四十四、Python的os模块的文件与目录常用方法](http://p6-tt.byteimg.com/large/pgc-image/7e81bd0191cf4109ab6d799ed9252fb4?from=pc)
 
 os模块中常用的方法
 
-# os.access(path, mode)
+## os.access(path, mode)
 
 *   方法说明
 
@@ -38,7 +33,7 @@ os.access(path,mode)方法使用当前的uid/gid尝试访问路径。大部分�
 import os, sys# 假定/tmp/test.txt文件存在，并有读写权限print(f'F_OK: {os.access('/tmp/test.txt', os.F_OK)}')print(f'R_OK: {os.access('/tmp/test.txt', os.R_OK)}')print(f'W_OK: {os.access('/tmp/test.txt', os.W_OK)}')print(f'X_OK: {os.access('/tmp/test.txt', os.X_OK)}')
 ```
 
-# os.chdir(path)
+## os.chdir(path)
 
 *   方法说明:
 
@@ -53,7 +48,7 @@ import os, sys# 假定/tmp/test.txt文件存在，并有读写权限print(f'F_OK
 import os, syspath = '/tmp'# 查看当前的工作目录print(f'当的的工作目录是：{os.getcwd()}')# 修改当前的工作目录os.chdir(path)# 查看修改后的工作目录print(f"修改后的工作目录是：{os.getcwd()}")
 ```
 
-# os.chmod(path, mode)
+## os.chmod(path, mode)
 
 *   函数说明
 
@@ -94,7 +89,7 @@ os.chmod(path, mode)
 import os, sys, stat# 侯宇/tmp/test.txt文件存在，设置文件可以通过用户组执行os.chmod('/tmp/test.txt', stat.S_IXGRP)# 设置文件可以被其他用户写入os.chmod('/tmp/test.txt', stat.S_IWOTH)
 ```
 
-# os.chown(path, uid, gid)
+## os.chown(path, uid, gid)
 
 *   函数说明
 
@@ -118,7 +113,7 @@ os.chown(path, uid, gid)
 import os, sys# 假定文件/tmp/test.txt文件存在，设置所有者id为100os.chown('/tmp/test.txt', 100, -1)
 ```
 
-# os.chroot(path)
+## os.chroot(path)
 
 *   函数说明
 
@@ -136,7 +131,7 @@ os.chroot(path)
 import os, sys# 设置根目录为/tmpos.chroot('/tmp')
 ```
 
-# os.getcwd()
+## os.getcwd()
 
 *   函数说明
 
@@ -154,7 +149,7 @@ os.getcwd()
 import os, sys# 切换工作目录os.chdir('/home')# 打印当前的工作目录print(f"当前的工作目录是：{os.getcwd()}")
 ```
 
-# os.listdir(path)
+## os.listdir(path)
 
 *   函数说明
 
@@ -172,7 +167,7 @@ os.listdir(path)
 import os, syspath = '/home/mydocument'dirs = os.listdir(path)# 列出所有文件和文件目录for file in dirs:  print(file)
 ```
 
-# os.mkdirs(path\[,mode=0o777)
+## os.mkdirs(path\[,mode=0o777)
 
 *   函数说明
 
@@ -189,7 +184,7 @@ import os, syspath = '/home/mydocument'dirs = os.listdir(path)# 列出所有文�
 import os, sys# 创建的目录path = '/home/dir/dir1/dir2/dir3'os.mkdirs(path, 0755)
 ```
 
-# os.mkdir(path, mode)
+## os.mkdir(path, mode)
 
 *   函数说明
 
@@ -206,7 +201,7 @@ import os, sys# 创建的目录path = '/home/dir/dir1/dir2/dir3'os.mkdirs(path, 
 import os, sys# 创建的目录path = '/home/test'os.mkdir(path, 0755)
 ```
 
-# os.remove(path)
+## os.remove(path)
 
 *   函数说明
 
@@ -218,7 +213,7 @@ import os, sys# 创建的目录path = '/home/test'os.mkdir(path, 0755)
 import os, sys# 列出目录print(f"目录为:{os.listdir(os.getcwd())}")# 删除文件os.remove('test.txt')# 列出移除目录print(f"移除文件后的目录为:{os.listdir(os.getcwd())}")
 ```
 
-# os.removedirs(path)
+## os.removedirs(path)
 
 *   函数说明
 
@@ -230,7 +225,7 @@ import os, sys# 列出目录print(f"目录为:{os.listdir(os.getcwd())}")# 删�
 import os, sys# 列出目录print(f"目录为:{os.listdir(os.getcwd())}")# 移除目录及子目录os.removedirs('/home/test')# 列出移除后的目录print(f"移除目录后:{os.listdir(os.getcwd())}")
 ```
 
-# os.rename(src, dst)
+## os.rename(src, dst)
 
 *   函数说明
 
@@ -247,7 +242,7 @@ import os, sys# 列出目录print(f"目录为:{os.listdir(os.getcwd())}")# 移�
 import os, sys# 列出目录print(f"目录为：{os.listdir(os.getcwd())}")# 重命名os.rename('test', 'testnew')# 列出重命名后的目录文件print(f"目录为：{os.listdir(os.getcwd())}")
 ```
 
-# os.rmdir(path)
+## os.rmdir(path)
 
 *   函数说明
 
@@ -259,6 +254,6 @@ import os, sys# 列出目录print(f"目录为：{os.listdir(os.getcwd())}")# 重
 import os, sys# 列出目录print (f"目录为: {os.listdir(os.getcwd())}")# 删除路径os.rmdir("mydir")# 列出删除空目录后的文件列表print (f"目录为: {os.listdir(os.getcwd())}")
 ```
 
-# 后话
+## 后话
 
 由于篇幅所限，仅简单介绍了os模块中常用的文件操作方法。有关fd(文件描述的相关方法)在这里没有介绍，如果有需要，请自行查阅Python官方文档。

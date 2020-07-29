@@ -1,10 +1,1 @@
-module.exports = [
-    {
-        text: "about", items: [
-            { text: "about", link: "/about/" }]
-    },
-    {
-        text: "blog", items: [
-            { text: "blog", link: "/blog/" }]
-    },
-];
+module.exports = [{"text":"Linux","items":[{"text":"speedtest-cli命令行测试软件","link":"/Linux/Linux常用软件/speedtest-cli命令行测试软件/"},{"text":"vim常见问题","link":"/Linux/Linux常用软件/Vim/vim常见问题/"},{"text":"vim配置","link":"/Linux/Linux常用软件/Vim/vim配置/"},{"text":"常见问题","link":"/Linux/Linux常用软件/Git/常见问题/"},{"text":"文章转载","link":"/Linux/常见命令/文章转载/"},{"text":"Linux常见问题","link":"/Linux/Linux常见问题/"},{"text":"Linux","link":"/Linux/"}]},{"text":"镜像加速大全","items":[{"text":"命令行科学上网","link":"/镜像加速大全/科学上网/命令行科学上网/"},{"text":"客户端科学上网","link":"/镜像加速大全/科学上网/客户端科学上网/"},{"text":"镜像加速大全","link":"/镜像加速大全/"}]},{"text":"Pyhton","items":[{"text":"转载","link":"/Pyhton/转载/"}]},{"text":"about","items":[{"text":"about","link":"/about/"}]},{"text":"blog","items":[{"text":"blog","link":"/blog/"}]}];
