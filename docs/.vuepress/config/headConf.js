@@ -1,6 +1,6 @@
 module.exports =[
-    ['meta', {name: 'author' , content: '中箭的吴起'}],
-    ['link', { rel: 'icon', href: '/logo.png' }],
+    ['meta', {name: 'author' , content: '中箭的吴起'}],//头部作者
+    ['link', { rel: 'icon', href: 'https://images-1255533533.cos.ap-shanghai.myqcloud.com/20190817214528_05c52e04cf64654248918bfc2a1f64ab.png' }],//定义网页图标，可以用网图
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
