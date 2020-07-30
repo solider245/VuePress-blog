@@ -13,7 +13,15 @@ module.exports = {
     themeConfig:{
         nav,
         //sidebar, 
-        lastUpdated: "上次更新"         
+        lastUpdated: "上次更新",
+        repo: 'https://github.com/solider245/VuePress-blog',//你的仓库地址
+		repoLabel: 'Repo',
+		editLinks: true,
+        editLinkText: '你要教我做事咯？',
+        //algolia: {
+            //apiKey: 'b89c2570f4d0358f1b38ef95c4dc9b9b',
+            //indexName: '<INDEX_NAME>'
+          //}        
     }
 }
 

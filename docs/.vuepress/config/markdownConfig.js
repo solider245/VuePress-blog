@@ -1,6 +1,7 @@
 module.exports = {
       // markdown-it-anchor 的选项
       anchor: { permalink: false },
+      extractHeaders: [ 'h2', 'h3', 'h4' ],
       //代码块显示行号
       lineNumbers: true ,
       // markdown-it-toc 的选项
