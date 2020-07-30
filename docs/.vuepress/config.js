@@ -12,7 +12,8 @@ module.exports = {
     head: headConfig,
     themeConfig:{
         nav,
-        //sidebar,          
+        //sidebar, 
+        lastUpdated: "上次更新"         
     }
 }
 
