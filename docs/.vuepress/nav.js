@@ -5,12 +5,16 @@ module.exports = [
       { text: "Linux常见命令", link: "/文章转载/Linux常见命令/" },
       { text: "Linux常用软件", link: "/文章转载/Linux常用软件/" },
       { text: "python", link: "/文章转载/python/" },
-      { text: "Vim",
-      items:[
-      { text: "vim文章", link: "/文章转载/Vim/vim文章/" },
-      { text: "vim配置", link: "/文章转载/Vim/vim配置/" }
+      {
+        text: "Vim",
+        items: [
+          { text: "vim文章", link: "/文章转载/Vim/vim文章/" },
+          { text: "vim配置", link: "/文章转载/Vim/vim配置/" },
+        ],
+      },
     ],
   },
+
   {
     text: "常见问题",
     items: [
