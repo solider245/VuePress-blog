@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "moment": "^2.27.0",
+    "vuepress-theme-ououe": "^1.5.1",
     "vuepress-theme-reco": "^1.5.4"
   }
 }

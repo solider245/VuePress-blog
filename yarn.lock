@@ -1248,7 +1248,7 @@
   dependencies:
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-back-to-top@^1.5.2":
+"@vuepress/plugin-back-to-top@^1.3.1", "@vuepress/plugin-back-to-top@^1.5.2":
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-back-to-top/download/@vuepress/plugin-back-to-top-1.5.2.tgz#d253be7f0b7c2b59ca8fabe10c2f517c96d83b0e"
   integrity sha1-0lO+fwt8K1nKj6vhDC9RfJbYOw4=
@@ -1269,7 +1269,7 @@
     vuepress-plugin-mailchimp "^1.4.1"
     vuepress-plugin-sitemap "^2.3.1"
 
-"@vuepress/plugin-last-updated@1.5.2":
+"@vuepress/plugin-last-updated@1.5.2", "@vuepress/plugin-last-updated@^1.3.1":
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-last-updated/download/@vuepress/plugin-last-updated-1.5.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vuepress%2Fplugin-last-updated%2Fdownload%2F%40vuepress%2Fplugin-last-updated-1.5.2.tgz#daa2250edb40700e1fa0942561057b6aa00e4103"
   integrity sha1-2qIlDttAcA4foJQlYQV7aqAOQQM=
@@ -1290,7 +1290,7 @@
   dependencies:
     medium-zoom "^1.0.4"
 
-"@vuepress/plugin-nprogress@1.5.2", "@vuepress/plugin-nprogress@^1.5.2":
+"@vuepress/plugin-nprogress@1.5.2", "@vuepress/plugin-nprogress@^1.3.1", "@vuepress/plugin-nprogress@^1.5.2":
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-nprogress/download/@vuepress/plugin-nprogress-1.5.2.tgz#3be249ee070380d0aca2bd2fb62eab6b4e284d1b"
   integrity sha1-O+JJ7gcDgNCsor0vti6ra04oTRs=
@@ -1313,12 +1313,12 @@
   dependencies:
     "@vuepress/shared-utils" "1.5.2"
 
-"@vuepress/plugin-search@1.5.2":
+"@vuepress/plugin-search@1.5.2", "@vuepress/plugin-search@^1.3.1":
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-search/download/@vuepress/plugin-search-1.5.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vuepress%2Fplugin-search%2Fdownload%2F%40vuepress%2Fplugin-search-1.5.2.tgz#b8d77b4300b2e84f3c9c0d94f0a98638245196c2"
   integrity sha1-uNd7QwCy6E88nA2U8KmGOCRRlsI=
 
-"@vuepress/shared-utils@1.5.2":
+"@vuepress/shared-utils@1.5.2", "@vuepress/shared-utils@^1.0.0-alpha.39", "@vuepress/shared-utils@^1.3.1":
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@vuepress/shared-utils/download/@vuepress/shared-utils-1.5.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vuepress%2Fshared-utils%2Fdownload%2F%40vuepress%2Fshared-utils-1.5.2.tgz#5f5bcd2365baa3f80feecd10c4920a4e1463df73"
   integrity sha1-X1vNI2W6o/gP7s0QxJIKThRj33M=
@@ -2832,6 +2832,13 @@ css-parse@~2.0.0:
   integrity sha1-pGjuZnwW2BzPBcWMONKpfHgNv9Q=
   dependencies:
     css "^2.0.0"
+
+css-prefers-color-scheme@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.npm.taobao.org/css-prefers-color-scheme/download/css-prefers-color-scheme-3.1.1.tgz#6f830a2714199d4f0d0d0bb8a27916ed65cff1f4"
+  integrity sha1-b4MKJxQZnU8NDQu4onkW7WXP8fQ=
+  dependencies:
+    postcss "^7.0.5"
 
 css-select-base-adapter@^0.1.1:
   version "0.1.1"
@@ -5319,6 +5326,16 @@ markdown-it-emoji@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/markdown-it-emoji/download/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
   integrity sha1-m+4OmpkKljupbfaYDE/dsF37Tcw=
+
+markdown-it-img-lazy@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/markdown-it-img-lazy/download/markdown-it-img-lazy-1.0.2.tgz#3ad4c64cab4fc337e04517793ce06c9c24981af9"
+  integrity sha1-OtTGTKtPwzfgRRd5POBsnCSYGvk=
+
+markdown-it-imsize@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/markdown-it-imsize/download/markdown-it-imsize-2.0.1.tgz#cca0427905d05338a247cb9ca9d968c5cddd5170"
+  integrity sha1-zKBCeQXQUziiR8ucqdloxc3dUXA=
 
 markdown-it-table-of-contents@^0.4.0:
   version "0.4.4"
@@ -8311,6 +8328,13 @@ vuepress-plugin-autonav@^0.1.3:
     lodash.isempty "4.4.0"
     lodash.orderby "4.6.0"
 
+vuepress-plugin-blog-multidir@^1.0.4:
+  version "1.0.5"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-blog-multidir/download/vuepress-plugin-blog-multidir-1.0.5.tgz#173acaba3f06a7ed7462157db62b6f1d3a2c1524"
+  integrity sha1-FzrKuj8Gp+10YhV9titvHTosFSQ=
+  dependencies:
+    "@vuepress/shared-utils" "^1.0.0-alpha.39"
+
 vuepress-plugin-container@^2.0.2:
   version "2.1.4"
   resolved "https://registry.npm.taobao.org/vuepress-plugin-container/download/vuepress-plugin-container-2.1.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvuepress-plugin-container%2Fdownload%2Fvuepress-plugin-container-2.1.4.tgz#bd586587ffb303f847e4a6a2e2568171f311493b"
@@ -8338,6 +8362,14 @@ vuepress-plugin-feed@^0.1.8:
     remove-markdown "0.3.0"
     striptags "3.1.1"
 
+vuepress-plugin-img-lazy@^1.0.2:
+  version "1.0.4"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-img-lazy/download/vuepress-plugin-img-lazy-1.0.4.tgz#f444c1e21a2c95117f1bcb97a0962660362fa181"
+  integrity sha1-9ETB4hoslRF/G8uXoJYmYDYvoYE=
+  dependencies:
+    markdown-it-img-lazy "^1.0.2"
+    markdown-it-imsize "^2.0.1"
+
 vuepress-plugin-mailchimp@^1.4.1:
   version "1.4.2"
   resolved "https://registry.npm.taobao.org/vuepress-plugin-mailchimp/download/vuepress-plugin-mailchimp-1.4.2.tgz#373fa1df8f03a8993817b09ddfb8bd9d04a1c665"
@@ -8345,6 +8377,11 @@ vuepress-plugin-mailchimp@^1.4.1:
   dependencies:
     jsonp "^0.2.1"
     query-string "^6.9.0"
+
+vuepress-plugin-reading-progress@^1.0.8:
+  version "1.0.10"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-reading-progress/download/vuepress-plugin-reading-progress-1.0.10.tgz#0b9d44e27d583ff20e0307993aa4cbda49f3bdca"
+  integrity sha1-C51E4n1YP/IOAweZOqTL2knzvco=
 
 vuepress-plugin-sitemap@^2.3.1:
   version "2.3.1"
@@ -8367,6 +8404,22 @@ vuepress-plugin-smooth-scroll@^0.0.9:
   dependencies:
     smoothscroll-polyfill "^0.4.4"
 
+vuepress-theme-ououe@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npm.taobao.org/vuepress-theme-ououe/download/vuepress-theme-ououe-1.5.1.tgz#0a9a46506aee5288cc4cc775f08c85b5ca780c8e"
+  integrity sha1-CppGUGruUojMTMd18IyFtcp4DI4=
+  dependencies:
+    "@vuepress/plugin-back-to-top" "^1.3.1"
+    "@vuepress/plugin-last-updated" "^1.3.1"
+    "@vuepress/plugin-nprogress" "^1.3.1"
+    "@vuepress/plugin-search" "^1.3.1"
+    "@vuepress/shared-utils" "^1.3.1"
+    css-prefers-color-scheme "^3.1.1"
+    vuepress "^1.3.1"
+    vuepress-plugin-blog-multidir "^1.0.4"
+    vuepress-plugin-img-lazy "^1.0.2"
+    vuepress-plugin-reading-progress "^1.0.8"
+
 vuepress-theme-reco@^1.5.4:
   version "1.5.4"
   resolved "https://registry.npm.taobao.org/vuepress-theme-reco/download/vuepress-theme-reco-1.5.4.tgz#eea83bbb26320e053b0f33d04d4274fbb1155d97"
@@ -8383,7 +8436,7 @@ vuepress-theme-reco@^1.5.4:
     vue-click-outside "1.1.0"
     vuepress-plugin-smooth-scroll "^0.0.9"
 
-vuepress@^1.5.2:
+vuepress@^1.3.1, vuepress@^1.5.2:
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/vuepress/download/vuepress-1.5.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvuepress%2Fdownload%2Fvuepress-1.5.2.tgz#b79e84bfaade55ba3ddb59c3a937220913f0599b"
   integrity sha1-t56Ev6reVbo921nDqTciCRPwWZs=
