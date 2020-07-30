@@ -10,6 +10,7 @@ module.exports = {
     markdown:markdownConfig,
     plugins: pluginsConfig,
     head: headConfig,
+    theme: 'reco',//安装命令yarn add vuepress-theme-reco
     themeConfig:{
         nav,
         //sidebar, 
