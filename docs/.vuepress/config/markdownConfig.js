@@ -1,5 +1,4 @@
 module.exports = {
-    markdown: {
       // markdown-it-anchor 的选项
       anchor: { permalink: false },
       //代码块显示行号
@@ -10,5 +9,4 @@ module.exports = {
         // 使用更多的 markdown-it 插件!
         //md.use(require('markdown-it-xxx'))
      // }
-    }
   }

@@ -255,7 +255,7 @@ const nav = require("./nav.js"); // 引入刚刚生成的文件
 
 module.exports = {
   plugins: {
-    "vuepress-plugin-auto-sidebar": {
+    "vuepress-plugin-auto-sidebar", {
       nav: true
     }
   },
