@@ -1,4 +1,6 @@
 const moment = require("moment");
+//一次性添加所有插件命令
+//yarn add -D vuepress-plugin-auto-sidebar moment @vuepress/plugin-back-to-top @vuepress/plugin-nprogress @vuepress/plugin-medium-zoom @vuepress/plugin-pwa
 module.exports = [
   "vuepress-plugin-auto-sidebar",
   {
