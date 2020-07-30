@@ -220,7 +220,7 @@ Vim 启动是会按照一定的优先顺序来搜索配置文件，这个顺序�
 
 你也可以运行下面这段代码来测试 Vim 版本以及功能支持：
 
-```viml
+```shell
 " Do something if running at least Vim 7.4.42 with +profile enabled.
 if (v:version > 704 || v:version == 704 && has('patch42')) && has('profile')
   " do stuff
@@ -299,7 +299,7 @@ Vim 是一个文本编辑器。每次文本都是作为**缓冲区**的一部分
 
 然而参数列表在有些情况下被大量使用：批处理 使用 `:argdo`！ 一个简单的重构例子：
 
-```viml
+```shell
 :args **/*.[ch]
 :argdo %s/foo/bar/ge | update
 ```
@@ -325,7 +325,7 @@ Vim 是一个文本编辑器。每次文本都是作为**缓冲区**的一部分
 
 例如：这个自定义的快捷键只在普通模式下工作。
 
-```viml
+```shell
 :nmap <space> :echo "foo"<cr>
 ```
 
@@ -337,13 +337,13 @@ Vim 是一个文本编辑器。每次文本都是作为**缓冲区**的一部分
 
 你自定义了一个简单的映射去输出“Foo”：
 
-```viml
+```shell
 :nmap b :echo "Foo"<cr>
 ```
 
 但是如果你想要映射 `b` （回退一个单词）的默认功能到一个键上呢？
 
-```viml
+```shell
 :nmap a b
 ```
 
@@ -351,7 +351,7 @@ Vim 是一个文本编辑器。每次文本都是作为**缓冲区**的一部分
 
 解决此问题的正确方法是使用一种 *非递归* 的映射代替：
 
-```viml
+```shell
 :nnoremap a b
 ```
 
@@ -363,7 +363,7 @@ Vim 是一个文本编辑器。每次文本都是作为**缓冲区**的一部分
 
 相关帮助：
 
-```viml
+```shell
 :h key-notation
 :h mapping
 :h 05.3
@@ -375,13 +375,13 @@ Vim 是一个文本编辑器。每次文本都是作为**缓冲区**的一部分
 
 映射前置键（Leader 键）本身就是一个按键映射，默认为 \\。我们可以通过在 `map` 中调用 `<leader>` 来为把它添加到其他按键映射中。
 
-```viml
+```shell
 nnoremap <leader>h :helpgrep<space>
 ```
 
 这样，我们只需要先按 \\ 然后连续按 \\h 就可以激活这个映射 `:helpgrep<space>`。如果你想通过先按 空格 键来触发，只需要这样做：
 
-```viml
+```shell
 let g:mapleader = ' '
 nnoremap <leader>h :helpgrep<space>
 ```
@@ -410,7 +410,7 @@ Vim 为我们提供了如下的寄存器：
 | Named | `a`至`z`, `A`至`Z` | 用户 | 否 | 如果你通过复制操作存储文本至寄存器 `a`，那么 `a` 中的文本就会被完全覆盖。如果你存储至 `A`，那么会将文本添加给寄存器 `a`，不会覆盖之前已有的文本 |
 | Read\-only | `:`与`.`和`%` | vim | 是 | `:`: 最近一次使用的命令，`.`: 最近一次添加的文本，`%`: 当前的文件名 |
 | Alternate buffer | `#` | vim | 否 | 大部分情况下，这个寄存器是当前窗口中，上一次访问的缓冲区。请参阅 `:h alternate-file` 来获取更多帮助 |
-| Expression | `=` | 用户 | 否 | 复制 VimL 代码时，这个寄存器用于存储代码片段的执行结果。比如，在插入模式下复制 `<c-r>=5+5<cr>`，那么这个寄存器就会存入 10 |
+| Expression | `=` | 用户 | 否 | 复制 shell 代码时，这个寄存器用于存储代码片段的执行结果。比如，在插入模式下复制 `<c-r>=5+5<cr>`，那么这个寄存器就会存入 10 |
 | Selection | `+`和`*` | vim | 否 | `*` 和 `+` 是 [剪贴板](#%E5%89%AA%E8%B4%B4%E6%9D%BF) 寄存器 |
 | Drop | `~` | vim | 是 | 最后一次拖拽添加至 Vim 的文本（需要 "+dnd" 支持，暂时只支持 GTK GUI。请参阅 `:help dnd` 及 `:help quote~`） |
 | Black hole | `_` | vim | 否 | 一般称为黑洞寄存器。对于当前操作，如果你不希望在其他寄存器中保留文本，那就在命令前加上 `_`。比如，`"_dd` 命令不会将文本放到寄存器 `"`、`1`、`+` 或 `*` 中 |
@@ -418,7 +418,7 @@ Vim 为我们提供了如下的寄存器：
 
 只要不是只读的寄存器，用户都有权限修改它的内容，比如：
 
-```viml
+```shell
 :let @/ = 'register'
 ```
 
@@ -473,7 +473,7 @@ Vim 为我们提供了如下的寄存器：
 
 如果你想设置多个寻找条件，只需要在条件前加上 `/`，比如：
 
-```viml
+```shell
 :/foo//bar//quux/d
 ```
 
@@ -485,7 +485,7 @@ Vim 为我们提供了如下的寄存器：
 
 请参阅以下两个命令来获取更多帮助：
 
-```viml
+```shell
 :h cmdline-ranges
 :h 10.3
 ```
@@ -562,7 +562,7 @@ Vim 在插入模式中为我们提供了多种补全方案。如果有多个补�
 
 请参阅以下文档获取更多帮助：
 
-```viml
+```shell
 :h ins-completion
 :h popupmenu-keys
 :h new-omni-completion
@@ -604,7 +604,7 @@ Vim 在插入模式中为我们提供了多种补全方案。如果有多个补�
 
 一个很常用的例子，就是针对文件类型执行某些设置：
 
-```viml
+```shell
 autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 comments-=:#
 ```
 
@@ -616,7 +616,7 @@ autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 comments-=:#
 
 **注意**：对于相同事件，如果有多个自动命令，那么自动命令会按照定义时的顺序执行。通过 `:au` 就可以查看它们的执行顺序。
 
-```viml
+```shell
 au BufNewFile,BufRead *.rb,*.rbw setf ruby
 ```
 
@@ -649,7 +649,7 @@ Vim 中的跳转命令，包括 `'`、`` ` ``、`G`、`/`、`?`、`n`、`N`、`%
 
 请参阅以下两个命令来获取更多帮助：
 
-```viml
+```shell
 :h changelist
 :h jumplist
 ```
@@ -664,7 +664,7 @@ Vim 会记录文本改变之前的状态。因此，你可以使用「撤销」�
 
 考虑以下这一系列按键操作：
 
-```viml
+```shell
 ifoo<esc>
 obar<esc>
 obaz<esc>
@@ -705,7 +705,7 @@ baz(3)   quux(4)
 
 请参阅以下链接获取更多帮助：
 
-```viml
+```shell
 :h undo.txt
 :h usr_32
 ```
@@ -737,7 +737,7 @@ Vim 中，全局位置信息表只能有一个，但每一个窗口都可以有�
 
 **应用实例**： 如果我们想用 `grep` 递归地在当前文件夹中寻找某个关键词，然后把输出结果放到全局位置信息表中，只需要这样：
 
-```viml
+```shell
 :let &grepprg = 'grep -Rn $* .'
 :grep! foo
 <grep output - hit enter>
@@ -761,7 +761,7 @@ Vim 中，全局位置信息表只能有一个，但每一个窗口都可以有�
 
 一个插入字符串 "abc" 后换行的宏，重复调用十次：
 
-```viml
+```shell
 qq
 iabc<cr><esc>
 q
@@ -774,7 +774,7 @@ q
 
 一个在每行前都加上行号的宏。从第一行开始，行号为 1，后面依次递增。我们可以通过 Ctrl + a 来实现递增的行号，在定义宏的时候，它会显示成 `^A`。
 
-```viml
+```shell
 qq
 0yf jP0^A
 q
@@ -783,7 +783,7 @@ q
 
 这里能实现功能，是因为我们假定了文件最多只有 1000 行。但更好的方式是使用「递归」宏，它会一直执行，知道不能执行为止：
 
-```viml
+```shell
 qq
 0yf jP0^A@q
 q
@@ -796,7 +796,7 @@ q
 
 请参阅以下文档获取更多帮助：
 
-```viml
+```shell
 :h recording
 :h 'lazyredraw'
 ```
@@ -807,7 +807,7 @@ q
 
 颜色主题可以把你的 Vim 变得更漂亮。Vim 是由多个组件构成的，我们可以给每一个组件都设置不同的文字颜色、背景颜色以及文字加粗等等。比如，我们可以通过这个命令来设置背景颜色：
 
-```viml
+```shell
 :highlight Normal ctermbg=1 guibg=red
 ```
 
@@ -848,7 +848,7 @@ q
 
 请参阅以下文档获取更多帮助：
 
-```viml
+```shell
 :h usr_28
 :h folds
 ```
@@ -871,7 +871,7 @@ q
 
 请参阅以下文档来获取更多帮助：
 
-```viml
+```shell
 :h Session
 :h 'sessionoptions'
 :h v:this_session
@@ -902,16 +902,16 @@ Vim 自带了一套很完善的帮助文档，它们是一个个有固定排版�
 一些关于帮助主题的简单规则：
 
 *   用单引号把文本包起来表示选项，如：`:h 'textwidth'`
-*   以小括号结尾表示 VimL 函数，如：`:h reverse()`
+*   以小括号结尾表示 shell 函数，如：`:h reverse()`
 *   以英文冒号开头表示命令，如：`:h :echo`
 
 使用快捷键 `<c-d>` （这是 ctrl+d）来列出所有包含你当前输入的内容的帮助主题。如：`:h tab<c-d>` 会列出所有包含 `tab` 主题，从 `softtabstop` 到 `setting-guitablabel` （译者注：根据安装的插件不同列出的选项也会不同）。
 
-你想查看所有的 VimL 方法吗？很简单，只要输入：`:h ()<c-d>` 就可以了。你想查看所有与窗口相关的函数吗？输入 `:h win*()<c-d>`。
+你想查看所有的 shell 方法吗？很简单，只要输入：`:h ()<c-d>` 就可以了。你想查看所有与窗口相关的函数吗？输入 `:h win*()<c-d>`。
 
 相信你很快就能掌握这些技巧，但是在刚开始的时候，你可能对于该通过什么进行查找一点线索都没有。这时你可以想象一些与要查找的内容相关的关键字，再让 `:helpgrep` 来帮忙。
 
-```viml
+```shell
 :helpgrep backwards
 ```
 
@@ -943,7 +943,7 @@ Vim 自带了一套很完善的帮助文档，它们是一个个有固定排版�
 
 5.  寄存器是以 "quote" 开头的。如：`:h quote:` （译者注：原文为`:h quote`，感觉作者想以":"来举例）来查看关于":"寄存器的说明。
 
-6.  关于 Vim 脚本（VimL）的帮助都在 `:h eval.txt` 里。而某些方面的语言可以使用 `:h expr-X` 获取帮助，其中的 'X' 是一个特定的字符，如：`:h expr-!` 会跳转到描述 VimL 中'!'（非）的章节。另外一个重要提示，可以使用 `:h function-list` 来查看所有函数的简要描述，列表中包括函数名和一句话描述。
+6.  关于 Vim 脚本（shell）的帮助都在 `:h eval.txt` 里。而某些方面的语言可以使用 `:h expr-X` 获取帮助，其中的 'X' 是一个特定的字符，如：`:h expr-!` 会跳转到描述 shell 中'!'（非）的章节。另外一个重要提示，可以使用 `:h function-list` 来查看所有函数的简要描述，列表中包括函数名和一句话描述。
 
 7.  关于映射都可以在 `:h map.txt` 中找到。通过 `:h mapmode-i` 来查找 `:imap` 命令的相关信息；通过 `:h map-topic` 来查找专门针对映射的帮助（译者注：topic 为一个占位符，正如上面的字符 'X' 一样，在实际使用中需要替换成相应的单词）（如：`:h :map-local` 查询本地 buffer 的映射，`:h map-bar` 查询如何在映射中处理'|')。
 
@@ -993,7 +993,7 @@ Vim 自带了一套很完善的帮助文档，它们是一个个有固定排版�
 
 对于插件而言，创建你自己的自定义事件有时非常有用。
 
-```viml
+```shell
 function! Chibby()
     " A lot of stuff is happening here.
     " And at last..
@@ -1003,7 +1003,7 @@ endfunction
 
 现在你插件的用户可以在 Chibby 执行完成之后做任何他想做的事情：
 
-```viml
+```shell
 autocmd User ChibbyExit call ChibbyCleanup()
 ```
 
@@ -1011,7 +1011,7 @@ autocmd User ChibbyExit call ChibbyCleanup()
 
 这就是为什么要在触发事件之前先判断事件是否存在的原因，
 
-```viml
+```shell
 if exists('#User#ChibbyExit')
   doautocmd User ChibbyExit
 endif
@@ -1025,7 +1025,7 @@ endif
 
 例如你想在每次启动 Vim 的时候自动打开你的 vimrc 文件：
 
-```viml
+```shell
 autocmd VimEnter * edit $MYVIMRC
 ```
 
@@ -1033,7 +1033,7 @@ autocmd VimEnter * edit $MYVIMRC
 
 问题在于你的非嵌套自动命令 `:edit` 不会触发“BufRead”事件，所以并不会把文件类型设置成“vim”，进而 `$VIMRUNTIME/syntax/vim.vim` 永远不会被引入。详细信息请参考：`:au BufRead *.vim`。要想完成上面所说的需求，使用下面这个命令：
 
-```viml
+```shell
 autocmd VimEnter * nested edit $MYVIMRC
 ```
 
@@ -1045,7 +1045,7 @@ autocmd VimEnter * nested edit $MYVIMRC
 
 帮助文档：
 
-```viml
+```shell
 :h 'clipboard'
 :h gui-clipboard
 :h gui-selections
@@ -1065,7 +1065,7 @@ Windows 自带了[剪贴板](https://msdn.microsoft.com/en-us/library/windows/de
 
 如果你不想每次操作都要指定 `*` 寄存器，可以在你的 vimrc 中添加如下配置：
 
-```viml
+```shell
 set clipboard=unnamed
 ```
 
@@ -1075,14 +1075,14 @@ set clipboard=unnamed
 
 如果你觉得输入 `y` 还是太麻烦的话，可以使用下面的设置把在可视模式下选择的内容发送到剪贴板：
 
-```viml
+```shell
 set clipboard=unnamed,autoselect
 set guioptions+=a
 ```
 
 帮助文档：
 
-```viml
+```shell
 :h clipboard-unnamed
 :h autoselect
 :h 'go_a'
@@ -1120,7 +1120,7 @@ Program B：从Program A接收数据并插入到窗口中
 
 如果你需要经常访问这两个寄存器，可以考虑使用如下配置：
 
-```viml
+```shell
 set clipboard^=unnamed          " * 寄存器
 " 或者
 set clipboard^=unnamedplus      " + 寄存器
@@ -1132,7 +1132,7 @@ set clipboard^=unnamedplus      " + 寄存器
 
 帮助文档：
 
-```viml
+```shell
 :h clipboard-unnamed
 :h clipboard-unnamedplus
 ```
@@ -1143,7 +1143,7 @@ set clipboard^=unnamedplus      " + 寄存器
 
 将下面的配置添加到你的 vimrc 文件：
 
-```viml
+```shell
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
@@ -1202,7 +1202,7 @@ $ diff ~/.vim/vimrc ~/.vim/files/backup/vimrc-vimbackup
 
 如果你跟我一样，也喜欢把这些文件放到一个位置（如：`~/.vim/files`）的话，可以使用下面的配置：
 
-```viml
+```shell
 " 如果文件夹不存在，则新建文件夹
 if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files')
@@ -1231,7 +1231,7 @@ Vim 自带的 netrw 插件支持对远程文件的编辑。实际上它将远程
 
 下面的命令在你本地的 VIM 配置与 SSH 远程服务器上管理员想让你使用的配置有冲突时尤其有用：
 
-```viml
+```shell
 :e scp://bram@awesome.site.com/.vimrc
 ```
 
@@ -1247,7 +1247,7 @@ Host awesome
 
 如果你的 `~/.ssh/config` 中有以上的内容，那么下面的命令就可以正常执行了：
 
-```viml
+```shell
 :e scp://awesome/.vimrc
 ```
 
@@ -1282,7 +1282,7 @@ Host awesome
 
 有时你可能需要把光标放到当前行末尾之后，默认情况下你是不可能做到的，但是可能通过设置 `virtualedit` 选项达到目的：
 
-```viml
+```shell
 set virtualedit=all
 ```
 
@@ -1302,7 +1302,7 @@ set virtualedit=all
 
 没有使用范围时（译者注：范围就是 `:` 和 `!` 之间的内容，`.` 表示当前行，`+4` 表示向下偏移 4 行，`$` 表示最末行等，多行时用 `,` 将它们分开，如 `.,$` 表示从当前行到末行），`:!` 会显示在一个可滚动的窗口中（译者注：在 GVim 和在终端里运行的结果稍有不同）。相反的，如果指定了范围，这些行会被 [过滤](https://en.wikipedia.org/wiki/Filter_(software))。这意味着它们会通过管道被重定向到过滤程序的 [stdin](https://en.wikipedia.org/wiki/Standard_streams#Standard_input_.28stdin.29)，在处理后再通过过滤程序的 [stdout](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29) 输出，用输出结果替换范围内的文本。例如：为接下来的 5 行文本添加行号，可以使用：
 
-```viml
+```shell
 :.,+4!nl -ba -w1 -s' '
 ```
 
@@ -1314,7 +1314,7 @@ set virtualedit=all
 
 帮助文档：
 
-```viml
+```shell
 :h filter
 :h :read!
 ```
@@ -1357,13 +1357,13 @@ $ cscope -bq
 
 打开你新创建的数据库连接：
 
-```viml
+```shell
 :cs add cscope.out
 ```
 
 检查连接已经创建成功：
 
-```viml
+```shell
 :cs show
 ```
 
@@ -1371,7 +1371,7 @@ $ cscope -bq
 
 ### `[](#3-查询数据库)3. 查询数据库`
 
-```viml
+```shell
 :cs find <kind> <query>
 ```
 
@@ -1390,7 +1390,7 @@ $ cscope -bq
 
 推荐一些比较方便的映射，如：
 
-```viml
+```shell
 nnoremap <buffer> <leader>cs :cscope find s  <c-r>=expand('<cword>')<cr><cr>
 nnoremap <buffer> <leader>cg :cscope find g  <c-r>=expand('<cword>')<cr><cr>
 nnoremap <buffer> <leader>cc :cscope find c  <c-r>=expand('<cword>')<cr><cr>
@@ -1409,25 +1409,25 @@ nnoremap <buffer> <leader>cd :cscope find d  <c-r>=expand('<cword>')<cr><cr>
 
 由于 Vim 是用 C 语言编写的，因此许多功能都假设使用类似 C 语言的语法。默认情况下，如果你的光标在 `{` 或 `#endif` , 就可以使用 `%` 跳转到与之匹配的 `}` 或 `#ifdef`。
 
-Vim 自带了一个名为 matchit.vim 的插件，但是默认没有启用。启用后可以用 `%` 在 HTML 相匹配的标签或 VimL 的 if/else/endif 块之间进行跳转，它还带来了一些新的命令。
+Vim 自带了一个名为 matchit.vim 的插件，但是默认没有启用。启用后可以用 `%` 在 HTML 相匹配的标签或 shell 的 if/else/endif 块之间进行跳转，它还带来了一些新的命令。
 
 ### `[](#在-vim-8-中安装)在 Vim 8 中安装`
 
-```viml
+```shell
 " vimrc
 packadd! matchit
 ```
 
 ### `[](#在-vim-7-或者更早的版本中安装)在 Vim 7 或者更早的版本中安装`
 
-```viml
+```shell
 "vimrc
 runtime macros/matchit.vim
 ```
 
 由于 matchit 的文档很全面，我建议安装以后执行一次下面的命令：
 
-```viml
+```shell
 :!mkdir -p ~/.vim/doc
 :!cp $VIMRUNTIME/macros/matchit.vim ~/.vim/doc
 :helptags ~/.vim/doc
@@ -1439,7 +1439,7 @@ runtime macros/matchit.vim
 
 你可以很方便的定义自己的匹配对，如：
 
-```viml
+```shell
 autocmd FileType python let b:match_words = '\<if\>:\<elif\>:\<else\>'
 ```
 
@@ -1447,7 +1447,7 @@ autocmd FileType python let b:match_words = '\<if\>:\<elif\>:\<else\>'
 
 帮助文档：
 
-```viml
+```shell
 :h matchit-install
 :h matchit
 :h b:match_words
@@ -1471,7 +1471,7 @@ n 与 N 的实际跳转方向取决于使用 `/` 还是 `?` 来执行搜索，�
 
 如果你希望 n 始终为向后搜索，N 始终为向前搜索，那么只需要这样设置：
 
-```viml
+```shell
 nnoremap <expr> n  'Nn'[v:searchforward]
 nnoremap <expr> N  'nN'[v:searchforward]
 ```
@@ -1484,7 +1484,7 @@ nnoremap <expr> N  'nN'[v:searchforward]
 
 当然，Vim 用户都不愿意去按方向键，事实上我们也不需要去按，只需要设置这样的映射：
 
-```viml
+```shell
 cnoremap <c-n> <down>
 cnoremap <c-p> <up>
 ```
@@ -1495,13 +1495,13 @@ cnoremap <c-p> <up>
 
 Ctrl + l 的默认功能是清空并「重新绘制」当前的屏幕，就和 `:redraw!` 的功能一样。下面的这个映射就是执行重新绘制，并且取消通过 `/` 和 `?` 匹配字符的高亮，而且还可以修复代码高亮问题（有时候，由于多个代码高亮的脚本重叠，或者规则过于复杂，Vim 的代码高亮显示会出现问题）。不仅如此，还可以刷新「比较模式」（请参阅 `:help diff-mode`）的代码高亮：
 
-```viml
+```shell
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 ```
 
 ## `[](#禁用错误报警声音和图标)禁用错误报警声音和图标`
 
-```viml
+```shell
 set noerrorbells
 set novisualbell
 set t_vb=
@@ -1513,7 +1513,7 @@ set t_vb=
 
 有时，我（原作者）想要快速把当前行上移或下移一行，只需要这样设置映射：
 
-```viml
+```shell
 nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
 nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
 ```
@@ -1522,7 +1522,7 @@ nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
 
 ## `[](#快速添加空行)快速添加空行`
 
-```viml
+```shell
 nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 ```
@@ -1539,7 +1539,7 @@ Vim 提供了一个内置的运行时检查功能，能够找出运行慢的代�
 
 如果你想查看所有的：
 
-```viml
+```shell
 :profile start /tmp/profile.log
 :profile file *
 :profile func *
@@ -1557,11 +1557,11 @@ Vim 不断地在内存中检查信息，只在退出的时候输出出来。（N
 
 感觉 Vim 启动的慢？到了研究几个数字的时候了：
 
-```viml
+```shell
 vim --startuptime /tmp/startup.log +q && vim /tmp/startup.log
 ```
 
-第一栏是最重要的因为它显示了**绝对运行时间**，如果在前后两行之间时间差有很大的跳跃，那么是第二个文件太大或者含有需要检查的错误的 VimL 代码。
+第一栏是最重要的因为它显示了**绝对运行时间**，如果在前后两行之间时间差有很大的跳跃，那么是第二个文件太大或者含有需要检查的错误的 shell 代码。
 
 ## `[](#nul-符用新行表示)NUL 符用新行表示`
 
@@ -1575,7 +1575,7 @@ vim --startuptime /tmp/startup.log +q && vim /tmp/startup.log
 
 在录制宏的时候，我经常用这个来更改拼写错误。
 
-```viml
+```shell
 nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 ```
 
@@ -1587,7 +1587,7 @@ nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 
 这个技巧可以用在多种文件类型中。当你从源文件或者头文件中切换到其他文件的时候，这个技巧可以设置「文件标记」（请参阅 `:h marks`），然后你就可以通过连续按下 ' C 或者 ' H 快速跳转回去（请参阅 `:h 'A`）。
 
-```viml
+```shell
 autocmd BufLeave *.{c,cpp} mark C
 autocmd BufLeave *.h       mark H
 ```
@@ -1598,7 +1598,7 @@ autocmd BufLeave *.h       mark H
 
 印象中，我（原作者）记得一下代码是来自 tpope's 的配置文件：
 
-```viml
+```shell
 command! Bigger  :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)+1', '')
 command! Smaller :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)-1', '')
 ```
@@ -1607,7 +1607,7 @@ command! Smaller :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)-1'
 
 我（原作者）习惯在普通模式下用块状光标，在插入模式下用条状光标（形状类似英文 "I" 的样子），然后在替换模式中使用下划线形状的光标。
 
-```viml
+```shell
 if empty($TMUX)
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -1631,7 +1631,7 @@ endif
 
 你可以连续按下 g v 来重新选中他们，请参考 `:h gv`。因此，你可以这样来配置映射：
 
-```viml
+```shell
 xnoremap <  <gv
 xnoremap >  >gv
 ```
@@ -1642,7 +1642,7 @@ xnoremap >  >gv
 
 在 Vim 里，我们可以同过 `v$` 选择当前行至结尾，但此时会把最后一个换行符也选中，通常需要按额外的 `h` 来取消最后选中最后一个换行符号。 Vim 提供了一个 `g_` 快捷键，可以移动光标至最后一个非空字符。因此，为达到次效果，可以使用 `vg_`。当然，如果觉得按三个键比较麻烦， 可以添加一个映射：
 
-```viml
+```shell
 nnoremap L g_
 ```
 
@@ -1652,7 +1652,7 @@ nnoremap L g_
 
 通过[自动命令](#%E8%87%AA%E5%8A%A8%E5%91%BD%E4%BB%A4)，你可以在保存文件的同时触发一些其他功能。比如，如果这个文件是一个配置文件，那么就重新载入；或者你还可以对这个文件进行代码风格检查。
 
-```viml
+```shell
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
 ```
@@ -1661,7 +1661,7 @@ autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
 
 我（原作者）很喜欢「当前行高亮」（请参阅 `:h cursorline`）这个功能，但我只想让这个效果出现在当前窗口，而且在插入模式中关闭这个效果：
 
-```viml
+```shell
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 ```
@@ -1670,7 +1670,7 @@ autocmd InsertEnter,WinLeave * set nocursorline
 
 关键字补全（`<c-n>` 或 `<c-p>`）功能的工作方式是，无论 `'complete'` 设置中有什么，它都会尝试着去补全。这样，一些我们用不到的标签也会出现在补全列表中。而且，它会扫描很多文件，有时候运行起来非常慢。如果你不需要这些，那么完全可以像这样把它们禁用掉：
 
-```viml
+```shell
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
 ```
@@ -1679,13 +1679,13 @@ set complete-=t   " disable searching tags
 
 如果你想让状态栏在颜色主题更改后依然保持灰色，那么只需要这样设置：
 
-```viml
+```shell
 autocmd ColorScheme * highlight StatusLine ctermbg=darkgray cterm=NONE guibg=darkgray gui=NONE
 ```
 
 同理，如果你想让某一个颜色主题（比如 "lucius"）的状态栏为灰色（请使用 `:echo color_name` 来查看当前可用的所有颜色主题）：
 
-```viml
+```shell
 autocmd ColorScheme lucius highlight StatusLine ctermbg=darkgray cterm=NONE guibg=darkgray gui=NONE
 ```
 
@@ -1701,7 +1701,7 @@ autocmd ColorScheme lucius highlight StatusLine ctermbg=darkgray cterm=NONE guib
 
 既然它的名字是 `:global`，理应仅作用在所有行上，但是它也是可以带范围限制的。假设你想使用 `:delete` 命令删除从当前行到下一个空行（由正则表达式 `^$` 匹配）范围内所有包含 "foo" 的行：
 
-```viml
+```shell
 :,/^$/g/foo/d
 ```
 
@@ -1717,7 +1717,7 @@ autocmd ColorScheme lucius highlight StatusLine ctermbg=darkgray cterm=NONE guib
 
 借助于 `:execute` 可以将命令和表达式混合在一起使用。假设你正在编辑一个 C 语言的文件，想切换到它的头文件：
 
-```viml
+```shell
 :execute 'edit' fnamemodify(expand('%'), ':r') . '.h'
 ```
 
@@ -1725,7 +1725,7 @@ autocmd ColorScheme lucius highlight StatusLine ctermbg=darkgray cterm=NONE guib
 
 这两个命令经常一起使用。假设你想让光标下移 n 行：
 
-```viml
+```shell
 :let n = 4
 :execute 'normal!' n . 'j'
 ```
@@ -1734,7 +1734,7 @@ autocmd ColorScheme lucius highlight StatusLine ctermbg=darkgray cterm=NONE guib
 
 许多命令都会输出消息，`:redir` 用来重定向这些消息。它可以将消息输出到文件、[寄存器](#%E5%AF%84%E5%AD%98%E5%99%A8)或是某个变量中。
 
-```viml
+```shell
 " 将消息重定向到变量 `neatvar` 中
 :redir => neatvar
 " 打印所有寄存器的内容
@@ -1787,7 +1787,7 @@ vim -u NONE -N
 
 Vim 现在正在使用的另一个比较有用的方法是增加 debug 信息输出详细等级。现在 Vim 支持 9 个等级，可以用`:h 'verbose'`命令查看。
 
-```viml
+```shell
 :e /tmp/foo
 :set verbose=2
 :w
@@ -1798,7 +1798,7 @@ Vim 现在正在使用的另一个比较有用的方法是增加 debug 信息输
 
 如果你只是想用简单的命令来提高等级，也是用 `:verbose` ，放在其他命令之前，通过计数来指明等级，默认是 1.
 
-```viml
+```shell
 :verb set verbose
 "  verbose=1
 :10verb set verbose
@@ -1807,14 +1807,14 @@ Vim 现在正在使用的另一个比较有用的方法是增加 debug 信息输
 
 通常用等级 1 来显示上次从哪里设置的选项
 
-```viml
+```shell
 :verb set ai?
 "      Last set from ~/.vim/vimrc
 ```
 
 一般等级越高输出信息月详细。但是不要害怕，亦可以把输出导入到文件中：
 
-```viml
+```shell
 :set verbosefile=/tmp/foo | 15verbose echo "foo" | vsplit /tmp/foo
 ```
 
@@ -1840,7 +1840,7 @@ Vim 现在正在使用的另一个比较有用的方法是增加 debug 信息输
 
 假设你需要知道你每次在保存一个文件的时候有哪些代码在运行：
 
-```viml
+```shell
 :au BufWritePost
 " signify  BufWritePost
 "     *         call sy#start()
@@ -1868,7 +1868,7 @@ Vim 现在正在使用的另一个比较有用的方法是增加 debug 信息输
 
 语法文件由于包含错误的或者复制的正则表达式，常常会使得 Vim 的运行较慢。如果 Vim 在编译的时候包含了`+profile` [feature](#what-kind-of-vim-am-i-running)特性，就可以给用户提供一个超级好用的`:syntime`命令。
 
-```viml
+```shell
 :syntime on
 " 多次敲击<c-l>来重绘窗口，这样的话就会使得相应的语法规则被重新应用一次
 :syntime off
@@ -1969,7 +1969,7 @@ Neovim 尝试把这些变得更顺畅，如果终端支持的话，它会自动�
 
 为了使用问题更加清晰，我会先来解释一下什么是映射超时。在映射存在歧义的时候就会产生映射超时：
 
-```viml
+```shell
 :nnoremap ,a :echo 'foo'<cr>
 :nnoremap ,ab :echo 'bar'<cr>
 ```
@@ -1988,7 +1988,7 @@ Neovim 尝试把这些变得更顺畅，如果终端支持的话，它会自动�
 
 默认情况下，Vim 用 `:set timeout timeoutlen=1000`，就是说它会用 1 秒的时间来区分有歧义的映射 *以及* 按键编码。这对于映射来说是一个比较合理的值，但是你可以自行定义按键延时的长短，这是解决该问题最根本的办法：
 
-```viml
+```shell
 set timeout           " for mappings
 set timeoutlen=1000   " default value
 set ttimeout          " for key codes
