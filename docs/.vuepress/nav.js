@@ -23,6 +23,7 @@ module.exports = [
       { text: "镜像加速大全", link: "/常见问题/镜像加速大全/" },
       { text: "Git", link: "/常见问题/Git/" },
       { text: "vim", link: "/常见问题/vim/" },
+      { text: "Pyhton", items: [{ text: "Pyhton", link: "/Pyhton/" }] },
     ],
   },
   { text: "Pyhton", items: [{ text: "Pyhton", link: "/Pyhton/" }] },
