@@ -10,7 +10,7 @@ module.exports = {
     markdown:markdownConfig,
     plugins: pluginsConfig,
     head: headConfig,
-    theme: 'ououe',//安装命令yarn add vuepress-theme-ououe
+    //theme: 'ououe',//安装命令yarn add vuepress-theme-ououe
     //theme: 'reco',//安装命令yarn add vuepress-theme-reco
     themeConfig:{
         nav,
