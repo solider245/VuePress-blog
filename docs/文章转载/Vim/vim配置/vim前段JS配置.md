@@ -1,5 +1,5 @@
 ---
-title: vim前段配置
+title: vim前端配置
 ---
 
 ## `bigvim`
