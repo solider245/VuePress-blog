@@ -4,6 +4,7 @@ module.exports = [
     items: [
       { text: "Linux常见命令", link: "/文章转载/Linux常见命令/" },
       { text: "Linux常用软件", link: "/文章转载/Linux常用软件/" },
+      { text: "docker", link: "/文章转载/docker/" },
       { text: "python", link: "/文章转载/python/" },
       {
         text: "Vim",
