@@ -2,6 +2,7 @@ module.exports = [
   {
     text: "文章转载",
     items: [
+      { text: "首页", link:"/文章转载/" },
       { text: "Linux常见命令", link: "/文章转载/Linux常见命令/" },
       { text: "Linux常用软件", link: "/文章转载/Linux常用软件/" },
       { text: "docker", link: "/文章转载/docker/" },
