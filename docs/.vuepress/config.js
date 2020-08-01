@@ -7,6 +7,7 @@ const headConfig = require("./config/headConf");//通用头部配置
 module.exports = {
     title: '吴起的个人网站',
     description:'吴起的个人网站，专攻vue,python,linux,PowerBI',
+    base:'/VuePress-blog/',
     markdown:markdownConfig,
     plugins: pluginsConfig,
     head: headConfig,
