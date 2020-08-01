@@ -13,9 +13,9 @@
     "vuepress-plugin-autonav": "^0.1.3"
   },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:dep": "vuepress build docs && vuepress dev docs"
+    "docs:dev": "sudo vuepress dev docs",
+    "docs:build": "sudo vuepress build docs",
+    "docs:dep": "sudo vuepress build docs && vuepress dev docs"
   },
   "dependencies": {
     "moment": "^2.27.0",
