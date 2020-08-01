@@ -20,41 +20,41 @@ toc
 
 本文做一个上手实践总结。如果正有搭建技术文档的需求，而且熟悉 `vue` 生态，相信我，选择 `vuepress` 一定不会后悔。官方文档地址：[https://vuepress.vuejs.org](https://vuepress.vuejs.org/)，`vue` 生态一大优势在于中文文档，`vuepress` 也不例外，中文文档一样靠谱：[https://www.vuepress.cn](https://www.vuepress.cn)，官方文档十分详细，本文也不再过多搬运，主要讲下自己的实践。
 
-1\. 环境搭建
+1. 环境搭建
 --------
 
 跟随 `vuepress` 文档操作一遍，非常顺畅，轻轻松松搭好。
 
-\# 全局安装
+# 全局安装
 > yarn global add vuepress
 # 创建一个 markdown 文件，仅包含一个标题
 > echo '# Hello VuePress' > README.md
 
 编写文档，类似 `webpack` 中的 `devServer`，在本地启动一个服务器，浏览器访问 `localhost:8080` 进行访问。
 
-\# 开始编写文档
+# 开始编写文档
 > vuepress dev
 
 编写完文档需要打包构建后才能部署，文件在 `./vuepress/dist` 目录下，可以通过配置 `.vuepress/config.js` 中的 `dest` 字段修改。
 
-\# 构建
+# 构建
 vuepress build
 
 如果是已经有项目，只是想在该项目中管理文档，则应该将 `vuepress` 安装为本地依赖，具体可以参考官方文档。
 
-2\. 目录结构
+2. 目录结构
 --------
 
 项目创建完后，最简的目录结构如下：
-
+```
 ├─ docs
 │  ├─ README.md
 │  └─ .vuepress
 │     └─ config.js
 └─ package.json
-
+```
 官方推荐的完整目录结构如下：
-
+```
 ├── docs
 │   ├── .vuepress (可选的) 用于存放全局的配置、组件、静态资源等
 │   │   ├── components (可选的) Vue组件将会被自动注册为全局组件
@@ -76,10 +76,10 @@ vuepress build
 │   └── config.md
 │
 └── package.json
-
+```
 其中，`docs` 是项目根目录，名称可以自定义，`.vuepress/config.js` 是使用频率最高的配置文件，一般来说，实际的文档文件会放在根目录下，通过路由获取。
 
-3\. 参数配置
+3. 参数配置
 --------
 
 `vuepress` 提供了两类配置：
@@ -145,7 +145,7 @@ $codeBgColor = #282c34
 
 若需要为特定页面添加一个 CSS 类名，可以在该页面的 `YAML front matter` 中声明一个 `pageClass`：
 
-\---
+---
 pageClass: custom-page-class
 ---
 
@@ -155,7 +155,7 @@ pageClass: custom-page-class
   /\* 页面特定的规则 \*/
 }
 
-4\. markdown 扩展操作
+4. markdown 扩展操作
 -----------------
 
 ### 4.1 Emoji
@@ -182,7 +182,7 @@ This is a dangerous warning
 
 ### 4.4 在代码块中高亮显示行
 
-\`\`\` js{4}
+``` js{4}
 
 export default {
 
@@ -197,7 +197,7 @@ return {
 }
 
 }
-
+```
 ### 4.5 导入代码片段
 
 <<< @/public/test.js{2}
@@ -228,13 +228,13 @@ return {
 -------------------
 
 发布 `GitHub Pages` 需要在 `.vuepress/config.js` 中设置正确的 `base`。例如发布到 `https://<USERNAME>.github.io/`，`base` 默认即是`"/"`，如果打算发布到 `https://<USERNAME>.github.io/<REPO>/`（即仓库在 `https://github.com/<USERNAME>/<REPO>`），需要设置 `base` 为 `"/<REPO>/"`。
-
+```
 module.exports = {
   base: '/test/'
 }
-
+```
 可以在项目中创建 `deploy.sh` 文件，方便在持续集成的设置中在每次 push 代码时自动运行脚本。
-
+```shell
 #!/usr/bin/env sh
 # 确保脚本抛出遇到的错误
 set -e
@@ -257,9 +257,9 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
 cd -
-
+```
 设置package.json
-
+```shell
 {
   "script":{
     "deploy": "bash deploy.sh",
@@ -271,10 +271,10 @@ cd -
 运行脚本推送更新到 `github` 上
 
 \> npm run deploy
-
+```
 8\. 附录：config.js 详细配置 demo
 --------------------------
-
+```shell
 module.exports = {
     base: '/', // 用于部署时的子路径
     title: 'csxiaoyao.com', // 网站的标题
@@ -368,5 +368,6 @@ module.exports = {
         editLinkText: '修改此页'
     }
 }
+```
 
 ![](https://ask.qcloudimg.com/http-save/1065788/6dl86j2bvf.jpeg?imageView2/2/w/1620)

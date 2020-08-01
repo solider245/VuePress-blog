@@ -1,7 +1,15 @@
 ---
-title: 在 Visual Studio Code 中添加自定义的代码片段
+title : 在 Visual Studio Code 中添加自定义的代码片段
+description : 非常有用的文章
+author : 中箭的吴起
+image : 在此处放上图片链接
+date : 2020-08-02 00:14:18 +0800
+categories:
+ -
+tags:
+ -
 ---
-
+[[toc]]
 无论是那个编辑器，如果能够添加一些自定义代码片段，能够大大提升代码的输入效率。
 
 本文介绍如何在 Visual Studio Code 中添加自定义代码片段。
