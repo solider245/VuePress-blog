@@ -9,6 +9,7 @@ categories:
 tags:
  -
 ---
+[[toc]]
 [BuildKit](https://github.com/moby/buildkit)是Docker官方社区推出的下一代镜像构建神器\-\-可以更加快速，有效，安全地构建docker 镜像。Docker v18.06已经集成了该组件。BuildKit可用于多种导出格式（例如OCI或Docker）以及前端支持（Dockerfile），并提供高效缓存和运行并行构建操作等功能。BuildKit仅需要容器运行时就能执行，当前受支持的运行时包括containerd和runc。
 
 ### 构建步骤优化
