@@ -55,6 +55,9 @@ source ~/.zshrc
 
 第一次输入cheat时，系统会提醒你创建一个配置文件，默认就行。
 然后系统会提示你是否下载备忘录，也就是预定的备忘录。
+::: warning
+如果可以自动安装请尽量自动安装，这样可以省去很多事
+:::
 
 ### 手动安装
 
@@ -64,11 +67,11 @@ source ~/.zshrc
 为community目录下载cheatsheets文件(就是plain text文件)
 
 ```shell
-mkdir -p ~/.dotfiles/cheat/ && cd ~/.dotfiles/cheat/
+mkdir -p ~/.dotfiles/cheat/cheatsheets && cd ~/.dotfiles/cheat/cheatsheets
 git clone https://github.com/cheat/cheatsheets community #需要这个cheatsheets的配合，才能正常使用
 # git clone https://gitee.com/solider245/cheatsheets community #国内用户请用这个地址替代
-mkdir -p ~/.dotfiles/cheat/work
-mkdir -p ~/.dotfiles/cheat/personal
+mkdir -p ~/.dotfiles/cheat/cheatsheets/work
+mkdir -p ~/.dotfiles/cheat/cheatsheets/personal
 
 ```
 
@@ -160,4 +163,11 @@ To list all available cheatsheets:
 1. 如果没有代理，下载速度会很慢
 2. 如果找不到命令，记得在配置文件里增加路径
 3. 如果执行错误，那么你可能下错了版本
-   
+4. 如果遇到cheat无法执行，那么可能是你对应的文件夹路径有问题，请使用
+   ```shell
+   vim ~/.config/cheat/conf.yml
+   ```
+5. 你的个人备忘录记得放在person文件夹   
+
+![20200804052223_2a9a0620c924a9fdd2398b4caa5674e6.png](https://images-1255533533.cos.ap-shanghai.myqcloud.com/20200804052223_2a9a0620c924a9fdd2398b4caa5674e6.png)
+如上图所示，查看你对应的路径是否有问题。
