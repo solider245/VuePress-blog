@@ -37,6 +37,14 @@ pip install pipreqs
 pipreqs ./
 ```
 
+## 补充
+如果安装pipreqs之后找不到命令，那么就是你的路径有问题。因为pip安装的软件的命令默认在.local，很多路径都没有包括。
+
+临时使用的时候，可以输入
+```shell
+export PATH=~/.local/bin:$PATH
+```
+然后测试下有没有效果，如果有效果，那么就把这行复制到你的配置中。
 ## 参考文章
 [Python 中的 requirement.txt](https://zhuanlan.zhihu.com/p/69058584)
 
