@@ -40,3 +40,22 @@ pip install -r requirements.txt
 
 1. 作为循环迭代的i应该用str(i)包裹。
 2. pd.read_html(url)[3] # 这个3应该在括号外面 
+
+
+## 时间函数datetime的用法
+
+### 引入
+```python
+import datetime
+end_time = datetime.datetime.now()
+x_time = end_time - start_time
+print(f"全部爬取完毕，总耗时{x_time.seconds}秒")
+```
+### 计算两者的时间差
+参数secondes表示秒。还有其他用法
+
+* days 天
+* hours 小时
+* minutes 分
+* seconds 秒
+* microseconds 毫秒
