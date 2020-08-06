@@ -109,3 +109,40 @@ print (c.seconds)
 * minutes
 * seconds
 * microseconds
+
+## 更多例子
+
+1、方便的计算两个时间的差，如两个时间相差几天，几小时：
+
+> import datetime
+>
+> d1 = datetime.datetime(2009, 3, 23)
+>
+> d2 = datetime.datetime(2009, 10, 7)
+>
+> dayCount = (d1 \- d2).days
+
+2、python计算两个时间之间的秒数
+
+> import datetime
+>
+> starttime = datetime.datetime.now()
+>
+> #long running
+>
+> endtime = datetime.datetime.now()
+>
+> print (endtime \- starttime).seconds
+
+3、时间相加
+
+> d1 = datetime.datetime.now()
+>
+> d3 = d1 + datetime.timedelta(days=10)
+>
+> print d3.ctime()
+
+## 参考文献
+
+[python 计算时间差，时间加减运算代码 - 简书](https://www.jianshu.com/p/44b47776eb3b)
+[python利用datetime模块计算时间差_Python_运维开发网_运维开发技术经验分享](https://www.qedev.com/python/51007.html)
