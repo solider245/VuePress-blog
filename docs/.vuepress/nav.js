@@ -2,11 +2,11 @@ module.exports = [
   {
     text: "文章转载",
     items: [
-      { text: "首页", link:"/文章转载/" },
+      { text: "首页", link: "/文章转载/" },
       { text: "Linux常见命令", link: "/文章转载/Linux常见命令/" },
       { text: "Linux常用软件", link: "/文章转载/Linux常用软件/" },
       { text: "docker", link: "/文章转载/docker/" },
-      { text: "python", link: "/文章转载/python/" },
+
       {
         text: "Vim",
         items: [
@@ -31,6 +31,13 @@ module.exports = [
       },
     ],
   },
-  { text: "Pyhton", items: [{ text: "Pyhton", link: "/Pyhton/" }] },
+  {
+    text: "python",
+    items: [
+      { text: "首页", link: "/Python/" },
+      { text: "最新转载", link: "/Python/最新转载/" },
+      { text: "爬虫案例", link: "/Python/爬虫案例/" }
+    ],
+  },
   { text: "个人原创", items: [{ text: "个人原创", link: "/个人原创/" }] },
 ];

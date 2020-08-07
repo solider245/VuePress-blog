@@ -44,17 +44,17 @@ github源代码地址 [https://github.com/Erma\-Wang/Spider](https://github.com/
 
 ---
 
-# 开篇
+## 开篇
 
 笔者在之前的博客里写过京东的Spider，首先非常感谢小伙伴对我的支持在此，笔者写了一个入门级别的小爬虫，给一些想学scrapy但是还没有开始学习scrapy的小伙伴讲解一些scrapy的一些基础知识吧本文虽然对于scrapy来说完全算是入门级别，但是您应该具有一定的网页编程基础和网络基础知识。本文中主要讲解mongodb的基本使用，附带一个实战小爬虫~
 
 **还是一样，scrapy不做详细解释有疑问，找度娘**
 
-# 抓取目标url和目标数据item
+## 抓取目标url和目标数据item
 
-## 目标url：[https://movie.douban.com/top250](https://movie.douban.com/top250)
+### 目标url：[https://movie.douban.com/top250](https://movie.douban.com/top250)
 
-## 目标数据 item
+### 目标数据 item
 
 标题：title = Field()
 
@@ -64,35 +64,35 @@ github源代码地址 [https://github.com/Erma\-Wang/Spider](https://github.com/
 
 经典名言：quote = Field()
 
-# 目标网站分析与思路分析（爬虫常规思路~）
+## 目标网站分析与思路分析（爬虫常规思路~）
 
 先看看目标网站吧是的，网上很多用豆瓣做爬虫教程，因为比较好爬取吧笔者在这也用豆瓣爬虫来作为演示~
 
 ![](https://bbsmax.ikafan.com/static/L3Byb3h5L2h0dHAvd3c0LnNpbmFpbWcuY24vbGFyZ2UvNzMwNWI3MDdqdzFmMjRxdTZkaHJ5ajIxN2MxNjhuM2EuanBn.jpg)
 
-## 一、抓取li标签构建数组~
+### 一、抓取li标签构建数组~
 
 是的，和常规网站一样一个li标签代表一个小模块的整合思路先把每个li抓取出来放入一个数组中，这也是常规思路，先看关键代码吧
 
-### 实例化选择器
+#### 实例化选择器
 
 ```
 selector = Selector(response)
 
 ```
 
-### 抓取li标签构建Movies数组
+#### 抓取li标签构建Movies数组
 
 ```
 Movies = selector.xpath('//div[@class="info"]')
 
 ```
 
-## 二、遍历数组取出each~
+### 二、遍历数组取出each~
 
 for in循环取出~没啥说的
 
-## 三、选择器匹配数据~
+### 三、选择器匹配数据~
 
 抓取数据~
 
@@ -116,7 +116,7 @@ item['quote'] = quote
 
 ```
 
-## 五、翻页~
+### 五、翻页~
 
 抓取下一页href的url，递归调用Request
 
@@ -132,49 +132,49 @@ yield Request(self.url + nextLink,callback=self.parse)
 
 ---
 
-# Ok数据抓取下来了，现在考虑一个问题保存~
+## Ok数据抓取下来了，现在考虑一个问题保存~
 
 本博客主要讲解的是mongodb和scrapy配合使用下面看看代码怎么写的吧
 
-## 首先在setting里面作配置~
+### 首先在setting里面作配置~
 
-### 设置传输的管道为什么是管道叻笔者英语不咋滴喜欢这么翻译pipeline
+#### 设置传输的管道为什么是管道叻笔者英语不咋滴喜欢这么翻译pipeline
 
 ITEM\_PIPELINES = \['DouBanSpider.pipelines.DoubanspiderPipeline'\]
 
-### 设置mongodb地址~
+#### 设置mongodb地址~
 
 MONGODB\_HOST = '127.0.0.1'
 
-### 设置端口号也就是port默认为27017~
+#### 设置端口号也就是port默认为27017~
 
 MONGODB\_PORT = 27017
 
-### 设置数据库名字~
+#### 设置数据库名字~
 
 MONGODB\_DBNAME = 'DouBan'
 
-### 设置存放本次数据的表名~
+#### 设置存放本次数据的表名~
 
 MONGODB\_DOCNAME = 'DouBanDy'
 
 ---
 
-## OK配置好setting后再配置Pipeline吧
+### OK配置好setting后再配置Pipeline吧
 
 我们借助pymongo这个模块来配置Pipeline吧导入pymongo模块后
 
 只做关键两步讲解~
 
-### 链接数据库~
+#### 链接数据库~
 
 client = pymongo.MongoClient(host=host,port=port)
 
-### 指向数据库里面要存放数据的表名~
+#### 指向数据库里面要存放数据的表名~
 
 tdb = client\[dbName\]
 
-### 向指定的表里添加数据两句关键代码
+#### 向指定的表里添加数据两句关键代码
 
 self.post = tdb\[settings\['MONGODB\_DOCNAME'\]\]
 
@@ -184,53 +184,53 @@ self.post.insert(dyInfo)
 
 好吧看看效果吧
 
-# 爬虫启动~
+## 爬虫启动~
 
 ![](https://bbsmax.ikafan.com/static/L3Byb3h5L2h0dHAvd3czLnNpbmFpbWcuY24vbGFyZ2UvNzMwNWI3MDdqdzFmMjV6OGt4aWI0ajIwdmcwazY3NXQuanBn.jpg)
 
-# 开始爬取~
+## 开始爬取~
 
 ![](https://bbsmax.ikafan.com/static/L3Byb3h5L2h0dHAvd3cxLnNpbmFpbWcuY24vbGFyZ2UvNzMwNWI3MDdqdzFmMjV6OG04NjJvajIxa3cweXo0ZTUuanBn.jpg)
 
-# 再看看数据库~
+## 再看看数据库~
 
 ![](https://bbsmax.ikafan.com/static/L3Byb3h5L2h0dHAvd3czLnNpbmFpbWcuY24vbGFyZ2UvNzMwNWI3MDdqdzFmMjV6OGxsdjVyajIxa3cxMG00YmMuanBn.jpg)
 
 ---
 
-# 最后对mongodb的使用做个简单的介绍~
+## 最后对mongodb的使用做个简单的介绍~
 
 mongodb属于非关系型数据库是一个基于分布式文件存储的数据库。由C++语言编写。。。好吧这些废话我不在这里说了自己百度百科吧我写博客写你能在其他地方都能找到的理论性的知识简单的说说使用mongodb的安装和使用吧
 
-## mongodb的安装~
+### mongodb的安装~
 
 网上有一大把一大把mongodb的安装教程自己搜索去吧笔者是通过brew安装的mongodb，因为笔者使用的Mac，尝试过很多种安装mongodb的方法都未成功最后，尝试了brew安装成功如果读者使用的是Mac，请尝试尝试brew安装吧~
 
-## 启动mongodb服务~
+### 启动mongodb服务~
 
 在控制台输入 `mongod`，这个指令是启动mongod的服务，当出现下图，表示成功~
 
 ![](https://bbsmax.ikafan.com/static/L3Byb3h5L2h0dHAvd3cxLnNpbmFpbWcuY24vbGFyZ2UvNzMwNWI3MDdqdzFmMjZteHoxdnh5ajIxYm0weHFxa2YuanBn.jpg)
 
-## 启动mongodb数据库~
+### 启动mongodb数据库~
 
 启动mongodb服务后重新打开一个新的控制台窗口启动mongodb数据库在新的控制台窗口输入`mongo`，这时候会出现下面的界面表示成功
 
 ![](https://bbsmax.ikafan.com/static/L3Byb3h5L2h0dHAvd3cxLnNpbmFpbWcuY24vbGFyZ2UvNzMwNWI3MDdqdzFmMjZuMW5yNzJlajIxMHkwb2FqdmEuanBn.jpg)
 
-## 使用Robmongo管理数据库~
+### 使用Robmongo管理数据库~
 
 在Mac上最好用的就是Robmongo把界面还行基本的功能也有~
 
-### 创建mongodb的链接~
+#### 创建mongodb的链接~
 
 ![](https://bbsmax.ikafan.com/static/L3Byb3h5L2h0dHAvd3cyLnNpbmFpbWcuY24vbGFyZ2UvNzMwNWI3MDdqdzFmMjZuNmF0YnFzajIxa3cxMG5qd3IuanBn.jpg)
 
-### 创建成功后就可以用上文中的小爬虫对mongodb添加数据了~
+#### 创建成功后就可以用上文中的小爬虫对mongodb添加数据了~
 
 ---
 
-# 小爬虫使用小提示~
+## 小爬虫使用小提示~
 
 *   scrapy crawl YourSpiderName，，最后加的是爬虫name，而不是项目名字~
 *   需要的环境自己配置，跑不起来报错，请百度，爬虫笔者已经亲测，可以跑~
