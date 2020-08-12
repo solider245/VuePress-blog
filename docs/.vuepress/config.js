@@ -23,6 +23,8 @@ module.exports = {
         repoLabel: 'Repo',
         // 假如你的文档仓库和项目本身不在一个仓库：
         docsRepo: 'solider245/VuePress-blog',
+        docsDir: 'docs',
+        docsBranch: 'gh-pages',
         editLinks: true,
         editLinkText: '你要教我做事咯？',
         smoothScroll: true,//页面滚动
