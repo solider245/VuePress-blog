@@ -14,8 +14,7 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    //"docs:dep": "vuepress build docs && vuepress dev docs"
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "moment": "^2.27.0",
