@@ -24,16 +24,16 @@ module.exports = {
         // 假如你的文档仓库和项目本身不在一个仓库：
         docsRepo: 'solider245/VuePress-blog',
         docsDir: 'docs',
-        docsBranch: 'gh-pages',
+        docsBranch: 'master',
         editLinks: true,
         editLinkText: '你要教我做事咯？',
         smoothScroll: true,//页面滚动
         locales: { '/': { lang: 'zh-CN' }},//修改默认语言为中文
-        
+
         //algolia: {
             //apiKey: 'b89c2570f4d0358f1b38ef95c4dc9b9b',
             //indexName: '<INDEX_NAME>'
-          //}        
+          //}
     }
 }
 
