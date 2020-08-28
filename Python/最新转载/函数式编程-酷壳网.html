@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>函数式编程-酷壳网 | 吴起的个人网站</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://images-1255533533.cos.ap-shanghai.myqcloud.com/20190817214528_05c52e04cf64654248918bfc2a1f64ab.png">
+    <link rel="manifest" href="/VuePress-blog/manifest.json">
+    <link rel="apple-touch-icon" href="/VuePress-blog/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="/VuePress-blog/icons/safari-pinned-tab.svg" color="#3eaf7c">
+    <meta name="description" content="在此处添描述">
+    <meta name="author" content="中箭的吴起">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="preload" href="/VuePress-blog/assets/css/0.styles.f7cbc213.css" as="style"><link rel="preload" href="/VuePress-blog/assets/js/app.776d277d.js" as="script"><link rel="preload" href="/VuePress-blog/assets/js/2.c5117f2a.js" as="script"><link rel="preload" href="/VuePress-blog/assets/js/38.9915a3eb.js" as="script"><link rel="prefetch" href="/VuePress-blog/assets/js/10.63714471.js"><link rel="prefetch" href="/VuePress-blog/assets/js/100.1cec5f39.js"><link rel="prefetch" href="/VuePress-blog/assets/js/101.c74c6d95.js"><link rel="prefetch" href="/VuePress-blog/assets/js/102.d22dd18b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/103.409414e4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/104.d4463a76.js"><link rel="prefetch" href="/VuePress-blog/assets/js/105.f70dcd32.js"><link rel="prefetch" href="/VuePress-blog/assets/js/106.6516b84b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/107.bdeabcbf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/108.8c48acb2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/109.85df5626.js"><link rel="prefetch" href="/VuePress-blog/assets/js/11.a24f4a33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/110.5e67e89d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/111.769d339f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/112.e75614b5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/113.63d1e519.js"><link rel="prefetch" href="/VuePress-blog/assets/js/114.e7a470dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/115.66e52ce5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/116.4f75586b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/117.c2ad36ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/118.b6e98de6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/119.b57896d6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/12.abc1e9a9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/120.e5da282b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/121.eb8b36b3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/122.e3fa1136.js"><link rel="prefetch" href="/VuePress-blog/assets/js/123.d4a35a0f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/124.894663d4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/125.0e2df5ef.js"><link rel="prefetch" href="/VuePress-blog/assets/js/126.a62c9f29.js"><link rel="prefetch" href="/VuePress-blog/assets/js/127.c4c12b2c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/128.a3d4f63f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/129.a4a9c4b9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/13.f38ab9c5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/130.2b6974e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/131.2c254cb6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/132.3c69d560.js"><link rel="prefetch" href="/VuePress-blog/assets/js/133.52d6127d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/134.c2d0a90c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/135.cd6b9f1a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/136.1dc89614.js"><link rel="prefetch" href="/VuePress-blog/assets/js/137.f9b5cb48.js"><link rel="prefetch" href="/VuePress-blog/assets/js/138.41523b28.js"><link rel="prefetch" href="/VuePress-blog/assets/js/139.2e2adbf4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/14.fb0fad09.js"><link rel="prefetch" href="/VuePress-blog/assets/js/140.112e35af.js"><link rel="prefetch" href="/VuePress-blog/assets/js/141.2e348226.js"><link rel="prefetch" href="/VuePress-blog/assets/js/142.59b5c9ef.js"><link rel="prefetch" href="/VuePress-blog/assets/js/143.a6a726d2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/144.ec4a46cb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/145.0b187c1e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/146.b3977b6a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/147.070dded6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/148.703bfa68.js"><link rel="prefetch" href="/VuePress-blog/assets/js/149.eef402f6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/15.a3e85e42.js"><link rel="prefetch" href="/VuePress-blog/assets/js/150.f625ba2f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/151.22a07089.js"><link rel="prefetch" href="/VuePress-blog/assets/js/152.d84ba7a0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/153.fb36a102.js"><link rel="prefetch" href="/VuePress-blog/assets/js/154.6b471035.js"><link rel="prefetch" href="/VuePress-blog/assets/js/155.511972d8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/156.9b71a1ed.js"><link rel="prefetch" href="/VuePress-blog/assets/js/157.b1ced696.js"><link rel="prefetch" href="/VuePress-blog/assets/js/158.df097da9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/159.e0884310.js"><link rel="prefetch" href="/VuePress-blog/assets/js/16.1487bb0e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/160.19c256dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/161.b4a55559.js"><link rel="prefetch" href="/VuePress-blog/assets/js/162.3bf8822d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/163.b02d1d5b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/164.6efbaf12.js"><link rel="prefetch" href="/VuePress-blog/assets/js/165.ec61fd46.js"><link rel="prefetch" href="/VuePress-blog/assets/js/166.1aeb18e9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/167.53136d07.js"><link rel="prefetch" href="/VuePress-blog/assets/js/168.860b0f88.js"><link rel="prefetch" href="/VuePress-blog/assets/js/169.1701350b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/17.c965c030.js"><link rel="prefetch" href="/VuePress-blog/assets/js/170.d3659f87.js"><link rel="prefetch" href="/VuePress-blog/assets/js/171.6299f6e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/172.14097eb7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/173.cd9135dd.js"><link rel="prefetch" href="/VuePress-blog/assets/js/174.4f623e28.js"><link rel="prefetch" href="/VuePress-blog/assets/js/175.1528ea30.js"><link rel="prefetch" href="/VuePress-blog/assets/js/176.4b91e0a6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/177.9d0306c6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/178.135bf962.js"><link rel="prefetch" href="/VuePress-blog/assets/js/179.09bf5238.js"><link rel="prefetch" href="/VuePress-blog/assets/js/18.7dab8018.js"><link rel="prefetch" href="/VuePress-blog/assets/js/180.6d15ee73.js"><link rel="prefetch" href="/VuePress-blog/assets/js/181.16ccddbf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/182.a440c46e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/183.3b17ab33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/184.1c37fda0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/185.5e91aae0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/186.c040be0b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/187.04c35a68.js"><link rel="prefetch" href="/VuePress-blog/assets/js/188.d3dffa3f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/189.f8d1a701.js"><link rel="prefetch" href="/VuePress-blog/assets/js/19.936a56a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/190.935f2ffb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/191.ce68c987.js"><link rel="prefetch" href="/VuePress-blog/assets/js/192.2cd5f900.js"><link rel="prefetch" href="/VuePress-blog/assets/js/193.4fffa096.js"><link rel="prefetch" href="/VuePress-blog/assets/js/194.763b33a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/195.41c8a153.js"><link rel="prefetch" href="/VuePress-blog/assets/js/196.18b4eb2c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/197.7670df82.js"><link rel="prefetch" href="/VuePress-blog/assets/js/198.680a1a80.js"><link rel="prefetch" href="/VuePress-blog/assets/js/199.bbbe2ec0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/20.1da56eb7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/200.de87ea80.js"><link rel="prefetch" href="/VuePress-blog/assets/js/201.0ceace3d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/202.c2800a06.js"><link rel="prefetch" href="/VuePress-blog/assets/js/203.48924c48.js"><link rel="prefetch" href="/VuePress-blog/assets/js/204.9fb412e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/205.19599c35.js"><link rel="prefetch" href="/VuePress-blog/assets/js/206.1a278f71.js"><link rel="prefetch" href="/VuePress-blog/assets/js/207.378bf6a0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/208.dec187fe.js"><link rel="prefetch" href="/VuePress-blog/assets/js/209.d3326143.js"><link rel="prefetch" href="/VuePress-blog/assets/js/21.14a0c6c5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/210.ed9af624.js"><link rel="prefetch" href="/VuePress-blog/assets/js/211.4c2999ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/212.b7055185.js"><link rel="prefetch" href="/VuePress-blog/assets/js/213.95bd0c97.js"><link rel="prefetch" href="/VuePress-blog/assets/js/214.be14627f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/215.8532e5a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/216.956add10.js"><link rel="prefetch" href="/VuePress-blog/assets/js/217.b921800c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/218.279a2533.js"><link rel="prefetch" href="/VuePress-blog/assets/js/219.941f503f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/22.207eb093.js"><link rel="prefetch" href="/VuePress-blog/assets/js/23.fcaf57a6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/24.549b45ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/25.68d51b90.js"><link rel="prefetch" href="/VuePress-blog/assets/js/26.75eef058.js"><link rel="prefetch" href="/VuePress-blog/assets/js/27.e465c84f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/28.ec75d8c3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/29.e22ecade.js"><link rel="prefetch" href="/VuePress-blog/assets/js/3.85032dd8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/30.eac685a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/31.2d55d3f1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/32.9a6373e2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/33.91a32ba3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/34.9b401b73.js"><link rel="prefetch" href="/VuePress-blog/assets/js/35.a1a2bcde.js"><link rel="prefetch" href="/VuePress-blog/assets/js/36.405a7a4c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/37.d6422337.js"><link rel="prefetch" href="/VuePress-blog/assets/js/39.82fe0431.js"><link rel="prefetch" href="/VuePress-blog/assets/js/4.7334dde5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/40.76830c33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/41.d1dfc6c3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/42.12371fe2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/43.e3607529.js"><link rel="prefetch" href="/VuePress-blog/assets/js/44.6cec67f8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/45.c20ac641.js"><link rel="prefetch" href="/VuePress-blog/assets/js/46.50d5ceed.js"><link rel="prefetch" href="/VuePress-blog/assets/js/47.6f06c416.js"><link rel="prefetch" href="/VuePress-blog/assets/js/48.08a068dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/49.e6b4bd72.js"><link rel="prefetch" href="/VuePress-blog/assets/js/5.7139b9b4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/50.3cb53aad.js"><link rel="prefetch" href="/VuePress-blog/assets/js/51.0e647151.js"><link rel="prefetch" href="/VuePress-blog/assets/js/52.7ff01978.js"><link rel="prefetch" href="/VuePress-blog/assets/js/53.36a9d767.js"><link rel="prefetch" href="/VuePress-blog/assets/js/54.e6bbecb4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/55.bdf81af3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/56.5c96c795.js"><link rel="prefetch" href="/VuePress-blog/assets/js/57.f89a2345.js"><link rel="prefetch" href="/VuePress-blog/assets/js/58.d11b047a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/59.12c9a488.js"><link rel="prefetch" href="/VuePress-blog/assets/js/6.6e6603ff.js"><link rel="prefetch" href="/VuePress-blog/assets/js/60.ba63105e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/61.a6c1a4f7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/62.3cc2256f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/63.c33f9fe1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/64.9200eb22.js"><link rel="prefetch" href="/VuePress-blog/assets/js/65.fd000469.js"><link rel="prefetch" href="/VuePress-blog/assets/js/66.512243e8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/67.faaf727b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/68.ef92ba52.js"><link rel="prefetch" href="/VuePress-blog/assets/js/69.b1700696.js"><link rel="prefetch" href="/VuePress-blog/assets/js/7.4e3bdcaf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/70.a0687351.js"><link rel="prefetch" href="/VuePress-blog/assets/js/71.3a14e318.js"><link rel="prefetch" href="/VuePress-blog/assets/js/72.99b53005.js"><link rel="prefetch" href="/VuePress-blog/assets/js/73.897a92b9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/74.b16f1719.js"><link rel="prefetch" href="/VuePress-blog/assets/js/75.002964da.js"><link rel="prefetch" href="/VuePress-blog/assets/js/76.7624e778.js"><link rel="prefetch" href="/VuePress-blog/assets/js/77.e00d405d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/78.95645db5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/79.bba0d631.js"><link rel="prefetch" href="/VuePress-blog/assets/js/8.d7f6aae7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/80.b728c7d7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/81.41b1a44a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/82.c5fe8c82.js"><link rel="prefetch" href="/VuePress-blog/assets/js/83.b899cdd2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/84.f92dd1f0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/85.30ecf40f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/86.62a793c0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/87.97927fa1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/88.f65e94f8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/89.dd682117.js"><link rel="prefetch" href="/VuePress-blog/assets/js/9.2af41852.js"><link rel="prefetch" href="/VuePress-blog/assets/js/90.437e6ec1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/91.577f36e9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/92.7c4d870f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/93.9cfe8160.js"><link rel="prefetch" href="/VuePress-blog/assets/js/94.88b6a333.js"><link rel="prefetch" href="/VuePress-blog/assets/js/95.1ba03060.js"><link rel="prefetch" href="/VuePress-blog/assets/js/96.2693d156.js"><link rel="prefetch" href="/VuePress-blog/assets/js/97.49968a31.js"><link rel="prefetch" href="/VuePress-blog/assets/js/98.71a6785c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/99.b7ba0c42.js">
+    <link rel="stylesheet" href="/VuePress-blog/assets/css/0.styles.f7cbc213.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/VuePress-blog/" class="home-link router-link-active"><!----> <span class="site-name">吴起的个人网站</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章转载" class="dropdown-title"><span class="title">文章转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/" class="nav-link">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常见命令/" class="nav-link">
+  Linux常见命令
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常用软件/" class="nav-link">
+  Linux常用软件
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><h4>
+          Vim
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim文章/" class="nav-link">
+  vim文章
+</a></li><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim配置/" class="nav-link">
+  vim配置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常见问题" class="dropdown-title"><span class="title">常见问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/客户端科学上网/" class="nav-link">
+  客户端科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/命令行科学上网/" class="nav-link">
+  命令行科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/镜像加速大全/" class="nav-link">
+  镜像加速大全
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/vim/" class="nav-link">
+  vim
+</a></li><li class="dropdown-item"><h4>
+          Pyhton
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/常见问题/Python/" class="nav-link">
+  Pyhton
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/" class="nav-link router-link-active">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/最新转载/" class="nav-link">
+  最新转载
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/爬虫案例/" class="nav-link">
+  爬虫案例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人原创" class="dropdown-title"><span class="title">个人原创</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/个人原创/" class="nav-link">
+  个人原创
+</a></li></ul></div></div> <a href="https://github.com/solider245/VuePress-blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章转载" class="dropdown-title"><span class="title">文章转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/" class="nav-link">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常见命令/" class="nav-link">
+  Linux常见命令
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常用软件/" class="nav-link">
+  Linux常用软件
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><h4>
+          Vim
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim文章/" class="nav-link">
+  vim文章
+</a></li><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim配置/" class="nav-link">
+  vim配置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常见问题" class="dropdown-title"><span class="title">常见问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/客户端科学上网/" class="nav-link">
+  客户端科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/命令行科学上网/" class="nav-link">
+  命令行科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/镜像加速大全/" class="nav-link">
+  镜像加速大全
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/vim/" class="nav-link">
+  vim
+</a></li><li class="dropdown-item"><h4>
+          Pyhton
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/常见问题/Python/" class="nav-link">
+  Pyhton
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/" class="nav-link router-link-active">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/最新转载/" class="nav-link">
+  最新转载
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/爬虫案例/" class="nav-link">
+  爬虫案例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人原创" class="dropdown-title"><span class="title">个人原创</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/个人原创/" class="nav-link">
+  个人原创
+</a></li></ul></div></div> <a href="https://github.com/solider245/VuePress-blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>最新转载</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/VuePress-blog/Python/最新转载/4行Python代码实时获取股市数据.html" class="sidebar-link">4行Python代码实时获取股市数据</a></li><li><a href="/VuePress-blog/Python/最新转载/Python 爬虫——单线程、多线程、多进程对比.html" class="sidebar-link">Python 爬虫——单线程、多线程、多进程对比</a></li><li><a href="/VuePress-blog/Python/最新转载/Python 爬虫提速：【多进程、多线程、协程+异步】对比测试.html" class="sidebar-link">Python 爬虫提速：【多进程、多线程、协程+异步】对比测试</a></li><li><a href="/VuePress-blog/Python/最新转载/Python 项目管理的利器：虚拟环境 venv 的使用.html" class="sidebar-link">Python 项目管理的利器：虚拟环境 venv 的使用</a></li><li><a href="/VuePress-blog/Python/最新转载/Python使用grequests并发发送请求.html" class="sidebar-link">Python使用grequests并发发送请求</a></li><li><a href="/VuePress-blog/Python/最新转载/Python同步遍历多个列表.html" class="sidebar-link">Python同步遍历多个列表</a></li><li><a href="/VuePress-blog/Python/%E6%9C%80%E6%96%B0%E8%BD%AC%E8%BD%BD/" aria-current="page" class="sidebar-link">README</a></li><li><a href="/VuePress-blog/Python/最新转载/Scrapy 对接 Docker.html" class="sidebar-link">Scrapy 对接 Docker</a></li><li><a href="/VuePress-blog/Python/最新转载/Scrapy分布式爬虫，分布式队列和布隆过滤器，一分钟搞定？ - 掘金.html" class="sidebar-link">Scrapy分布式爬虫，分布式队列和布隆过滤器，一分钟搞定？ - 掘金</a></li><li><a href="/VuePress-blog/Python/最新转载/Scrapy实战3：URL去重策略.html" class="sidebar-link">Scrapy实战3：URL去重策略</a></li><li><a href="/VuePress-blog/Python/最新转载/Web应用程序用Python构建数据科学.html" class="sidebar-link">Web应用程序用Python构建数据科学</a></li><li><a href="/VuePress-blog/Python/最新转载/docker快速搭建分布式爬虫pyspider.html" class="sidebar-link">docker快速搭建分布式爬虫pyspider</a></li><li><a href="/VuePress-blog/Python/最新转载/gevent程序员指南.html" class="sidebar-link">gevent程序员指南</a></li><li><a href="/VuePress-blog/Python/最新转载/main函数的语法模板.html" class="sidebar-link">main函数的语法模板</a></li><li><a href="/VuePress-blog/Python/最新转载/pandas使用的25个技巧.html" class="sidebar-link">pandas使用的25个技巧</a></li><li><a href="/VuePress-blog/Python/最新转载/pyenv 和 pyenv-virtualenv 的安装、配置和使用.html" class="sidebar-link">pyenv 和 pyenv-virtualenv 的安装、配置和使用</a></li><li><a href="/VuePress-blog/Python/最新转载/pyenv用国内镜像安装python3.8.html" class="sidebar-link">pyenv用国内镜像安装python3.8</a></li><li><a href="/VuePress-blog/Python/最新转载/pyenv的安装和简单使用(git、pyenv、pyenv-virtualenv).html" class="sidebar-link">pyenv的安装和简单使用（git、pyenv、pyenv-virtualenv）</a></li><li><a href="/VuePress-blog/Python/最新转载/python time获取两个时间点的差.html" class="sidebar-link">python time获取两个时间点的差</a></li><li><a href="/VuePress-blog/Python/最新转载/python常见可视化工具库.html" class="sidebar-link">python常见可视化工具库</a></li><li><a href="/VuePress-blog/Python/最新转载/python爬虫入门-05-URL去重.html" class="sidebar-link">python爬虫入门-05-URL去重</a></li><li><a href="/VuePress-blog/Python/最新转载/python笔记49：两种方式来遍历目录.html" class="sidebar-link">python笔记49：两种方式来遍历目录</a></li><li><a href="/VuePress-blog/Python/最新转载/scrapy docker教程.html" class="sidebar-link">scrapy docker教程</a></li><li><a href="/VuePress-blog/Python/最新转载/一文看懂Python多进程与多线程编程(工作学习面试必读).html" class="sidebar-link">一文看懂Python多进程与多线程编程(工作学习面试必读)</a></li><li><a href="/VuePress-blog/Python/最新转载/一篇文章搞定Python多进程(全).html" class="sidebar-link">一篇文章搞定Python多进程(全)</a></li><li><a href="/VuePress-blog/Python/最新转载/为Python选择一个更快的JSON库.html" class="sidebar-link">为Python选择一个更快的JSON库</a></li><li><a href="/VuePress-blog/Python/最新转载/为什么您的多处理池卡住了（它充满了鲨鱼！）.html" class="sidebar-link">为什么您的多处理池卡住了（它充满了鲨鱼！）</a></li><li><a href="/VuePress-blog/Python/最新转载/使用Docker分布式部署爬虫系统Pyspider.html" class="sidebar-link">使用Docker分布式部署爬虫系统Pyspider</a></li><li><a href="/VuePress-blog/Python/最新转载/使用Python和Vue.js自动化报告过程.html" class="sidebar-link">使用Python和Vue.js自动化报告过程</a></li><li><a href="/VuePress-blog/Python/最新转载/停止用CSV格式保存Pandas数据帧.html" class="sidebar-link">停止用CSV格式保存Pandas数据帧</a></li><li><a href="/VuePress-blog/Python/最新转载/函数式编程-酷壳网.html" class="active sidebar-link">函数式编程-酷壳网</a></li><li><a href="/VuePress-blog/Python/最新转载/函数式编程的实用介绍.html" class="sidebar-link">函数式编程的实用介绍</a></li><li><a href="/VuePress-blog/Python/最新转载/四十四、Python的os模块的文件与目录常用方法.html" class="sidebar-link">Python的os模块的文件与目录常用方法</a></li><li><a href="/VuePress-blog/Python/最新转载/在Python中main函数是怎么来的.html" class="sidebar-link">在Python中main函数是怎么来的</a></li><li><a href="/VuePress-blog/Python/最新转载/在Python中妥善使用进度条.html" class="sidebar-link">在Python中妥善使用进度条</a></li><li><a href="/VuePress-blog/Python/最新转载/外行学Python爬虫第四篇URL去重.html" class="sidebar-link">外行学Python爬虫第四篇URL去重</a></li><li><a href="/VuePress-blog/Python/最新转载/多线程threading.html" class="sidebar-link">多线程threading</a></li><li><a href="/VuePress-blog/Python/最新转载/多线程、进程太慢？嫌Scrapy太麻烦？没事，异步高调走起.html" class="sidebar-link">进程)太慢？嫌Scrapy太麻烦？没事，异步高调走起</a></li><li><a href="/VuePress-blog/Python/最新转载/如何在Python中实现树？.html" class="sidebar-link">如何在Python中实现树？</a></li><li><a href="/VuePress-blog/Python/最新转载/带有动手示例的Python-main功能教程.html" class="sidebar-link">带有动手示例的Python-main功能教程</a></li><li><a href="/VuePress-blog/Python/最新转载/日期时间-日期-时间值操作.html" class="sidebar-link">日期时间-日期-时间值操作</a></li><li><a href="/VuePress-blog/Python/最新转载/时间函数datetime常见用法汇总.html" class="sidebar-link">时间函数datetime常见用法汇总</a></li><li><a href="/VuePress-blog/Python/最新转载/最全的Python虚拟环境使用方法.html" class="sidebar-link">最全的Python虚拟环境使用方法</a></li><li><a href="/VuePress-blog/Python/最新转载/爬虫常用Xpath和CSS3选择器对比.html" class="sidebar-link">爬虫常用Xpath和CSS3选择器对比</a></li><li><a href="/VuePress-blog/Python/最新转载/爬虫练习之数据清洗——基于Pandas.html" class="sidebar-link">爬虫练习之数据清洗——基于Pandas</a></li><li><a href="/VuePress-blog/Python/最新转载/芝加哥哈林顿教授Python教程.html" class="sidebar-link">芝加哥哈林顿教授Python教程</a></li><li><a href="/VuePress-blog/Python/最新转载/虚拟环境和包官方.html" class="sidebar-link">虚拟环境和包</a></li><li><a href="/VuePress-blog/Python/最新转载/谈谈python的GIL、多线程、多进程.html" class="sidebar-link">谈谈python的GIL、多线程、多进程</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p></p><div class="table-of-contents"><ul></ul></div><p></p> <blockquote><p>来源：酷壳网-陈皓 链接：</p> <p>https://coolshell.cn/articles/10822.html</p></blockquote> <p>当我们说起函数式编程来说，我们会看到如下函数式编程的长相：</p> <ul><li><p>函数式编程的三大特性：</p></li> <li><p><strong>immutable data 不可变数据</strong>：像Clojure一样，默认上变量是不可变的，如果你要改变变量，你需要把变量copy出去修改。这样一来，可以让你的程序少很多Bug。因为，程序中的状态不好维护，在并发的时候更不好维护。（你可以试想一下如果你的程序有个复杂的状态，当以后别人改你代码的时候，是很容易出bug的，在并行中这样的问题就更多了）</p></li> <li><p><strong>first class functions</strong>：这个技术可以让你的函数就像变量一样来使用。也就是说，你的函数可以像变量一样被创建，修改，并当成变量一样传递，返回或是在函数中嵌套函数。这个有点像Javascript的Prototype（参看Javascript的面向对象编程）</p></li> <li><p><strong>尾递归优化</strong>：我们知道递归的害处，那就是如果递归很深的话，stack受不了，并会导致性能大幅度下降。所以，我们使用尾递归优化技术——每次递归时都会重用stack，这样一来能够提升性能，当然，这需要语言或编译器的支持。Python就不支持。</p></li> <li><p>函数式编程的几个技术</p></li> <li><p><strong>map &amp; reduce</strong>：这个技术不用多说了，函数式编程最常见的技术就是对一个集合做Map和Reduce操作。这比起过程式的语言来说，在代码上要更容易阅读。（传统过程式的语言需要使用for/while循环，然后在各种变量中把数据倒过来倒过去的）这个很像C++中的STL中的foreach，find_if，count_if之流的函数的玩法。</p></li> <li><p><strong>pipeline</strong>：这个技术的意思是，把函数实例成一个一个的action，然后，把一组action放到一个数组或是列表中，然后把数据传给这个action list，数据就像一个pipeline一样顺序地被各个函数所操作，最终得到我们想要的结果。</p></li> <li><p><strong>recursing 递归</strong>：递归最大的好处就简化代码，他可以把一个复杂的问题用很简单的代码描述出来。注意：递归的精髓是描述问题，而这正是函数式编程的精髓。</p></li> <li><p><strong>currying</strong>：把一个函数的多个参数分解成多个函数， 然后把函数多层封装起来，每层函数都返回一个函数去接收下一个参数这样，可以简化函数的多个参数。在C++中，这个很像STL中的bind_1st或是bind2nd。</p></li> <li><p><strong>higher order function 高阶函数</strong>：所谓高阶函数就是函数当参数，把传入的函数做一个封装，然后返回这个封装函数。现象上就是函数传进传出，就像面向对象对象满天飞一样。</p></li> <li><p>还有函数式的一些好处</p></li> <li><p>**parallelization 并行：**所谓并行的意思就是在并行环境下，各个线程之间不需要同步或互斥。</p></li> <li><p><strong>lazy evaluation 惰性求值</strong>：这个需要编译器的支持。表达式不在它被绑定到变量之后就立即求值，而是在该值被取用的时候求值，也就是说，语句如_x:=expression;_(把一个表达式的结果赋值给一个变量)明显的调用这个表达式被计算并把结果放置到_x_中，但是先不管实际在_x_中的是什么，直到通过后面的表达式中到_x_的引用而有了对它的值的需求的时候，而后面表达式自身的求值也可以被延迟，最终为了生成让外界看到的某个符号而计算这个快速增长的依赖树。</p></li> <li><p><strong>determinism 确定性</strong>：所谓确定性的意思就是像数学那样 f(x) = y ，这个函数无论在什么场景下，都会得到同样的结果，这个我们称之为函数的确定性。而不是像程序中的很多函数那样，同一个参数，却会在不同的场景下计算出不同的结果。所谓不同的场景的意思就是我们的函数会根据一些运行中的状态信息的不同而发生变化。</p></li></ul> <p>上面的那些东西太抽象了，还是让我们来循序渐近地看一些例子吧。</p> <p>我们先用一个最简单的例子来说明一下什么是函数式编程。</p> <p>先看一个非函数式的例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>int cnt;  
+void**increment**{  
+cnt++;  
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>那么，函数式的应该怎么写呢？</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>int **increment**(int cnt){  
+return cnt+1;  
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>你可能会觉得这个例子太普通了。是的，这个例子就是函数式编程的准则：<strong>不依赖于外部的数据，而且也不改变外部数据的值，而是返回一个新的值给你</strong>。</p> <p>我们再来看一个简单例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>def inc(x):  
+def incx(y):  
+return x+y  
+return incx
+
+inc2 = inc(2)  
+inc5 = inc(5)
+
+print inc2(5) 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>我们可以看到上面那个例子inc函数返回了另一个函数incx，于是我们可以用inc函数来构造各种版本的inc函数，比如：inc2和inc5。这个技术其实就是上面所说的Currying技术。从这个技术上，你可能体会到函数式编程的理念：<strong>把函数当成变量来用，关注于描述问题而不是怎么实现</strong>，这样可以让代码更易读。</p> <p><strong>Map &amp; Reduce</strong></p> <p>在函数式编程中，我们不应该用循环迭代的方式，我们应该用更为高级的方法，如下所示的Python代码</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>name_len = map(len, [&quot;hao&quot;, &quot;chen&quot;, &quot;coolshell&quot;])  
+print name_len  
+# 输出 [3, 4, 9]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>你可以看到这样的代码很易读，因为，<strong>这样的代码是在描述要干什么，而不是怎么干</strong>。</p> <p>我们再来看一个Python代码的例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>def toUpper(item):  
+return item.upper
+
+upper_name = map(toUpper, [&quot;hao&quot;, &quot;chen&quot;, &quot;coolshell&quot;])  
+print upper_name  
+# 输出 ['HAO', 'CHEN', 'COOLSHELL']
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>顺便说一下，上面的例子个是不是和我们的STL的transform有些像？</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;  
+#include &lt;algorithm&gt;  
+#include &lt;string&gt;  
+using namespace std;
+
+int main {  
+string s=&quot;hello&quot;;  
+string out;  
+transform(s.begin, s.end, back_inserter(out), ::toupper);  
+cout &lt;&lt; out &lt;&lt; endl;  
+  
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>在上面Python的那个例子中我们可以看到，我们写义了一个函数toUpper，这个函数没有改变传进来的值，只是把传进来的值做个简单的操作，然后返回。然后，我们把其用在map函数中，就可以很清楚地描述出我们想要干什么。而不会去理解一个在循环中的怎么实现的代码，最终在读了很多循环的逻辑后才发现原来是这个或那个意思。 下面，我们看看描述实现方法的过程式编程是怎么玩的（看上去是不是不如函数式的清晰？）：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>upname =['HAO', 'CHEN', 'COOLSHELL']  
+lowname =  
+for i in range(len(upname)):  
+lowname.append( upname[i].lower )
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>对于map我们别忘了lambda表达式：你可以简单地理解为这是一个inline的匿名函数。下面的lambda表达式相当于：def func(x): return x*x</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>squares = map(lambda x: x * x, range(9))  
+print squares  
+# 输出 [0, 1, 4, 9, 16, 25, 36, 49, 64]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>我们再来看看reduce怎么玩？（下面的lambda表达式中有两个参数，也就是说每次从列表中取两个值，计算结果后把这个值再放回去，下面的表达式相当于：((((1+2)+3)+4)+5) ）</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>print reduce(lambda x, y: x+y, [1, 2, 3, 4, 5])  
+# 输出 15
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>Python中的除了map和reduce外，还有一些别的如filter, find, all, any的函数做辅助（其它函数式的语言也有），可以让你的代码更简洁，更易读。 我们再来看一个比较复杂的例子：</p> <p>计算数组中正数的平均值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>num =[2, -5, 9, 7, -2, 5, 3, 1, 0, -3, 8]  
+positive_num_cnt = 0  
+positive_num_sum = 0  
+for i in range(len(num)):  
+if num[i] &gt; 0:  
+positive_num_cnt += 1  
+positive_num_sum += num[i]
+
+if positive_num_cnt &gt; 0:  
+average = positive_num_sum / positive_num_cnt
+
+print average  
+# 输出 5
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>如果用函数式编程，这个例子可以写成这样：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>positive_num = filter(lambda x: x&gt;0, num)  
+average = reduce(lambda x,y: x+y, positive_num) / len( positive_num )
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>C++11玩的法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;  
+#include &lt;algorithm&gt;  
+#include &lt;string&gt;  
+using namespace std;
+
+int main {  
+string s=&quot;hello&quot;;  
+string out;  
+transform(s.begin, s.end, back_inserter(out), ::toupper);  
+cout &lt;&lt; out &lt;&lt; endl;  
+  
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>我们可以看到，函数式编程有如下好处：</p> <p>1）代码更简单了。</p> <p>2）数据集，操作，返回值都放到了一起。</p> <p>3）你在读代码的时候，没有了循环体，于是就可以少了些临时变量，以及变量倒来倒去逻辑。</p> <p>4）你的代码变成了在描述你要干什么，而不是怎么去干。</p> <p>最后，我们来看一下Map/Reduce这样的函数是怎么来实现的（下面是Javascript代码）</p> <p>MAP函数</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code>var <span class="token builtin">map</span> <span class="token operator">=</span> function <span class="token punctuation">(</span>mappingFunction<span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+var result <span class="token operator">=</span> <span class="token punctuation">;</span>  
+forEach<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">,</span> function <span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+result<span class="token punctuation">.</span>push<span class="token punctuation">(</span>mappingFunction<span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token keyword">return</span> result<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>下面是reduce函数的javascript实现</p> <p>REDUCE函数</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code>function <span class="token operator">**</span><span class="token builtin">reduce</span><span class="token operator">**</span><span class="token punctuation">(</span>actionFunction<span class="token punctuation">,</span> <span class="token builtin">list</span><span class="token punctuation">,</span> initial<span class="token punctuation">)</span><span class="token punctuation">{</span>  
+var accumulate<span class="token punctuation">;</span>  
+var temp<span class="token punctuation">;</span>  
+<span class="token keyword">if</span><span class="token punctuation">(</span>initial<span class="token punctuation">)</span><span class="token punctuation">{</span>  
+accumulate <span class="token operator">=</span> initial<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>  
+<span class="token keyword">else</span><span class="token punctuation">{</span>  
+accumulate <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">.</span>shfit<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>  
+temp <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">.</span>shift<span class="token punctuation">;</span>  
+<span class="token keyword">while</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">{</span>  
+accumulate <span class="token operator">=</span> actionFunction<span class="token punctuation">(</span>accumulate<span class="token punctuation">,</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+temp <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">.</span>shift<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>  
+<span class="token keyword">return</span> accumulate<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>Declarative Programming vs Imperative Programming</strong></p> <p>前面提到过多次的函数式编程关注的是：describe what to do, rather than how to do it. 于是，我们把以前的过程式的编程范式叫做 Imperative Programming – 指令式编程，而把函数式的这种范式叫做 Declarative Programming – 声明式编程。</p> <p>下面我们看一下相关的示例（本示例来自这篇文章 ）。</p> <p>比如，我们有3辆车比赛，简单起见，我们分别给这3辆车有70%的概率可以往前走一步，一共有5次机会，我们打出每一次这3辆车的前行状态。</p> <p>对于Imperative Programming来说，代码如下（Python）：</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token keyword">from</span> random <span class="token keyword">import</span> random
+
+time <span class="token operator">=</span> <span class="token number">5</span>  
+car_positions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token keyword">while</span> time<span class="token punctuation">:</span>  
+<span class="token comment"># decrease time  </span>
+time <span class="token operator">-=</span> <span class="token number">1</span>
+
+<span class="token keyword">print</span> <span class="token string">''</span>  
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>car_positions<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token comment"># move car  </span>
+<span class="token keyword">if</span> random <span class="token operator">&gt;</span> <span class="token number">0.3</span><span class="token punctuation">:</span>  
+car_positions<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token comment"># draw car  </span>
+<span class="token keyword">print</span> <span class="token string">'-'</span> <span class="token operator">*</span> car_positions<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>我们可以把这个两重循环变成一些函数模块，这样有利于我们更容易地阅读代码：</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token keyword">from</span> random <span class="token keyword">import</span> random
+
+<span class="token keyword">def</span> move_cars<span class="token punctuation">:</span>  
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> _ <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>car_positions<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">if</span> random <span class="token operator">&gt;</span> <span class="token number">0.3</span><span class="token punctuation">:</span>  
+car_positions<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token keyword">def</span> <span class="token function">draw_car</span><span class="token punctuation">(</span>car_position<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">print</span> <span class="token string">'-'</span> <span class="token operator">*</span> car_position
+
+<span class="token keyword">def</span> run_step_of_race<span class="token punctuation">:</span>  
+<span class="token keyword">global</span> time  
+time <span class="token operator">-=</span> <span class="token number">1</span>  
+move_cars
+
+<span class="token keyword">def</span> draw<span class="token punctuation">:</span>  
+<span class="token keyword">print</span> <span class="token string">''</span>  
+<span class="token keyword">for</span> car_position <span class="token keyword">in</span> car_positions<span class="token punctuation">:</span>  
+draw_car<span class="token punctuation">(</span>car_position<span class="token punctuation">)</span>
+
+time <span class="token operator">=</span> <span class="token number">5</span>  
+car_positions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token keyword">while</span> time<span class="token punctuation">:</span>  
+run_step_of_race  
+draw
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>上面的代码，我们可以从主循环开始，我们可以很清楚地看到程序的主干，因为我们把程序的逻辑分成了几个函数，这样一来，我们的代码逻辑也会变得几个小碎片，于是我们读代码时要考虑的上下文就少了很多，阅读代码也会更容易。不像第一个示例，如果没有注释和说明，你还是需要花些时间理解一下。<strong>而把代码逻辑封装成了函数后，我们就相当于给每个相对独立的程序逻辑取了个名字，于是代码成了自解释的</strong>。</p> <p>但是，你会发现，封装成函数后，这些函数都会依赖于共享的变量来同步其状态。于是，我们在读代码的过程时，每当我们进入到函数里，一量读到访问了一个外部的变量，我们马上要去查看这个变量的上下文，然后还要在大脑里推演这个变量的状态， 我们才知道程序的真正逻辑。也就是说，<strong>这些函数间必需知道其它函数是怎么修改它们之间的共享变量的，所以，这些函数是有状态的</strong>。</p> <p>我们知道，有状态并不是一件很好的事情，无论是对代码重用，还是对代码的并行来说，都是有副作用的。因此，我们要想个方法把这些状态搞掉，于是出现了我们的 Functional Programming 的编程范式。下面，我们来看看函数式的方式应该怎么写？</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token keyword">from</span> random <span class="token keyword">import</span> random
+
+<span class="token keyword">def</span> <span class="token function">move_cars</span><span class="token punctuation">(</span>car_positions<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">+</span> <span class="token number">1</span> <span class="token keyword">if</span> random <span class="token operator">&gt;</span> <span class="token number">0.3</span> <span class="token keyword">else</span> x<span class="token punctuation">,</span>  
+car_positions<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">output_car</span><span class="token punctuation">(</span>car_position<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token string">'-'</span> <span class="token operator">*</span> car_position
+
+<span class="token keyword">def</span> <span class="token function">run_step_of_race</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">'time'</span><span class="token punctuation">:</span> state<span class="token punctuation">[</span><span class="token string">'time'</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span>  
+<span class="token string">'car_positions'</span><span class="token punctuation">:</span> move_cars<span class="token punctuation">(</span>state<span class="token punctuation">[</span><span class="token string">'car_positions'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+
+<span class="token keyword">def</span> <span class="token function">draw</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">print</span> <span class="token string">''</span>  
+<span class="token keyword">print</span> <span class="token string">'\n'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span>output_car<span class="token punctuation">,</span> state<span class="token punctuation">[</span><span class="token string">'car_positions'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">race</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+draw<span class="token punctuation">(</span>state<span class="token punctuation">)</span>  
+<span class="token keyword">if</span> state<span class="token punctuation">[</span><span class="token string">'time'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>  
+race<span class="token punctuation">(</span>run_step_of_race<span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+race<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'time'</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>  
+<span class="token string">'car_positions'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>上面的代码依然把程序的逻辑分成了函数，不过这些函数都是functional的。因为它们有三个症状：</p> <p>1）它们之间没有共享的变量。</p> <p>2）函数间通过参数和返回值来传递数据。</p> <p>3）在函数里没有临时变量。</p> <p>我们还可以看到，for循环被递归取代了（见race函数）—— 递归是函数式编程中带用到的技术，正如前面所说的，递归的本质就是描述问题是什么。</p> <p><img src="https://p6-tt.byteimg.com/origin/pgc-image/S8XbayX2Po4W3p?from=pc" alt=""></p> <p><strong>Pipeline</strong></p> <p>pipeline 管道借鉴于Unix Shell的管道操作——把若干个命令串起来，前面命令的输出成为后面命令的输入，如此完成一个流式计算。（注：管道绝对是一个伟大的发明，他的设哲学就是KISS – 让每个功能就做一件事，并把这件事做到极致，软件或程序的拼装会变得更为简单和直观。这个设计理念影响非常深远，包括今天的Web Service，云计算，以及大数据的流式计算等等）</p> <p>比如，我们如下的shell命令：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>ps auwwx | awk '{print $2}' | sort -n | xargs echo
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如果我们抽象成函数式的语言，就像下面这样：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>xargs( echo, sort(n, awk('print $2', ps(auwwx))) )
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>也可以类似下面这个样子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>pids = for_each(result, [ps_auwwx, awk_p2, sort_n, xargs_echo])
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>好了，让我们来看看函数式编程的Pipeline怎么玩？</p> <p>我们先来看一个如下的程序，这个程序的process有三个步骤：</p> <p>1）找出偶数。</p> <p>2）乘以3</p> <p>3）转成字符串返回</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>def process(num):  
+# filter out non-evens  
+if num % 2 != 0:  
+return  
+num = num * 3  
+num = 'The Number: %s' % num  
+return num
+
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+for num in nums:  
+print process(num)
+
+# 输出：  
+# None  
+# The Number: 6  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>我们可以看到，输出的并不够完美，另外，代码阅读上如果没有注释，你也会比较晕。下面，我们来看看函数式的pipeline（第一种方式）应该怎么写？</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">even_filter</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">for</span> num <span class="token keyword">in</span> nums<span class="token punctuation">:</span>  
+<span class="token keyword">if</span> num <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>  
+<span class="token keyword">yield</span> num  
+<span class="token keyword">def</span> <span class="token function">multiply_by_three</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">for</span> num <span class="token keyword">in</span> nums<span class="token punctuation">:</span>  
+<span class="token keyword">yield</span> num <span class="token operator">*</span> <span class="token number">3</span>  
+<span class="token keyword">def</span> <span class="token function">convert_to_string</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">for</span> num <span class="token keyword">in</span> nums<span class="token punctuation">:</span>  
+<span class="token keyword">yield</span> <span class="token string">'The Number: %s'</span> <span class="token operator">%</span> num
+
+nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span>  
+pipeline <span class="token operator">=</span> convert_to_string<span class="token punctuation">(</span>multiply_by_three<span class="token punctuation">(</span>even_filter<span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+<span class="token keyword">for</span> num <span class="token keyword">in</span> pipeline<span class="token punctuation">:</span>  
+<span class="token keyword">print</span> num  
+<span class="token comment"># 输出：  </span>
+<span class="token comment"># The Number: 6  </span>
+  
+  
+  
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>我们动用了Python的关键字 yield，这个关键字主要是返回一个Generator，yield 是一个类似 return 的关键字，只是这个函数返回的是个Generator-生成器。所谓生成器的意思是，yield返回的是一个可迭代的对象，并没有真正的执行函数。也就是说，只有其返回的迭代对象被真正迭代时，yield函数才会正真的运行，运行到yield语句时就会停住，然后等下一次的迭代。（这个是个比较诡异的关键字）这就是lazy evluation。</p> <p>好了，根据前面的原则——“<strong>使用Map &amp; Reduce，不要使用循环</strong>”，那我们用比较纯朴的Map &amp; Reduce吧。</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">even_filter</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token builtin">filter</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">,</span> nums<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">multiply_by_three</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token operator">*</span><span class="token number">3</span><span class="token punctuation">,</span> nums<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">convert_to_string</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token string">'The Number: %s'</span> <span class="token operator">%</span> x<span class="token punctuation">,</span> nums<span class="token punctuation">)</span>
+
+nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span>  
+pipeline <span class="token operator">=</span> convert_to_string<span class="token punctuation">(</span>  
+multiply_by_three<span class="token punctuation">(</span>  
+even_filter<span class="token punctuation">(</span>nums<span class="token punctuation">)</span>  
+<span class="token punctuation">)</span>  
+<span class="token punctuation">)</span>  
+<span class="token keyword">for</span> num <span class="token keyword">in</span> pipeline<span class="token punctuation">:</span>  
+<span class="token keyword">print</span> num
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>但是他们的代码需要嵌套使用函数，这个有点不爽，如果我们能像下面这个样子就好了（第二种方式）。</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code>pipeline_func<span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token punctuation">[</span>even_filter<span class="token punctuation">,</span>  
+multiply_by_three<span class="token punctuation">,</span>  
+convert_to_string<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>那么，pipeline_func 实现如下：</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token keyword">def</span> <span class="token function">pipeline_func</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> fns<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token builtin">reduce</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> a<span class="token punctuation">,</span> x<span class="token punctuation">:</span> x<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span>  
+fns<span class="token punctuation">,</span>  
+data<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>好了，在读过这么多的程序后，你可以回头看一下这篇文章的开头对函数式编程的描述，可能你就更有感觉了。</p> <p>最后，<strong>我希望这篇浅显易懂的文章能让你感受到函数式编程的思想，就像OO编程，泛型编程，过程式编程一样，我们不用太纠结是不是我们的程序就是OO，就是functional的，我们重要的品味其中的味道</strong>。</p> <p><strong>参考</strong></p> <ul><li><p>Wikipedia: Functional Programming</p></li> <li><p>truly understanding the difference between procedural and functional</p></li> <li><p>A practical introduction to functional programming</p></li> <li><p>What is the difference between procedural programming and functional programming?</p></li> <li><p>Can someone give me examples of functional programming vs imperative/procedural programming?</p></li> <li><p>OOP vs Functional Programming vs Procedural</p></li> <li><p>Python – Functional Programming HOWTO</p></li></ul> <p>感谢谢网友提供的shell风格的python pipeline：</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token keyword">class</span> <span class="token class-name">Pipe</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+self<span class="token punctuation">.</span>func <span class="token operator">=</span> func
+
+<span class="token keyword">def</span> <span class="token function">__ror__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">def</span> generator<span class="token punctuation">:</span>  
+<span class="token keyword">for</span> obj <span class="token keyword">in</span> other<span class="token punctuation">:</span>  
+<span class="token keyword">if</span> obj <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>  
+<span class="token keyword">yield</span> self<span class="token punctuation">.</span>func<span class="token punctuation">(</span>obj<span class="token punctuation">)</span>  
+<span class="token keyword">return</span> generator
+
+<span class="token decorator annotation punctuation">@Pipe</span>  
+<span class="token keyword">def</span> <span class="token function">even_filter</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> num <span class="token keyword">if</span> num <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token boolean">None</span>
+
+<span class="token decorator annotation punctuation">@Pipe</span>  
+<span class="token keyword">def</span> <span class="token function">multiply_by_three</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> num<span class="token operator">*</span><span class="token number">3</span>
+
+<span class="token decorator annotation punctuation">@Pipe</span>  
+<span class="token keyword">def</span> <span class="token function">convert_to_string</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">return</span> <span class="token string">'The Number: %s'</span> <span class="token operator">%</span> num
+
+<span class="token decorator annotation punctuation">@Pipe</span>  
+<span class="token keyword">def</span> <span class="token function">echo</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">print</span> item  
+<span class="token keyword">return</span> item
+
+<span class="token keyword">def</span> <span class="token function">force</span><span class="token punctuation">(</span>sqs<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+<span class="token keyword">for</span> item <span class="token keyword">in</span> sqs<span class="token punctuation">:</span> <span class="token keyword">pass</span>
+
+nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span>
+
+force<span class="token punctuation">(</span>nums <span class="token operator">|</span> even_filter <span class="token operator">|</span> multiply_by_three <span class="token operator">|</span> convert_to_string <span class="token operator">|</span> echo<span class="token punctuation">)</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><p>（完）</p> <p><strong>Python学习交流群</strong></p> <p>为了让大家更加即时地沟通学习，我们建了一个Python学习交流群，有想入群的同学，可以添加下面小助手微信，他会拉大家入群哈~</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/solider245/VuePress-blog/edit/master/docs/Python/最新转载/函数式编程-酷壳网.md" target="_blank" rel="noopener noreferrer">你要教我做事咯？</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/26/2020, 7:55:44 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/VuePress-blog/Python/最新转载/停止用CSV格式保存Pandas数据帧.html" class="prev">
+        停止用CSV格式保存Pandas数据帧
+      </a></span> <span class="next"><a href="/VuePress-blog/Python/最新转载/函数式编程的实用介绍.html">
+        函数式编程的实用介绍
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/VuePress-blog/assets/js/app.776d277d.js" defer></script><script src="/VuePress-blog/assets/js/2.c5117f2a.js" defer></script><script src="/VuePress-blog/assets/js/38.9915a3eb.js" defer></script>
+  </body>
+</html>

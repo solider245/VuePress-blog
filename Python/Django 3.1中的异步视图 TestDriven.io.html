@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Django 3.1中的异步视图 TestDriven.io | 吴起的个人网站</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://images-1255533533.cos.ap-shanghai.myqcloud.com/20190817214528_05c52e04cf64654248918bfc2a1f64ab.png">
+    <link rel="manifest" href="/VuePress-blog/manifest.json">
+    <link rel="apple-touch-icon" href="/VuePress-blog/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="/VuePress-blog/icons/safari-pinned-tab.svg" color="#3eaf7c">
+    <meta name="description" content="在此处添描述">
+    <meta name="author" content="中箭的吴起">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="preload" href="/VuePress-blog/assets/css/0.styles.f7cbc213.css" as="style"><link rel="preload" href="/VuePress-blog/assets/js/app.776d277d.js" as="script"><link rel="preload" href="/VuePress-blog/assets/js/2.c5117f2a.js" as="script"><link rel="preload" href="/VuePress-blog/assets/js/5.7139b9b4.js" as="script"><link rel="prefetch" href="/VuePress-blog/assets/js/10.63714471.js"><link rel="prefetch" href="/VuePress-blog/assets/js/100.1cec5f39.js"><link rel="prefetch" href="/VuePress-blog/assets/js/101.c74c6d95.js"><link rel="prefetch" href="/VuePress-blog/assets/js/102.d22dd18b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/103.409414e4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/104.d4463a76.js"><link rel="prefetch" href="/VuePress-blog/assets/js/105.f70dcd32.js"><link rel="prefetch" href="/VuePress-blog/assets/js/106.6516b84b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/107.bdeabcbf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/108.8c48acb2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/109.85df5626.js"><link rel="prefetch" href="/VuePress-blog/assets/js/11.a24f4a33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/110.5e67e89d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/111.769d339f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/112.e75614b5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/113.63d1e519.js"><link rel="prefetch" href="/VuePress-blog/assets/js/114.e7a470dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/115.66e52ce5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/116.4f75586b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/117.c2ad36ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/118.b6e98de6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/119.b57896d6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/12.abc1e9a9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/120.e5da282b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/121.eb8b36b3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/122.e3fa1136.js"><link rel="prefetch" href="/VuePress-blog/assets/js/123.d4a35a0f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/124.894663d4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/125.0e2df5ef.js"><link rel="prefetch" href="/VuePress-blog/assets/js/126.a62c9f29.js"><link rel="prefetch" href="/VuePress-blog/assets/js/127.c4c12b2c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/128.a3d4f63f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/129.a4a9c4b9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/13.f38ab9c5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/130.2b6974e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/131.2c254cb6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/132.3c69d560.js"><link rel="prefetch" href="/VuePress-blog/assets/js/133.52d6127d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/134.c2d0a90c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/135.cd6b9f1a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/136.1dc89614.js"><link rel="prefetch" href="/VuePress-blog/assets/js/137.f9b5cb48.js"><link rel="prefetch" href="/VuePress-blog/assets/js/138.41523b28.js"><link rel="prefetch" href="/VuePress-blog/assets/js/139.2e2adbf4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/14.fb0fad09.js"><link rel="prefetch" href="/VuePress-blog/assets/js/140.112e35af.js"><link rel="prefetch" href="/VuePress-blog/assets/js/141.2e348226.js"><link rel="prefetch" href="/VuePress-blog/assets/js/142.59b5c9ef.js"><link rel="prefetch" href="/VuePress-blog/assets/js/143.a6a726d2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/144.ec4a46cb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/145.0b187c1e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/146.b3977b6a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/147.070dded6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/148.703bfa68.js"><link rel="prefetch" href="/VuePress-blog/assets/js/149.eef402f6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/15.a3e85e42.js"><link rel="prefetch" href="/VuePress-blog/assets/js/150.f625ba2f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/151.22a07089.js"><link rel="prefetch" href="/VuePress-blog/assets/js/152.d84ba7a0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/153.fb36a102.js"><link rel="prefetch" href="/VuePress-blog/assets/js/154.6b471035.js"><link rel="prefetch" href="/VuePress-blog/assets/js/155.511972d8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/156.9b71a1ed.js"><link rel="prefetch" href="/VuePress-blog/assets/js/157.b1ced696.js"><link rel="prefetch" href="/VuePress-blog/assets/js/158.df097da9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/159.e0884310.js"><link rel="prefetch" href="/VuePress-blog/assets/js/16.1487bb0e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/160.19c256dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/161.b4a55559.js"><link rel="prefetch" href="/VuePress-blog/assets/js/162.3bf8822d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/163.b02d1d5b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/164.6efbaf12.js"><link rel="prefetch" href="/VuePress-blog/assets/js/165.ec61fd46.js"><link rel="prefetch" href="/VuePress-blog/assets/js/166.1aeb18e9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/167.53136d07.js"><link rel="prefetch" href="/VuePress-blog/assets/js/168.860b0f88.js"><link rel="prefetch" href="/VuePress-blog/assets/js/169.1701350b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/17.c965c030.js"><link rel="prefetch" href="/VuePress-blog/assets/js/170.d3659f87.js"><link rel="prefetch" href="/VuePress-blog/assets/js/171.6299f6e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/172.14097eb7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/173.cd9135dd.js"><link rel="prefetch" href="/VuePress-blog/assets/js/174.4f623e28.js"><link rel="prefetch" href="/VuePress-blog/assets/js/175.1528ea30.js"><link rel="prefetch" href="/VuePress-blog/assets/js/176.4b91e0a6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/177.9d0306c6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/178.135bf962.js"><link rel="prefetch" href="/VuePress-blog/assets/js/179.09bf5238.js"><link rel="prefetch" href="/VuePress-blog/assets/js/18.7dab8018.js"><link rel="prefetch" href="/VuePress-blog/assets/js/180.6d15ee73.js"><link rel="prefetch" href="/VuePress-blog/assets/js/181.16ccddbf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/182.a440c46e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/183.3b17ab33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/184.1c37fda0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/185.5e91aae0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/186.c040be0b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/187.04c35a68.js"><link rel="prefetch" href="/VuePress-blog/assets/js/188.d3dffa3f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/189.f8d1a701.js"><link rel="prefetch" href="/VuePress-blog/assets/js/19.936a56a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/190.935f2ffb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/191.ce68c987.js"><link rel="prefetch" href="/VuePress-blog/assets/js/192.2cd5f900.js"><link rel="prefetch" href="/VuePress-blog/assets/js/193.4fffa096.js"><link rel="prefetch" href="/VuePress-blog/assets/js/194.763b33a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/195.41c8a153.js"><link rel="prefetch" href="/VuePress-blog/assets/js/196.18b4eb2c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/197.7670df82.js"><link rel="prefetch" href="/VuePress-blog/assets/js/198.680a1a80.js"><link rel="prefetch" href="/VuePress-blog/assets/js/199.bbbe2ec0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/20.1da56eb7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/200.de87ea80.js"><link rel="prefetch" href="/VuePress-blog/assets/js/201.0ceace3d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/202.c2800a06.js"><link rel="prefetch" href="/VuePress-blog/assets/js/203.48924c48.js"><link rel="prefetch" href="/VuePress-blog/assets/js/204.9fb412e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/205.19599c35.js"><link rel="prefetch" href="/VuePress-blog/assets/js/206.1a278f71.js"><link rel="prefetch" href="/VuePress-blog/assets/js/207.378bf6a0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/208.dec187fe.js"><link rel="prefetch" href="/VuePress-blog/assets/js/209.d3326143.js"><link rel="prefetch" href="/VuePress-blog/assets/js/21.14a0c6c5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/210.ed9af624.js"><link rel="prefetch" href="/VuePress-blog/assets/js/211.4c2999ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/212.b7055185.js"><link rel="prefetch" href="/VuePress-blog/assets/js/213.95bd0c97.js"><link rel="prefetch" href="/VuePress-blog/assets/js/214.be14627f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/215.8532e5a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/216.956add10.js"><link rel="prefetch" href="/VuePress-blog/assets/js/217.b921800c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/218.279a2533.js"><link rel="prefetch" href="/VuePress-blog/assets/js/219.941f503f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/22.207eb093.js"><link rel="prefetch" href="/VuePress-blog/assets/js/23.fcaf57a6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/24.549b45ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/25.68d51b90.js"><link rel="prefetch" href="/VuePress-blog/assets/js/26.75eef058.js"><link rel="prefetch" href="/VuePress-blog/assets/js/27.e465c84f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/28.ec75d8c3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/29.e22ecade.js"><link rel="prefetch" href="/VuePress-blog/assets/js/3.85032dd8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/30.eac685a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/31.2d55d3f1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/32.9a6373e2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/33.91a32ba3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/34.9b401b73.js"><link rel="prefetch" href="/VuePress-blog/assets/js/35.a1a2bcde.js"><link rel="prefetch" href="/VuePress-blog/assets/js/36.405a7a4c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/37.d6422337.js"><link rel="prefetch" href="/VuePress-blog/assets/js/38.9915a3eb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/39.82fe0431.js"><link rel="prefetch" href="/VuePress-blog/assets/js/4.7334dde5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/40.76830c33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/41.d1dfc6c3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/42.12371fe2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/43.e3607529.js"><link rel="prefetch" href="/VuePress-blog/assets/js/44.6cec67f8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/45.c20ac641.js"><link rel="prefetch" href="/VuePress-blog/assets/js/46.50d5ceed.js"><link rel="prefetch" href="/VuePress-blog/assets/js/47.6f06c416.js"><link rel="prefetch" href="/VuePress-blog/assets/js/48.08a068dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/49.e6b4bd72.js"><link rel="prefetch" href="/VuePress-blog/assets/js/50.3cb53aad.js"><link rel="prefetch" href="/VuePress-blog/assets/js/51.0e647151.js"><link rel="prefetch" href="/VuePress-blog/assets/js/52.7ff01978.js"><link rel="prefetch" href="/VuePress-blog/assets/js/53.36a9d767.js"><link rel="prefetch" href="/VuePress-blog/assets/js/54.e6bbecb4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/55.bdf81af3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/56.5c96c795.js"><link rel="prefetch" href="/VuePress-blog/assets/js/57.f89a2345.js"><link rel="prefetch" href="/VuePress-blog/assets/js/58.d11b047a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/59.12c9a488.js"><link rel="prefetch" href="/VuePress-blog/assets/js/6.6e6603ff.js"><link rel="prefetch" href="/VuePress-blog/assets/js/60.ba63105e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/61.a6c1a4f7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/62.3cc2256f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/63.c33f9fe1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/64.9200eb22.js"><link rel="prefetch" href="/VuePress-blog/assets/js/65.fd000469.js"><link rel="prefetch" href="/VuePress-blog/assets/js/66.512243e8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/67.faaf727b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/68.ef92ba52.js"><link rel="prefetch" href="/VuePress-blog/assets/js/69.b1700696.js"><link rel="prefetch" href="/VuePress-blog/assets/js/7.4e3bdcaf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/70.a0687351.js"><link rel="prefetch" href="/VuePress-blog/assets/js/71.3a14e318.js"><link rel="prefetch" href="/VuePress-blog/assets/js/72.99b53005.js"><link rel="prefetch" href="/VuePress-blog/assets/js/73.897a92b9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/74.b16f1719.js"><link rel="prefetch" href="/VuePress-blog/assets/js/75.002964da.js"><link rel="prefetch" href="/VuePress-blog/assets/js/76.7624e778.js"><link rel="prefetch" href="/VuePress-blog/assets/js/77.e00d405d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/78.95645db5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/79.bba0d631.js"><link rel="prefetch" href="/VuePress-blog/assets/js/8.d7f6aae7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/80.b728c7d7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/81.41b1a44a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/82.c5fe8c82.js"><link rel="prefetch" href="/VuePress-blog/assets/js/83.b899cdd2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/84.f92dd1f0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/85.30ecf40f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/86.62a793c0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/87.97927fa1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/88.f65e94f8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/89.dd682117.js"><link rel="prefetch" href="/VuePress-blog/assets/js/9.2af41852.js"><link rel="prefetch" href="/VuePress-blog/assets/js/90.437e6ec1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/91.577f36e9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/92.7c4d870f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/93.9cfe8160.js"><link rel="prefetch" href="/VuePress-blog/assets/js/94.88b6a333.js"><link rel="prefetch" href="/VuePress-blog/assets/js/95.1ba03060.js"><link rel="prefetch" href="/VuePress-blog/assets/js/96.2693d156.js"><link rel="prefetch" href="/VuePress-blog/assets/js/97.49968a31.js"><link rel="prefetch" href="/VuePress-blog/assets/js/98.71a6785c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/99.b7ba0c42.js">
+    <link rel="stylesheet" href="/VuePress-blog/assets/css/0.styles.f7cbc213.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/VuePress-blog/" class="home-link router-link-active"><!----> <span class="site-name">吴起的个人网站</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章转载" class="dropdown-title"><span class="title">文章转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/" class="nav-link">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常见命令/" class="nav-link">
+  Linux常见命令
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常用软件/" class="nav-link">
+  Linux常用软件
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><h4>
+          Vim
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim文章/" class="nav-link">
+  vim文章
+</a></li><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim配置/" class="nav-link">
+  vim配置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常见问题" class="dropdown-title"><span class="title">常见问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/客户端科学上网/" class="nav-link">
+  客户端科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/命令行科学上网/" class="nav-link">
+  命令行科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/镜像加速大全/" class="nav-link">
+  镜像加速大全
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/vim/" class="nav-link">
+  vim
+</a></li><li class="dropdown-item"><h4>
+          Pyhton
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/常见问题/Python/" class="nav-link">
+  Pyhton
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/" class="nav-link router-link-active">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/最新转载/" class="nav-link">
+  最新转载
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/爬虫案例/" class="nav-link">
+  爬虫案例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人原创" class="dropdown-title"><span class="title">个人原创</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/个人原创/" class="nav-link">
+  个人原创
+</a></li></ul></div></div> <a href="https://github.com/solider245/VuePress-blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章转载" class="dropdown-title"><span class="title">文章转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/" class="nav-link">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常见命令/" class="nav-link">
+  Linux常见命令
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常用软件/" class="nav-link">
+  Linux常用软件
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><h4>
+          Vim
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim文章/" class="nav-link">
+  vim文章
+</a></li><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim配置/" class="nav-link">
+  vim配置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常见问题" class="dropdown-title"><span class="title">常见问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/客户端科学上网/" class="nav-link">
+  客户端科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/命令行科学上网/" class="nav-link">
+  命令行科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/镜像加速大全/" class="nav-link">
+  镜像加速大全
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/vim/" class="nav-link">
+  vim
+</a></li><li class="dropdown-item"><h4>
+          Pyhton
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/常见问题/Python/" class="nav-link">
+  Pyhton
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/" class="nav-link router-link-active">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/最新转载/" class="nav-link">
+  最新转载
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/爬虫案例/" class="nav-link">
+  爬虫案例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人原创" class="dropdown-title"><span class="title">个人原创</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/个人原创/" class="nav-link">
+  个人原创
+</a></li></ul></div></div> <a href="https://github.com/solider245/VuePress-blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Python</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html" class="active sidebar-link">Django 3.1中的异步视图 TestDriven.io</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#内容" class="sidebar-link">内容</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#目标" class="sidebar-link">目标</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#先决条件" class="sidebar-link">先决条件</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#创建应用" class="sidebar-link">创建应用</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#httpx" class="sidebar-link">HTTPX</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#抽一些肉" class="sidebar-link">抽一些肉</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#烧肉" class="sidebar-link">烧肉</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#同步到异步" class="sidebar-link">同步到异步</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#芹菜和异步视图" class="sidebar-link">芹菜和异步视图</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#何时使用" class="sidebar-link">何时使用</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/Django 3.1中的异步视图 TestDriven.io.html#结论" class="sidebar-link">结论</a></li></ul></li><li><a href="/VuePress-blog/Python/" aria-current="page" class="sidebar-link">python首页</a></li><li><a href="/VuePress-blog/Python/pandas爬虫心得.html" class="sidebar-link">pandas爬虫心得</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p></p><div class="table-of-contents"><ul><li><a href="#内容">内容</a></li><li><a href="#目标">目标</a></li><li><a href="#先决条件">先决条件</a><ul><li><a href="#依存关系">依存关系</a></li><li><a href="#什么是asgi？">什么是ASGI？</a></li></ul></li><li><a href="#创建应用">创建应用</a></li><li><a href="#httpx">HTTPX</a></li><li><a href="#抽一些肉">抽一些肉</a></li><li><a href="#烧肉">烧肉</a><ul><li><a href="#同步通话">同步通话</a></li><li><a href="#同步和异步通话">同步和异步通话</a></li></ul></li><li><a href="#同步到异步">同步到异步</a></li><li><a href="#芹菜和异步视图">芹菜和异步视图</a></li><li><a href="#何时使用">何时使用</a></li><li><a href="#结论">结论</a></li></ul></div>
+编写异步代码使您能够毫不费力地加速应用程序。随着Django 3.1最终<a href="https://docs.djangoproject.com/en/3.1/releases/3.1/#asynchronous-views-and-middleware-support" target="_blank" rel="noopener noreferrer">支持<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>异步视图，中间件和测试，现在是将它们置入现实的好时机。<p></p> <p>这篇文章探讨了如何开始使用Django的新异步视图。</p> <blockquote><p>如果您想了解有关异步代码背后的强大功能以及Python中线程，多处理和异步之间的区别的更多信息，请查看我的<a href="/VuePress-blog/blog/concurrency-parallelism-asyncio/">《通过并发，并行和异步编写Speeding Up Python》</a>。</p></blockquote> <h2 id="内容">内容</h2> <ul><li><a href="#objectives">目标</a></li> <li><a href="#prerequisites">先决条件</a></li> <li><a href="#creating-the-app">创建应用</a></li> <li><a href="#httpx">HTTPX</a></li> <li><a href="#smoking-some-meats">抽一些肉</a></li> <li><a href="#burnt-meats">烧肉</a></li> <li><a href="#sync-to-async">同步到异步</a></li> <li><a href="#celery-and-async-views">芹菜和异步视图</a></li> <li><a href="#when-to-use">何时使用</a></li> <li><a href="#conclusion">结论</a></li></ul> <h2 id="目标">目标</h2> <p>在这篇文章的结尾，您应该能够：</p> <ol><li>在Django中编写异步视图</li> <li>在Django视图中发出非阻塞HTTP请求</li> <li>使用Django的异步视图简化基本的后台任务</li> <li>使用sync_to_async在异步视图内进行同步调用</li> <li>说明何时应该和不应该使用异步视图</li></ol> <p>您还应该能够回答以下问题：</p> <ol><li>如果您在异步视图中进行同步调用怎么办？</li> <li>如果您在异步视图中进行同步和异步调用怎么办？</li> <li>Celery是否仍然需要Django的异步视图？</li></ol> <h2 id="先决条件">先决条件</h2> <p>只要您已经熟悉Django本身，向非基于类的视图添加异步功能就非常简单。</p> <h3 id="依存关系">依存关系</h3> <ol><li>Python&gt; = 3.8</li> <li>Django&gt; = 3.1</li> <li>葡萄胎</li> <li>HTTPX</li></ol> <h3 id="什么是asgi？">什么是ASGI？</h3> <p><a href="https://asgi.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">ASGI<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>代表异步服务器网关接口。这是<a href="https://wsgi.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">WSGI<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>的现代，异步的后续产品，为创建基于Python的异步Web应用程序提供了标准。</p> <p>值得一提的另一件事是，ASGI与WSGI向后兼容，即使您_不_准备转向编写异步应用程序，也可以将其从Gunicorn或uWSGI之类的WSGI服务器切换至<a href="https://www.uvicorn.org/" target="_blank" rel="noopener noreferrer">Uvicorn<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>或<a href="https://github.com/django/daphne" target="_blank" rel="noopener noreferrer">Daphne之<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>类的ASGI服务器。。</p> <h2 id="创建应用">创建应用</h2> <p>创建一个新的项目目录以及一个新的Django项目：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ mkdir django-async-views &amp;&amp; cd django-async-views
+$ python3.8 -m venv env
+$ source env/bin/activate
+
+(env)$ pip install django
+(env)$ django-admin.py startproject hello_async .
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><blockquote><p>随意将virtualenv和Pip换成<a href="https://python-poetry.org/" target="_blank" rel="noopener noreferrer">Poetry<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>或<a href="https://pipenv.pypa.io/" target="_blank" rel="noopener noreferrer">Pipenv<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p></blockquote> <p>如果您使用内置的开发服务器，则Django将运行您的异步视图，但实际上不会异步运行它们，因此我们将使用Uvicorn来支撑服务器。</p> <p>安装它：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(env)$ pip install uvicorn
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>要使用Uvicorn运行项目，请从项目的根目录使用以下命令：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>uvicorn {name of your project}.asgi:application
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在我们的情况下，这将是：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(env)$ uvicorn hello_async.asgi:application
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>接下来，让我们创建第一个异步视图。添加一个新文件以将视图保存在“ hello_async”文件夹中，然后添加以下视图：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/views.py
+
+from django.http import HttpResponse
+
+async def index(request):
+    return HttpResponse(&quot;Hello, async Django!&quot;)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>在Django中创建异步视图就像创建同步视图一样简单-您只需添加<code>async</code>关键字即可。</p> <p>更新网址：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/urls.py
+
+from django.contrib import admin
+from django.urls import path
+
+from hello_async.views import index
+
+urlpatterns = \[
+    path(&quot;admin/&quot;, admin.site.urls),
+    path(&quot;&quot;, index),
+\]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>现在，在根文件夹的终端中，运行：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(env)$ uvicorn hello_async.asgi:application --reload
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><blockquote><p>该<code>--reload</code>标志告诉uvicorn监视文件中的更改，如果发现任何更改，则重新加载。那可能是不言而喻的。</p></blockquote> <p>在您喜欢的Web浏览器中打开<a href="http://localhost:8000/" target="_blank" rel="noopener noreferrer">http：// localhost：8000 /<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Hello, async Django!
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>这不是世界上最令人兴奋的事情，但是，嘿，这是一个开始。值得注意的是，使用Django的内置开发服务器运行此视图将产生完全相同的功能和输出。这是因为我们实际上没有在处理程序中执行任何异步操作。</p> <h2 id="httpx">HTTPX</h2> <p>值得注意的是，异步支持是完全向后兼容的，因此您可以混合使用异步和同步视图，中间件和测试。Django将在适当的执行上下文中执行每个操作。</p> <p>为了说明这一点，请添加一些新视图：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/views.py
+
+import asyncio
+from time import sleep
+
+import httpx
+from django.http import HttpResponse
+
+\# helpers
+
+async def http\_call\_async():
+    for num in range(1, 6):
+        await asyncio.sleep(1)
+        print(num)
+    async with httpx.AsyncClient() as client:
+        r = await client.get(&quot;https://httpbin.org/&quot;)
+        print(r)
+
+def http\_call\_sync():
+    for num in range(1, 6):
+        sleep(1)
+        print(num)
+    r = httpx.get(&quot;https://httpbin.org/&quot;)
+    print(r)
+
+\# views
+
+async def index(request):
+    return HttpResponse(&quot;Hello, async Django!&quot;)
+
+async def async_view(request):
+    loop = asyncio.get\_event\_loop()
+    loop.create_task(http\_call\_async())
+    return HttpResponse(&quot;Non-blocking HTTP request&quot;)
+
+def sync_view(request):
+    http\_call\_sync()
+    return HttpResponse(&quot;Blocking HTTP request&quot;)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><p>更新网址：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/urls.py
+
+from django.contrib import admin
+from django.urls import path
+
+from hello_async.views import index, async_view, sync_view
+
+urlpatterns = \[
+    path(&quot;admin/&quot;, admin.site.urls),
+    path(&quot;async/&quot;, async_view),
+    path(&quot;sync/&quot;, sync_view),
+    path(&quot;&quot;, index),
+\]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>安装<a href="https://www.python-httpx.org/" target="_blank" rel="noopener noreferrer">HTTPX<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(env)$ pip install httpx
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在服务器运行的情况下，导航到<a href="http://localhost:8000/async/" target="_blank" rel="noopener noreferrer">http：// localhost：8000 / async /<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。您应该立即看到响应：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Non-blocking HTTP request
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在您的终端中，您应该看到：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>INFO:     127.0.0.1:60374 - &quot;GET /async/ HTTP/1.1&quot; 200 OK
+1
+2
+3
+4
+5
+&lt;Response \[200 OK\]&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>在这里，HTTP响应_在_第一个睡眠调用_之前_发回。</p> <p>接下来，浏览至<a href="http://localhost:8000/sync/" target="_blank" rel="noopener noreferrer">http：// localhost：8000 / sync /<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。得到响应大约需要五秒钟：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Blocking HTTP request
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>转到终端：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1
+2
+3
+4
+5
+&lt;Response \[200 OK\]&gt;
+INFO:     127.0.0.1:60375 - &quot;GET /sync/ HTTP/1.1&quot; 200 OK
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>在此，HTTP响应在循环和请求完成_后_发送<code>https://httpbin.org/</code>。</p> <h2 id="抽一些肉">抽一些肉</h2> <p>现在，让我们编写一个在后台运行简单任务的视图。</p> <p>返回项目的URLconf，在<a href="https://www.youtube.com/watch?v=SVyLlFezj2E" target="_blank" rel="noopener noreferrer"><code>smoke_some_meats</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>以下位置创建新路径：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/urls.py
+
+from django.contrib import admin
+from django.urls import path
+
+from hello_async.views import index, async_view, sync_view, smoke\_some\_meats
+
+urlpatterns = \[
+    path(&quot;admin/&quot;, admin.site.urls),
+    path(&quot;smoke\_some\_meats/&quot;, smoke\_some\_meats),
+    path(&quot;async/&quot;, async_view),
+    path(&quot;sync/&quot;, sync_view),
+    path(&quot;&quot;, index),
+\]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>返回您的视图，创建一个名为的新异步函数<code>smoke</code>。该函数有两个参数：字符串列表<code>smokables</code>和<code>flavor</code>。这些将分别默认为可吸烟的肉和“甜宝贝雷的”的列表。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/views.py
+
+async def smoke(smokables: List\[str\] = None, flavor: str = &quot;Sweet Baby Ray's&quot;) -&gt; None:
+    &quot;&quot;&quot; Smokes some meats and applies the Sweet Baby Ray's &quot;&quot;&quot;
+
+    if smokables is None:
+        smokables = \[
+            &quot;ribs&quot;,
+            &quot;brisket&quot;,
+            &quot;lemon chicken&quot;,
+            &quot;salmon&quot;,
+            &quot;bison sirloin&quot;,
+            &quot;sausage&quot;,
+        \]
+
+    if (loved_smokable := smokables\[0\]) == &quot;ribs&quot;:
+        loved_smokable = &quot;meats&quot;
+
+    for smokable in smokables:
+        print(f&quot;Smoking some {smokable}....&quot;)
+        await asyncio.sleep(1)
+        print(f&quot;Applying the {flavor}....&quot;)
+        await asyncio.sleep(1)
+        print(f&quot;{smokable.capitalize()} smoked.&quot;)
+
+    print(f&quot;Who doesn't love smoked {loved_smokable}?&quot;)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>如果<code>smokables</code>未提供，该函数的第一行将实例化默认的肉类列表。然后，只要第一个对象不是“肋骨” ，第二个“ if”语句就会设置一个称为<code>loved_smokable</code>第一个对象的变量<code>smokables,</code>。for循环将味道（读取：Sweet Baby Ray's）异步应用于可抽烟（读取：烟熏肉）。</p> <p>不要忘记导入：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>from typing import List
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><blockquote><p><code>List</code>用于额外的键入功能。这不是必需的，可以很容易地省略（只需<code>: List[str]</code>在“ smokables”参数声明之后添加nix ）。</p></blockquote> <p>接下来，创建使用async <code>smoke</code>函数的异步视图：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/views.py
+
+async def smoke\_some\_meats(request) -&gt; HttpResponse:
+    loop = asyncio.get\_event\_loop()
+    smoke_args = \[\]
+
+    if to_smoke := request.GET.get(&quot;to_smoke&quot;):
+        \# Grab smokables
+        to_smoke = to_smoke.split(&quot;,&quot;)
+        smoke_args += \[\[smokable.lower().strip() for smokable in to_smoke\]\]
+
+        \# Do some string prettification
+        if (smoke\_list\_len := len(to_smoke)) == 2:
+            to_smoke = &quot; and &quot;.join(to_smoke)
+        elif smoke\_list\_len &gt; 2:
+            to_smoke\[-1\] = f&quot;and {to_smoke\[-1\]}&quot;
+            to_smoke = &quot;, &quot;.join(to_smoke)
+
+    else:
+        to_smoke = &quot;meats&quot;
+
+    if flavor := request.GET.get(&quot;flavor&quot;):
+        smoke_args.append(flavor)
+
+    loop.create_task(smoke(*smoke_args))
+
+    return HttpResponse(f&quot;Smoking some {to_smoke}....&quot;)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>此视图采用可选的查询参数<code>to_smoke</code>和<code>flavor</code>。<code>to_smoke</code>是用逗号分隔的要吸烟物品列表，而这<code>flavor</code>是您要应用的内容。</p> <p>该视图要做的第一件事（在标准同步视图中无法完成）是使用捕获事件循环<code>asyncio.get_event_loop()</code>。然后，它分析查询参数（如果适用）（并对最终的打印语句进行一些字符串清除）。如果我们不传递任何东西来吸烟，则<code>to_smoke</code>默认为“肉类”。最后，返回响应以使用户知道他们正在准备美味的烧烤餐。</p> <p>大。保存文件，然后返回浏览器并导航到<a href="http://localhost:8000/smoke_some_meats/" target="_blank" rel="noopener noreferrer">http：// localhost：8000 / smoke_some_meats /<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。您应该得到以下答复：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Smoking some meats....
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在控制台中，您应该看到：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Smoking some ribs....
+INFO:     127.0.0.1:56239 - &quot;GET /smoke\_some\_meats/ HTTP/1.1&quot; 200 OK
+
+Applying the Sweet Baby Ray's....
+Ribs smoked.
+Smoking some brisket....
+Applying the Sweet Baby Ray's....
+Brisket smoked.
+Smoking some lemon chicken....
+Applying the Sweet Baby Ray's....
+Lemon chicken smoked.
+Smoking some salmon....
+Applying the Sweet Baby Ray's....
+Salmon smoked.
+Smoking some bison sirloin....
+Applying the Sweet Baby Ray's....
+Bison sirloin smoked.
+Smoking some sausage....
+Applying the Sweet Baby Ray's....
+Sausage smoked.
+Who doesn't love smoked meats?
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>请注意，在记录200响应之前，肋骨是如何开始吸烟的。这是工作中的异步性：当<code>smoke</code>函数最初休眠一秒钟时，视图完成处理并返回响应。最终用户将在肉类开始吸烟时看到响应。</p> <p>还值得注意的是，如果您使用Django的dev服务器，则服务器将返回正确的响应，但是异步不会发生。这是控制台日志的显示方式：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Smoking some ribs....
+\[16/Aug/2020 22:37:03\] &quot;GET /smoke\_some\_meats/ HTTP/1.1&quot; 200 22
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>使用Uvicorn，我们还可以使用查询参数进行测试。试试[http：// localhost：8000 / smoke_some_meats？to_smoke =冰淇淋，香蕉，cheese＆flavor = Gold Bond药用粉末](http://localhost:8000/smoke_some_meats?to_smoke=ice cream, bananas, cheese&amp;flavor=Gold Bond Medicated Powder)。（空格将方便地自动转换）</p> <p>浏览器：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Smoking some ice cream, bananas, and cheese....
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>终奌站：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Smoking some ice cream....
+INFO:     127.0.0.1:56407 - &quot;GET /smoke\_some\_meats/?to_smoke=ice%20cream,%20bananas,%20cheese&amp;flavor=Gold%20Bond%20Medicated%20Powder HTTP/1.1&quot; 200 OK
+Applying the Gold Bond Medicated Powder....
+Ice cream smoked.
+Smoking some bananas....
+Applying the Gold Bond Medicated Powder....
+Bananas smoked.
+Smoking some cheese....
+Applying the Gold Bond Medicated Powder....
+Cheese smoked.
+Who doesn't love smoked ice cream?
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h2 id="烧肉">烧肉</h2> <h3 id="同步通话">同步通话</h3> <p>问：<em>如果在异步视图中进行同步调用怎么办？</em></p> <p>如果从非异步视图调用非异步函数，将会发生相同的事情。</p> <ul><li></li></ul> <p>为了说明这一点，创造你的新助手功能_views.py_称为<code>oversmoke</code>：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/views.py
+
+def oversmoke() -&gt; None:
+    &quot;&quot;&quot; If it's not dry, it must be uncooked &quot;&quot;&quot;
+    sleep(5)
+    print(&quot;Who doesn't love burnt meats?&quot;)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>非常简单：我们只是同步等待五秒钟。</p> <p>创建调用此函数的视图：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/views.py
+
+async def burn\_some\_meats(request):
+    oversmoke()
+    return HttpResponse(f&quot;Burned some meats.&quot;)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>最后，在项目的URLconf中连接路由：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/urls.py
+
+from django.contrib import admin
+from django.urls import path
+
+from hello_async.views import index, async_view, sync_view, smoke\_some\_meats, burn\_some\_meats
+
+urlpatterns = \[
+    path(&quot;admin/&quot;, admin.site.urls),
+    path(&quot;smoke\_some\_meats/&quot;, smoke\_some\_meats),
+    path(&quot;burn\_some\_meats/&quot;, burn\_some\_meats),
+    path(&quot;async/&quot;, async_view),
+    path(&quot;sync/&quot;, sync_view),
+    path(&quot;&quot;, index),
+\]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>在浏览器中的<a href="http://localhost:8000/burn_some_meats" target="_blank" rel="noopener noreferrer">http：// localhost：8000 / burn_some_meats<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>处访问路由：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Burned some meats.
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>请注意，如何花五秒钟才能最终从浏览器获得响应。您还应该同时收到控制台输出：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Who doesn't love burnt meats?
+INFO:     127.0.0.1:40682 - &quot;GET /burn\_some\_meats HTTP/1.1&quot; 200 OK
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>可能值得注意的是，无论您使用的是WSGI还是基于ASGI的服务器，都将发生相同的事情。</p> <h3 id="同步和异步通话">同步和异步通话</h3> <p><em>问：如果您在异步视图中进行同步和异步调用怎么办？</em></p> <p>不要这样</p> <p>同步视图和异步视图往往可以最佳地用于不同的目的。如果您在异步视图中具有阻止功能，那么充其量仅比使用同步视图更好。</p> <h2 id="同步到异步">同步到异步</h2> <p>如果您需要在异步视图内进行同步调用（例如，通过Django ORM与数据库进行交互），请使用<a href="https://docs.djangoproject.com/en/3.0/topics/async/#sync-to-async" target="_blank" rel="noopener noreferrer">sync_to_async<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>作为包装器或装饰器。</p> <p>例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/views.py
+
+async def async\_with\_sync_view(request):
+    loop = asyncio.get\_event\_loop()
+    async_function = sync\_to\_async(http\_call\_sync)
+    loop.create_task(async_function())
+    return HttpResponse(&quot;Non-blocking HTTP request (via sync\_to\_async)&quot;)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>将导入添加到顶部：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>from asgiref.sync import sync\_to\_async
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>添加网址：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\# hello_async/urls.py
+
+from django.contrib import admin
+from django.urls import path
+
+from hello_async.views import (
+    index,
+    async_view,
+    sync_view,
+    smoke\_some\_meats,
+    burn\_some\_meats,
+    async\_with\_sync_view
+)
+
+urlpatterns = \[
+    path(&quot;admin/&quot;, admin.site.urls),
+    path(&quot;smoke\_some\_meats/&quot;, smoke\_some\_meats),
+    path(&quot;burn\_some\_meats/&quot;, burn\_some\_meats),
+    path(&quot;sync\_to\_async/&quot;, async\_with\_sync_view),
+    path(&quot;async/&quot;, async_view),
+    path(&quot;sync/&quot;, sync_view),
+    path(&quot;&quot;, index),
+\]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>在浏览器中<a href="http://localhost:8003/sync_to_async/" target="_blank" rel="noopener noreferrer">http：// localhost：8003 / sync_to_async /进行测试<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <p>在您的终端中，您应该看到：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>INFO:     127.0.0.1:61365 - &quot;GET /sync\_to\_async/ HTTP/1.1&quot; 200 OK
+1
+2
+3
+4
+5
+&lt;Response \[200 OK\]&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>使用<code>sync_to_async</code>，阻塞同步调用在后台线程中处理，从而允许_在_第一个睡眠调用_之前_将HTTP响应发送回去。</p> <h2 id="芹菜和异步视图">芹菜和异步视图</h2> <p><em>问：Celery是否仍然需要Django的异步视图？</em></p> <p>这取决于。</p> <p>Django的异步视图提供了与任务或消息队列类似的功能，而没有复杂性。如果您正在使用（或正在考虑）Django，并且想做一些简单的事情（例如向新订户发送电子邮件或调用外部API），那么异步视图是一种快速轻松实现此目标的好方法。如果您需要执行大量，长时间运行的后台进程，则仍然需要使用Celery或RQ。</p> <p>应该注意的是，为了有效地使用异步视图，您应该仅在视图中进行异步调用。另一方面，任务队列在单独的进程上使用工作程序，因此能够在多个服务器的后台运行同步调用。</p> <p>顺便说一句，您绝对不必在异步视图和消息队列之间进行选择-您可以轻松地串联使用它们。例如：您可以使用异步视图发送电子邮件或对数据库进行一次性修改，但是Celery每晚在计划的时间清理数据库或生成并发送客户报告。</p> <h2 id="何时使用">何时使用</h2> <p>对于未开发项目，请尽可能利用异步视图并以异步方式编写I / O流程。就是说，如果大多数视图仅需要调用数据库并在返回数据之前进行一些基本处理，那么与坚持同步视图相比，您不会看到太多的增长（如果有的话）。</p> <p>对于棕地项目，如果您几乎没有I / O进程，则坚持同步视图。如果确实有许多I / O进程，请以异步方式重写它们非常容易。将同步I / O重写为异步并不容易，因此您可能要在尝试重写为异步之前优化同步I / O和视图。另外，将同步过程与异步视图混合在一起绝不是一个好主意。</p> <p>在生产中，请确保使用Gunicorn来管理Uvicorn，以便同时利用（通过Uvicorn）和并行性（通过Gunicorn工人）：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>gunicorn -w 3 -k uvicorn.workers.UvicornWorker hello_async.asgi:application
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="结论">结论</h2> <p>总之，尽管这是一个简单的用例，但它应该使您大致了解Django的新异步视图打开的可能性。您可以在异步视图中尝试其他一些操作，例如发送电子邮件，调用第三方API以及写入文件。考虑一下代码中具有简单流程的视图，这些视图不一定需要直接向最终用户返回任何内容，而是可以将这些视图快速转换为异步视图。</p> <p>有关Django新发现的异步性的更多信息，请参见这篇<a href="https://wersdoerfer.de/blogs/ephes_blog/django-31-async/" target="_blank" rel="noopener noreferrer">出色的文章<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，内容涉及同一主题以及多线程和测试。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/solider245/VuePress-blog/edit/master/docs/Python/Django 3.1中的异步视图 TestDriven.io.md" target="_blank" rel="noopener noreferrer">你要教我做事咯？</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/21/2020, 11:21:21 AM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/VuePress-blog/Python/" class="router-link-active">
+        python首页
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/VuePress-blog/assets/js/app.776d277d.js" defer></script><script src="/VuePress-blog/assets/js/2.c5117f2a.js" defer></script><script src="/VuePress-blog/assets/js/5.7139b9b4.js" defer></script>
+  </body>
+</html>

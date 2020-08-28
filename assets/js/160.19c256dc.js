@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[160],{485:function(t,s,e){"use strict";e.r(s);var n=e(25),r=Object(n.a)({},(function(){var t=this.$createElement,s=this._self._c||t;return s("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[s("h2",{attrs:{id:"转载是非常重要的获取资源的手段"}},[this._v("转载是非常重要的获取资源的手段")])])}),[],!1,null,null,null);s.default=r.exports}}]);

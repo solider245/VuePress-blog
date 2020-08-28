@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用Python进行web爬取 | 吴起的个人网站</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://images-1255533533.cos.ap-shanghai.myqcloud.com/20190817214528_05c52e04cf64654248918bfc2a1f64ab.png">
+    <link rel="manifest" href="/VuePress-blog/manifest.json">
+    <link rel="apple-touch-icon" href="/VuePress-blog/icons/apple-touch-icon-152x152.png">
+    <link rel="mask-icon" href="/VuePress-blog/icons/safari-pinned-tab.svg" color="#3eaf7c">
+    <meta name="description" content="在此处添描述">
+    <meta name="author" content="中箭的吴起">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="preload" href="/VuePress-blog/assets/css/0.styles.f7cbc213.css" as="style"><link rel="preload" href="/VuePress-blog/assets/js/app.776d277d.js" as="script"><link rel="preload" href="/VuePress-blog/assets/js/2.c5117f2a.js" as="script"><link rel="preload" href="/VuePress-blog/assets/js/73.897a92b9.js" as="script"><link rel="prefetch" href="/VuePress-blog/assets/js/10.63714471.js"><link rel="prefetch" href="/VuePress-blog/assets/js/100.1cec5f39.js"><link rel="prefetch" href="/VuePress-blog/assets/js/101.c74c6d95.js"><link rel="prefetch" href="/VuePress-blog/assets/js/102.d22dd18b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/103.409414e4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/104.d4463a76.js"><link rel="prefetch" href="/VuePress-blog/assets/js/105.f70dcd32.js"><link rel="prefetch" href="/VuePress-blog/assets/js/106.6516b84b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/107.bdeabcbf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/108.8c48acb2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/109.85df5626.js"><link rel="prefetch" href="/VuePress-blog/assets/js/11.a24f4a33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/110.5e67e89d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/111.769d339f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/112.e75614b5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/113.63d1e519.js"><link rel="prefetch" href="/VuePress-blog/assets/js/114.e7a470dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/115.66e52ce5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/116.4f75586b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/117.c2ad36ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/118.b6e98de6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/119.b57896d6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/12.abc1e9a9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/120.e5da282b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/121.eb8b36b3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/122.e3fa1136.js"><link rel="prefetch" href="/VuePress-blog/assets/js/123.d4a35a0f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/124.894663d4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/125.0e2df5ef.js"><link rel="prefetch" href="/VuePress-blog/assets/js/126.a62c9f29.js"><link rel="prefetch" href="/VuePress-blog/assets/js/127.c4c12b2c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/128.a3d4f63f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/129.a4a9c4b9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/13.f38ab9c5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/130.2b6974e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/131.2c254cb6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/132.3c69d560.js"><link rel="prefetch" href="/VuePress-blog/assets/js/133.52d6127d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/134.c2d0a90c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/135.cd6b9f1a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/136.1dc89614.js"><link rel="prefetch" href="/VuePress-blog/assets/js/137.f9b5cb48.js"><link rel="prefetch" href="/VuePress-blog/assets/js/138.41523b28.js"><link rel="prefetch" href="/VuePress-blog/assets/js/139.2e2adbf4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/14.fb0fad09.js"><link rel="prefetch" href="/VuePress-blog/assets/js/140.112e35af.js"><link rel="prefetch" href="/VuePress-blog/assets/js/141.2e348226.js"><link rel="prefetch" href="/VuePress-blog/assets/js/142.59b5c9ef.js"><link rel="prefetch" href="/VuePress-blog/assets/js/143.a6a726d2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/144.ec4a46cb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/145.0b187c1e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/146.b3977b6a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/147.070dded6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/148.703bfa68.js"><link rel="prefetch" href="/VuePress-blog/assets/js/149.eef402f6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/15.a3e85e42.js"><link rel="prefetch" href="/VuePress-blog/assets/js/150.f625ba2f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/151.22a07089.js"><link rel="prefetch" href="/VuePress-blog/assets/js/152.d84ba7a0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/153.fb36a102.js"><link rel="prefetch" href="/VuePress-blog/assets/js/154.6b471035.js"><link rel="prefetch" href="/VuePress-blog/assets/js/155.511972d8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/156.9b71a1ed.js"><link rel="prefetch" href="/VuePress-blog/assets/js/157.b1ced696.js"><link rel="prefetch" href="/VuePress-blog/assets/js/158.df097da9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/159.e0884310.js"><link rel="prefetch" href="/VuePress-blog/assets/js/16.1487bb0e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/160.19c256dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/161.b4a55559.js"><link rel="prefetch" href="/VuePress-blog/assets/js/162.3bf8822d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/163.b02d1d5b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/164.6efbaf12.js"><link rel="prefetch" href="/VuePress-blog/assets/js/165.ec61fd46.js"><link rel="prefetch" href="/VuePress-blog/assets/js/166.1aeb18e9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/167.53136d07.js"><link rel="prefetch" href="/VuePress-blog/assets/js/168.860b0f88.js"><link rel="prefetch" href="/VuePress-blog/assets/js/169.1701350b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/17.c965c030.js"><link rel="prefetch" href="/VuePress-blog/assets/js/170.d3659f87.js"><link rel="prefetch" href="/VuePress-blog/assets/js/171.6299f6e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/172.14097eb7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/173.cd9135dd.js"><link rel="prefetch" href="/VuePress-blog/assets/js/174.4f623e28.js"><link rel="prefetch" href="/VuePress-blog/assets/js/175.1528ea30.js"><link rel="prefetch" href="/VuePress-blog/assets/js/176.4b91e0a6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/177.9d0306c6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/178.135bf962.js"><link rel="prefetch" href="/VuePress-blog/assets/js/179.09bf5238.js"><link rel="prefetch" href="/VuePress-blog/assets/js/18.7dab8018.js"><link rel="prefetch" href="/VuePress-blog/assets/js/180.6d15ee73.js"><link rel="prefetch" href="/VuePress-blog/assets/js/181.16ccddbf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/182.a440c46e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/183.3b17ab33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/184.1c37fda0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/185.5e91aae0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/186.c040be0b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/187.04c35a68.js"><link rel="prefetch" href="/VuePress-blog/assets/js/188.d3dffa3f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/189.f8d1a701.js"><link rel="prefetch" href="/VuePress-blog/assets/js/19.936a56a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/190.935f2ffb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/191.ce68c987.js"><link rel="prefetch" href="/VuePress-blog/assets/js/192.2cd5f900.js"><link rel="prefetch" href="/VuePress-blog/assets/js/193.4fffa096.js"><link rel="prefetch" href="/VuePress-blog/assets/js/194.763b33a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/195.41c8a153.js"><link rel="prefetch" href="/VuePress-blog/assets/js/196.18b4eb2c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/197.7670df82.js"><link rel="prefetch" href="/VuePress-blog/assets/js/198.680a1a80.js"><link rel="prefetch" href="/VuePress-blog/assets/js/199.bbbe2ec0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/20.1da56eb7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/200.de87ea80.js"><link rel="prefetch" href="/VuePress-blog/assets/js/201.0ceace3d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/202.c2800a06.js"><link rel="prefetch" href="/VuePress-blog/assets/js/203.48924c48.js"><link rel="prefetch" href="/VuePress-blog/assets/js/204.9fb412e6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/205.19599c35.js"><link rel="prefetch" href="/VuePress-blog/assets/js/206.1a278f71.js"><link rel="prefetch" href="/VuePress-blog/assets/js/207.378bf6a0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/208.dec187fe.js"><link rel="prefetch" href="/VuePress-blog/assets/js/209.d3326143.js"><link rel="prefetch" href="/VuePress-blog/assets/js/21.14a0c6c5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/210.ed9af624.js"><link rel="prefetch" href="/VuePress-blog/assets/js/211.4c2999ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/212.b7055185.js"><link rel="prefetch" href="/VuePress-blog/assets/js/213.95bd0c97.js"><link rel="prefetch" href="/VuePress-blog/assets/js/214.be14627f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/215.8532e5a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/216.956add10.js"><link rel="prefetch" href="/VuePress-blog/assets/js/217.b921800c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/218.279a2533.js"><link rel="prefetch" href="/VuePress-blog/assets/js/219.941f503f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/22.207eb093.js"><link rel="prefetch" href="/VuePress-blog/assets/js/23.fcaf57a6.js"><link rel="prefetch" href="/VuePress-blog/assets/js/24.549b45ee.js"><link rel="prefetch" href="/VuePress-blog/assets/js/25.68d51b90.js"><link rel="prefetch" href="/VuePress-blog/assets/js/26.75eef058.js"><link rel="prefetch" href="/VuePress-blog/assets/js/27.e465c84f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/28.ec75d8c3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/29.e22ecade.js"><link rel="prefetch" href="/VuePress-blog/assets/js/3.85032dd8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/30.eac685a4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/31.2d55d3f1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/32.9a6373e2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/33.91a32ba3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/34.9b401b73.js"><link rel="prefetch" href="/VuePress-blog/assets/js/35.a1a2bcde.js"><link rel="prefetch" href="/VuePress-blog/assets/js/36.405a7a4c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/37.d6422337.js"><link rel="prefetch" href="/VuePress-blog/assets/js/38.9915a3eb.js"><link rel="prefetch" href="/VuePress-blog/assets/js/39.82fe0431.js"><link rel="prefetch" href="/VuePress-blog/assets/js/4.7334dde5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/40.76830c33.js"><link rel="prefetch" href="/VuePress-blog/assets/js/41.d1dfc6c3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/42.12371fe2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/43.e3607529.js"><link rel="prefetch" href="/VuePress-blog/assets/js/44.6cec67f8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/45.c20ac641.js"><link rel="prefetch" href="/VuePress-blog/assets/js/46.50d5ceed.js"><link rel="prefetch" href="/VuePress-blog/assets/js/47.6f06c416.js"><link rel="prefetch" href="/VuePress-blog/assets/js/48.08a068dc.js"><link rel="prefetch" href="/VuePress-blog/assets/js/49.e6b4bd72.js"><link rel="prefetch" href="/VuePress-blog/assets/js/5.7139b9b4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/50.3cb53aad.js"><link rel="prefetch" href="/VuePress-blog/assets/js/51.0e647151.js"><link rel="prefetch" href="/VuePress-blog/assets/js/52.7ff01978.js"><link rel="prefetch" href="/VuePress-blog/assets/js/53.36a9d767.js"><link rel="prefetch" href="/VuePress-blog/assets/js/54.e6bbecb4.js"><link rel="prefetch" href="/VuePress-blog/assets/js/55.bdf81af3.js"><link rel="prefetch" href="/VuePress-blog/assets/js/56.5c96c795.js"><link rel="prefetch" href="/VuePress-blog/assets/js/57.f89a2345.js"><link rel="prefetch" href="/VuePress-blog/assets/js/58.d11b047a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/59.12c9a488.js"><link rel="prefetch" href="/VuePress-blog/assets/js/6.6e6603ff.js"><link rel="prefetch" href="/VuePress-blog/assets/js/60.ba63105e.js"><link rel="prefetch" href="/VuePress-blog/assets/js/61.a6c1a4f7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/62.3cc2256f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/63.c33f9fe1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/64.9200eb22.js"><link rel="prefetch" href="/VuePress-blog/assets/js/65.fd000469.js"><link rel="prefetch" href="/VuePress-blog/assets/js/66.512243e8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/67.faaf727b.js"><link rel="prefetch" href="/VuePress-blog/assets/js/68.ef92ba52.js"><link rel="prefetch" href="/VuePress-blog/assets/js/69.b1700696.js"><link rel="prefetch" href="/VuePress-blog/assets/js/7.4e3bdcaf.js"><link rel="prefetch" href="/VuePress-blog/assets/js/70.a0687351.js"><link rel="prefetch" href="/VuePress-blog/assets/js/71.3a14e318.js"><link rel="prefetch" href="/VuePress-blog/assets/js/72.99b53005.js"><link rel="prefetch" href="/VuePress-blog/assets/js/74.b16f1719.js"><link rel="prefetch" href="/VuePress-blog/assets/js/75.002964da.js"><link rel="prefetch" href="/VuePress-blog/assets/js/76.7624e778.js"><link rel="prefetch" href="/VuePress-blog/assets/js/77.e00d405d.js"><link rel="prefetch" href="/VuePress-blog/assets/js/78.95645db5.js"><link rel="prefetch" href="/VuePress-blog/assets/js/79.bba0d631.js"><link rel="prefetch" href="/VuePress-blog/assets/js/8.d7f6aae7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/80.b728c7d7.js"><link rel="prefetch" href="/VuePress-blog/assets/js/81.41b1a44a.js"><link rel="prefetch" href="/VuePress-blog/assets/js/82.c5fe8c82.js"><link rel="prefetch" href="/VuePress-blog/assets/js/83.b899cdd2.js"><link rel="prefetch" href="/VuePress-blog/assets/js/84.f92dd1f0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/85.30ecf40f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/86.62a793c0.js"><link rel="prefetch" href="/VuePress-blog/assets/js/87.97927fa1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/88.f65e94f8.js"><link rel="prefetch" href="/VuePress-blog/assets/js/89.dd682117.js"><link rel="prefetch" href="/VuePress-blog/assets/js/9.2af41852.js"><link rel="prefetch" href="/VuePress-blog/assets/js/90.437e6ec1.js"><link rel="prefetch" href="/VuePress-blog/assets/js/91.577f36e9.js"><link rel="prefetch" href="/VuePress-blog/assets/js/92.7c4d870f.js"><link rel="prefetch" href="/VuePress-blog/assets/js/93.9cfe8160.js"><link rel="prefetch" href="/VuePress-blog/assets/js/94.88b6a333.js"><link rel="prefetch" href="/VuePress-blog/assets/js/95.1ba03060.js"><link rel="prefetch" href="/VuePress-blog/assets/js/96.2693d156.js"><link rel="prefetch" href="/VuePress-blog/assets/js/97.49968a31.js"><link rel="prefetch" href="/VuePress-blog/assets/js/98.71a6785c.js"><link rel="prefetch" href="/VuePress-blog/assets/js/99.b7ba0c42.js">
+    <link rel="stylesheet" href="/VuePress-blog/assets/css/0.styles.f7cbc213.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/VuePress-blog/" class="home-link router-link-active"><!----> <span class="site-name">吴起的个人网站</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章转载" class="dropdown-title"><span class="title">文章转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/" class="nav-link">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常见命令/" class="nav-link">
+  Linux常见命令
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常用软件/" class="nav-link">
+  Linux常用软件
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><h4>
+          Vim
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim文章/" class="nav-link">
+  vim文章
+</a></li><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim配置/" class="nav-link">
+  vim配置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常见问题" class="dropdown-title"><span class="title">常见问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/客户端科学上网/" class="nav-link">
+  客户端科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/命令行科学上网/" class="nav-link">
+  命令行科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/镜像加速大全/" class="nav-link">
+  镜像加速大全
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/vim/" class="nav-link">
+  vim
+</a></li><li class="dropdown-item"><h4>
+          Pyhton
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/常见问题/Python/" class="nav-link">
+  Pyhton
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/" class="nav-link router-link-active">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/最新转载/" class="nav-link">
+  最新转载
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/爬虫案例/" class="nav-link">
+  爬虫案例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人原创" class="dropdown-title"><span class="title">个人原创</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/个人原创/" class="nav-link">
+  个人原创
+</a></li></ul></div></div> <a href="https://github.com/solider245/VuePress-blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="文章转载" class="dropdown-title"><span class="title">文章转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/" class="nav-link">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常见命令/" class="nav-link">
+  Linux常见命令
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/Linux常用软件/" class="nav-link">
+  Linux常用软件
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/文章转载/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><h4>
+          Vim
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim文章/" class="nav-link">
+  vim文章
+</a></li><li class="dropdown-subitem"><a href="/VuePress-blog/文章转载/Vim/vim配置/" class="nav-link">
+  vim配置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常见问题" class="dropdown-title"><span class="title">常见问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/客户端科学上网/" class="nav-link">
+  客户端科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/命令行科学上网/" class="nav-link">
+  命令行科学上网
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/镜像加速大全/" class="nav-link">
+  镜像加速大全
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/常见问题/vim/" class="nav-link">
+  vim
+</a></li><li class="dropdown-item"><h4>
+          Pyhton
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/VuePress-blog/常见问题/Python/" class="nav-link">
+  Pyhton
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="python" class="dropdown-title"><span class="title">python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/" class="nav-link router-link-active">
+  首页
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/最新转载/" class="nav-link">
+  最新转载
+</a></li><li class="dropdown-item"><!----> <a href="/VuePress-blog/Python/爬虫案例/" class="nav-link">
+  爬虫案例
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人原创" class="dropdown-title"><span class="title">个人原创</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/VuePress-blog/个人原创/" class="nav-link">
+  个人原创
+</a></li></ul></div></div> <a href="https://github.com/solider245/VuePress-blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Repo
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>爬虫案例</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/VuePress-blog/Python/爬虫案例/Python时间模块新手指南.html" class="sidebar-link">Python时间模块新手指南</a></li><li><a href="/VuePress-blog/Python/爬虫案例/Python爬取“爆款剧”——《三十而已》热评，并做可视化.html" class="sidebar-link">Python爬取“爆款剧”——《三十而已》热评，并做可视化</a></li><li><a href="/VuePress-blog/Python/爬虫案例/Python爬虫入门实战之猫眼电影数据抓取.html" class="sidebar-link">Python爬虫入门实战之猫眼电影数据抓取（实战篇）.md</a></li><li><a href="/VuePress-blog/Python/爬虫案例/Python爬虫快速入门，静态网页爬取.html" class="sidebar-link">Python爬虫快速入门，静态网页爬取</a></li><li><a href="/VuePress-blog/Python/%E7%88%AC%E8%99%AB%E6%A1%88%E4%BE%8B/" aria-current="page" class="sidebar-link">爬虫案例的首页</a></li><li><a href="/VuePress-blog/Python/爬虫案例/Scrapy 入门教程 | 菜鸟教程.html" class="sidebar-link">Scrapy 入门教程 | 菜鸟教程</a></li><li><a href="/VuePress-blog/Python/爬虫案例/Scrapy爬虫框架教程（一）-- Scrapy入门 - 知乎.html" class="sidebar-link">Scrapy爬虫框架教程（一）-- Scrapy入门 - 知乎</a></li><li><a href="/VuePress-blog/Python/爬虫案例/Scrapy简明教程(一) - 掘金.html" class="sidebar-link">Scrapy简明教程(一) - 掘金</a></li><li><a href="/VuePress-blog/Python/爬虫案例/python 爬虫之requests爬取页面图片的url，并将图片下载到本地.html" class="sidebar-link">python 爬虫之requests爬取页面图片的url，并将图片下载到本地</a></li><li><a href="/VuePress-blog/Python/爬虫案例/python3爬虫猫眼电影爬取-破解字符集反爬.html" class="sidebar-link">【python3爬虫】猫眼电影爬取（破解字符集反爬）</a></li><li><a href="/VuePress-blog/Python/爬虫案例/python战反爬虫-爬取猫眼电影数据（Requests, BeautifulSoup, MySQLdb,re等库).html" class="sidebar-link">python战反爬虫：爬取猫眼电影数据 (二）（Requests, BeautifulSoup, MySQLdb,re等库)</a></li><li><a href="/VuePress-blog/Python/爬虫案例/python爬取网站全部url链接.html" class="sidebar-link">python爬取网站全部url链接</a></li><li><a href="/VuePress-blog/Python/爬虫案例/python爬取高匿代理IP（再也不用担心会进小黑屋了） - 掘金.html" class="sidebar-link">python爬取高匿代理IP（再也不用担心会进小黑屋了） - 掘金</a></li><li><a href="/VuePress-blog/Python/爬虫案例/python爬虫之pandas.html" class="sidebar-link">python爬虫之pandas</a></li><li><a href="/VuePress-blog/Python/爬虫案例/python爬虫爬取全站url，完美小demo.html" class="sidebar-link">python爬虫爬取全站url，完美小demo（可防止链接到外网等各种强大筛选）</a></li><li><a href="/VuePress-blog/Python/爬虫案例/scrapy爬取电影.html" class="sidebar-link">scrapy爬取电影</a></li><li><a href="/VuePress-blog/Python/爬虫案例/【已解决】写Python爬虫爬取汽车之家品牌车系车型数据.html" class="sidebar-link">【已解决】写Python爬虫爬取汽车之家品牌车系车型数据</a></li><li><a href="/VuePress-blog/Python/爬虫案例/使用Python进行web爬取.html" class="active sidebar-link">使用Python进行web爬取</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/爬虫案例/使用Python进行web爬取.html#从网站抓取并解析文本" class="sidebar-link">从网站抓取并解析文本</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/爬虫案例/使用Python进行web爬取.html#使用html解析器在python中进行网页爬取" class="sidebar-link">使用HTML解析器在Python中进行网页爬取</a></li><li class="sidebar-sub-header"><a href="/VuePress-blog/Python/爬虫案例/使用Python进行web爬取.html#与html表单交互" class="sidebar-link">与HTML表单交互</a></li></ul></li><li><a href="/VuePress-blog/Python/爬虫案例/基于python的链家小区房价爬取——仅需60行代码.html" class="sidebar-link">基于python的链家小区房价爬取——仅需60行代码</a></li><li><a href="/VuePress-blog/Python/爬虫案例/如何用Python爬数据-网页抓取.html" class="sidebar-link">如何用Python爬数据？（一）网页抓取</a></li><li><a href="/VuePress-blog/Python/爬虫案例/实战项目 1：5 行代码爬取国内所有上市公司信息.html" class="sidebar-link">实战项目 1：5 行代码爬取国内所有上市公司信息</a></li><li><a href="/VuePress-blog/Python/爬虫案例/放养的小爬虫--豆瓣电影入门级爬虫(mongodb使用教程~).html" class="sidebar-link">放养的小爬虫--豆瓣电影入门级爬虫(mongodb使用教程~)</a></li><li><a href="/VuePress-blog/Python/爬虫案例/爬取上市公司数据、分析数据，并用可视化现实全国各地区公司数量.html" class="sidebar-link">爬取上市公司数据、分析数据，并用可视化现实全国各地区公司数量</a></li><li><a href="/VuePress-blog/Python/爬虫案例/爬虫养成记--千军万马来相见-详解多线程.html" class="sidebar-link">爬虫养成记--千军万马来相见（详解多线程）</a></li><li><a href="/VuePress-blog/Python/爬虫案例/爬虫实战01——爬取猫眼电影top100榜单.html" class="sidebar-link">爬虫实战01——爬取猫眼电影top100榜单</a></li><li><a href="/VuePress-blog/Python/爬虫案例/爬虫练习之循环爬取网页中全部链接(requsets同步).html" class="sidebar-link">爬虫练习之循环爬取网页中全部链接(requsets同步)</a></li><li><a href="/VuePress-blog/Python/爬虫案例/猫眼电影爬取(二)requests+beautifulsoup并将数据存储到mysql数据库.html" class="sidebar-link">猫眼电影爬取(二)：requests+beautifulsoup，并将数据存储到mysql数据库</a></li><li><a href="/VuePress-blog/Python/爬虫案例/用 Python 爬取网易严选妹子内衣信息，探究妹纸们的偏好 - 掘金.html" class="sidebar-link">用 Python 爬取网易严选妹子内衣信息，探究妹纸们的偏好 - 掘金</a></li><li><a href="/VuePress-blog/Python/爬虫案例/超详细的python爬虫案例，一次爬取上百篇文章.html" class="sidebar-link">超详细的python爬虫案例，一次爬取上百篇文章</a></li><li><a href="/VuePress-blog/Python/爬虫案例/这可能是你见过的最全的网络爬虫干货总结.html" class="sidebar-link">这可能是你见过的最全的网络爬虫干货总结！</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p></p><div class="table-of-contents"><ul><li><a href="#从网站抓取并解析文本">从网站抓取并解析文本</a><ul><li><a href="#您的第一个网络刮板">您的第一个网络刮板</a></li><li><a href="#使用字符串方法从html提取文本">使用字符串方法从HTML提取文本</a></li><li><a href="#正则表达式入门">正则表达式入门</a></li></ul></li><li><a href="#使用html解析器在python中进行网页爬取">使用HTML解析器在Python中进行网页爬取</a><ul><li><a href="#安装美丽的汤">安装美丽的汤</a></li><li><a href="#创建一个-beautifulsoup-对象">创建一个BeautifulSoup对象</a></li><li><a href="#使用-beautifulsoup-物件">使用BeautifulSoup物件</a></li><li><a href="#检查您的理解">检查您的理解</a></li></ul></li><li><a href="#与html表单交互">与HTML表单交互</a><ul><li><a href="#安装mechanicalsoup">安装MechanicalSoup</a></li><li><a href="#创建一个-browser-对象">创建一个Browser对象</a></li></ul></li></ul></div><p></p> <p>目录</p> <p><a href="https://srv.realpython.net/click/30134497340/?c=52901525492&amp;p=58946116052&amp;r=92175" target="_blank" rel="noopener noreferrer"><img src="https://img.realpython.net/e6f38ffcfa95b964554309592accfbb3" alt=""> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><strong>Web抓取</strong>是从Web收集和解析原始数据的过程，Python社区已经提出了一些非常强大的Web抓取工具。</p> <p>互联网可能承载着地球上最大的信息源和错误信息。数据科学，商业智能和调查报告等许多学科都可以从网站收集和分析数据中受益匪浅。</p> <p><strong>在本教程中，您将学习如何：</strong></p> <ul><li>使用<strong>字符串方法</strong>和<strong>正则表达式</strong>解析网站数据</li> <li>使用<strong>HTML解析器</strong>解析网站数据</li> <li>与<strong>表格</strong>和其他网站组件互动</li></ul> <p>**注意：**本教程改编自《<a href="https://realpython.com/products/python-basics-book/" target="_blank" rel="noopener noreferrer"><em>Python基础知识：Python 3实用介绍</em><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>》中的“与Web交互”一章。</p> <p>本书使用Python的内置<a href="https://realpython.com/python-idle/" target="_blank" rel="noopener noreferrer">IDLE<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>编辑器来创建和编辑Python文件并与Python Shell交互，因此在本教程中，您偶尔会看到对IDLE的引用。但是，从您选择的编辑器和环境中运行示例代码应该没有问题。</p> <p><strong>免费红利：</strong> 单击此处可获得我们的免费Python备忘单，其中介绍了Python 3的基础知识，例如使用数据类型，字典，列表和Python函数。</p> <h2 id="从网站抓取并解析文本">从网站抓取并解析文本</h2> <p>使用自动化过程从网站收集数据称为网络抓取。一些网站明确禁止用户使用自动化工具（例如您将在本教程中创建的工具）抓取数据。网站这样做有两个可能的原因：</p> <ol><li>该网站有充分的理由保护其数据。例如，Google Maps不允许您过多地请求太多结果。</li> <li>对网站服务器重复请求可能会占用带宽，使其他用户的网站速度变慢，并可能使服务器超载，从而使网站完全停止响应。</li></ol> <p>**重要提示：**在使用Python技巧进行Web抓取之前，您应该始终检查目标网站的可接受使用政策，以了解使用自动化工具访问该网站是否违反了其使用条款。从法律上讲，违反网站意愿的网页抓取在很大程度上是一个灰色区域。</p> <p><em>请注意，以下技术在禁止网页抓取的网站上使用时<a href="https://en.wikipedia.org/wiki/Web_scraping#Legal_issues" target="_blank" rel="noopener noreferrer">可能是非法的<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</em></p> <p>让我们从一个网页上获取所有HTML代码开始。您将使用有关_Real Python_的页面，该页面已设置为可用于本教程。</p> <h3 id="您的第一个网络刮板">您的第一个网络刮板</h3> <p>一个有用的包网页抓取，你可以在Python的发现<a href="https://docs.python.org/3/library/" target="_blank" rel="noopener noreferrer">标准库<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>是<code>urllib</code>，其中包含工具使用URL。特别是，<a href="https://docs.python.org/3/library/urllib.request.html#module-urllib.request" target="_blank" rel="noopener noreferrer"><code>urllib.request</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>模块包含一个称为的函数<code>urlopen()</code>，可用于在程序中打开URL。</p> <p>在IDLE的交互式窗口中，输入以下内容进行导入<code>urlopen()</code>：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; from urllib.request import urlopen</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+我们将打开的网页位于以下URL：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; url = &quot;http://olympus.realpython.org/profiles/aphrodite&quot;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>要打开网页，请传递<code>url</code>至<code>urlopen()</code>：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; page = urlopen(url)</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+`urlopen()`返回一个`HTTPResponse`对象：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; page
+&lt;http.client.HTTPResponse object at 0x105fef820&gt;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>要从页面提取HTML，请首先使用<code>HTTPResponse</code>对象的<code>.read()</code>方法，该方法返回字节序列。然后使用<a href="https://realpython.com/python-encodings-guide/#unicode-vs-utf-8" target="_blank" rel="noopener noreferrer">UTF-8<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><code>.decode()</code>将字节解码为字符串：<a href="https://realpython.com/python-encodings-guide/#unicode-vs-utf-8" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; html_bytes = page.read()</p> <blockquote><blockquote><blockquote><p>html = html_bytes.decode(&quot;utf-8&quot;)`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+现在，您可以打印HTML以查看网页的内容：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; print(html)
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Profile: Aphrodite&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;yellow&quot;&gt;
+&lt;center&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;img src=&quot;/static/aphrodite.gif&quot; /&gt;
+&lt;h2&gt;Name: Aphrodite&lt;/h2&gt;
+&lt;br&gt;&lt;br&gt;
+Favorite animal: Dove
+&lt;br&gt;&lt;br&gt;
+Favorite color: Red
+&lt;br&gt;&lt;br&gt;
+Hometown: Mount Olympus
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>将HTML用作文本后，您可以通过两种不同的方式从中提取信息。</p> <p><a href="/VuePress-blog/account/join/">Remove ads</a></p> <h3 id="使用字符串方法从html提取文本">使用字符串方法从HTML提取文本</h3> <p>从网页的HTML提取信息的一种<a href="https://realpython.com/python-strings/#built-in-string-methods" target="_blank" rel="noopener noreferrer">方法<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>是使用<a href="https://realpython.com/python-strings/#built-in-string-methods" target="_blank" rel="noopener noreferrer">字符串方法<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。例如，您可以使用<code>.find()</code>来搜索HTML文本中的<code>&lt;title&gt;</code>标签并提取网页的标题。</p> <p>让我们提取上一个示例中请求的网页的标题。如果您知道标题的第一个字符和结束<code>&lt;/title&gt;</code>标记的第一个字符的索引，则可以使用<a href="https://realpython.com/python-strings/#string-slicing" target="_blank" rel="noopener noreferrer">字符串切片<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>来提取标题。</p> <p>由于<code>.find()</code>返回一个子第一次出现的索引，你可以得到开放的索引<code>&lt;title&gt;</code>由字符串传递标签<code>&quot;&lt;title&gt;&quot;</code>到<code>.find()</code>：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; title_index = html.find(&quot;</p><title>&quot;)<p></p> <blockquote><blockquote><blockquote><p>title_index
+14`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+不过，您不希望`&lt;title&gt;`标签的索引。您需要标题本身的索引。要获取标题中第一个字母的索引，可以将字符串的长度添加`&quot;&lt;title&gt;&quot;`到`title_index`：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; start_index = title_index + len(&quot;&lt;title&gt;&quot;)
+&gt;&gt;&gt; start_index
+21` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>现在<code>&lt;/title&gt;</code>，将字符串传递给，<code>&quot;&lt;/title&gt;&quot;</code>以获取结束标记的索引<code>.find()</code>：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; end_index = html.find(&quot;</p></title>&quot;)<p></p> <blockquote><blockquote><blockquote><p>end_index
+39`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+最后，您可以通过切片`html`字符串来提取标题：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; title = html[start_index:end_index]
+&gt;&gt;&gt; title
+'Profile: Aphrodite'` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>与Aphrodite个人资料页面上的HTML相比，现实世界中的HTML可能要复杂得多，并且可预测性要差得多。这是<a href="http://olympus.realpython.org/profiles/poseidon" target="_blank" rel="noopener noreferrer">另一个配置文件页面<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，其中包含一些您可以抓取的更乱的HTML：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; url = &quot;http://olympus.realpython.org/profiles/poseidon&quot;</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+尝试使用与前面的示例相同的方法从此新URL中提取标题：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; url = &quot;http://olympus.realpython.org/profiles/poseidon&quot;
+&gt;&gt;&gt; page = urlopen(url)
+&gt;&gt;&gt; html = page.read().decode(&quot;utf-8&quot;)
+&gt;&gt;&gt; start_index = html.find(&quot;&lt;title&gt;&quot;) + len(&quot;&lt;title&gt;&quot;)
+&gt;&gt;&gt; end_index = html.find(&quot;&lt;/title&gt;&quot;)
+&gt;&gt;&gt; title = html[start_index:end_index]
+&gt;&gt;&gt; title
+'\n&lt;head&gt;\n&lt;title &gt;Profile: Poseidon'` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>哎呀！标题中混入了一些HTML。为什么？</p> <p>该<code>/profiles/poseidon</code>页面的HTML与该页面的HTML 相似<code>/profiles/aphrodite</code>，但有很小的区别。开头<code>&lt;title&gt;</code>标签在右尖括号（<code>&gt;</code>）之前有一个额外的空间，将其显示为<code>&lt;title &gt;</code>。</p> <p><code>html.find(&quot;&lt;title&gt;&quot;)</code>返回，<code>-1</code>因为确切的子字符串<code>&quot;&lt;title&gt;&quot;</code>不存在。当<code>-1</code>被添加到<code>len(&quot;&lt;title&gt;&quot;)</code>，这是<code>7</code>，该<code>start_index</code>变量被分配值<code>6</code>。</p> <p><code>6</code>字符串索引处的字符<code>html</code>是换行符<code>\n</code>（<code>&lt;</code>），位于<code>&lt;head&gt;</code>标签的尖括号（）之前。这意味着<code>html[start_index:end_index]</code>返回所有以该换行符开始并在<code>&lt;/title&gt;</code>标记之前结束的HTML 。</p> <p>这类问题可能以无数不可预测的方式发生。您需要一种更可靠的方法来从HTML提取文本。</p> <p><a href="/VuePress-blog/account/join/">Remove ads</a></p> <h3 id="正则表达式入门">正则表达式入门</h3> <p>**正则表达式（<strong>或简称为</strong>正则****表达式）**是可用于在字符串中搜索文本的模式。Python通过标准库的<a href="https://docs.python.org/3/library/re.html" target="_blank" rel="noopener noreferrer"><code>re</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>模块支持正则表达式。</p> <p>**注意：**正则表达式不是Python特有的。它们是一个通用的编程概念，可以与任何编程语言一起使用。</p> <p>要使用正则表达式，您需要做的第一件事是导入<code>re</code>模块：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; import re</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+正则表达式使用称为**元字符的**特殊**字符**来表示不同的模式。例如，星号字符（`*`）代表星号之前的零个或多个。
+
+在以下示例中，您用于`findall()`查找字符串中与给定正则表达式匹配的任何文本：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; re.findall(&quot;ab*c&quot;, &quot;ac&quot;)
+['ac']` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>的第一个参数<code>re.findall()</code>是您要匹配的正则表达式，第二个参数是要测试的字符串。在上面的示例中，您<code>&quot;ab*c&quot;</code>在字符串中搜索模式<code>&quot;ac&quot;</code>。</p> <p>正则表达式<code>&quot;ab*c&quot;</code>匹配以一个开头的字符串的任何部分<code>&quot;a&quot;</code>，具有端部<code>&quot;c&quot;</code>，并且具有零个或多个实例<code>&quot;b&quot;</code>在两者之间。<code>re.findall()</code>返回所有匹配项的列表。该字符串<code>&quot;ac&quot;</code>与该模式匹配，因此将其返回到列表中。</p> <p>这是应用于不同字符串的相同模式：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; re.findall(&quot;ab*c&quot;, &quot;abcd&quot;)
+['abc']</p> <blockquote><blockquote><blockquote><p>re.findall(&quot;ab*c&quot;, &quot;acc&quot;)
+['ac']</p></blockquote></blockquote></blockquote> <blockquote><blockquote><blockquote><p>re.findall(&quot;ab*c&quot;, &quot;abcac&quot;)
+['abc', 'ac']</p></blockquote></blockquote></blockquote> <blockquote><blockquote><blockquote><p>re.findall(&quot;ab*c&quot;, &quot;abdc&quot;)
+[]`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+请注意，如果找不到匹配项，则`findall()`返回一个空列表。
+
+模式匹配区分大小写。如果不管大小写如何都要匹配此模式，则可以传递带有值的第三个参数`re.IGNORECASE`：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; re.findall(&quot;ab*c&quot;, &quot;ABC&quot;)
+[]
+
+&gt;&gt;&gt; re.findall(&quot;ab*c&quot;, &quot;ABC&quot;, re.IGNORECASE)
+['ABC']` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>您可以使用句点（<code>.</code>）代表正则表达式中的任何单个字符。举例来说，你可以找到所有包含字母串<code>&quot;a&quot;</code>和<code>&quot;c&quot;</code>单个字符分隔，如下所示：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; re.findall(&quot;a.c&quot;, &quot;abc&quot;)
+['abc']</p> <blockquote><blockquote><blockquote><p>re.findall(&quot;a.c&quot;, &quot;abbc&quot;)
+[]</p></blockquote></blockquote></blockquote> <blockquote><blockquote><blockquote><p>re.findall(&quot;a.c&quot;, &quot;ac&quot;)
+[]</p></blockquote></blockquote></blockquote> <blockquote><blockquote><blockquote><p>re.findall(&quot;a.c&quot;, &quot;acc&quot;)
+['acc']`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+`.*`正则表达式中的模式代表重复任意次数的任何字符。例如，`&quot;a.*c&quot;`可用于查找以开头`&quot;a&quot;`和结尾的每个子字符串`&quot;c&quot;`，而无论介于哪个字母或多个字母之间：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; re.findall(&quot;a.*c&quot;, &quot;abc&quot;)
+['abc']
+
+&gt;&gt;&gt; re.findall(&quot;a.*c&quot;, &quot;abbc&quot;)
+['abbc']
+
+&gt;&gt;&gt; re.findall(&quot;a.*c&quot;, &quot;ac&quot;)
+['ac']
+
+&gt;&gt;&gt; re.findall(&quot;a.*c&quot;, &quot;acc&quot;)
+['acc']` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>通常，您用于<code>re.search()</code>搜索字符串中的特定模式。该函数比<code>re.findall()</code>它返回返回一个称为a的对象（该对象<code>MatchObject</code>存储不同的数据组）要复杂得多。这是因为其他匹配项中可能有匹配项，并<code>re.search()</code>返回所有可能的结果。</p> <p>的详细信息<code>MatchObject</code>与此处无关。现在，只知道调用<code>.group()</code>a <code>MatchObject</code>将返回第一个也是最包容的结果，在大多数情况下，这就是您想要的结果：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; match_results = re.search(&quot;ab*c&quot;, &quot;ABC&quot;, re.IGNORECASE)</p> <blockquote><blockquote><blockquote><p>match_results.group()
+'ABC'`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+`re`模块中还有一个功能对解析文本很有用。`re.sub()`，_替代品的_缩写，允许您用新文本替换与正则表达式匹配的字符串中的文本。它的行为有点像[`.replace()`](https://docs.python.org/3/library/stdtypes.html?highlight=replace#str.replace)字符串方法。
+
+传递给的参数`re.sub()`是正则表达式，后跟替换文本，后跟字符串。这是一个例子：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; string = &quot;Everything is &lt;replaced&gt; if it's in &lt;tags&gt;.&quot;
+&gt;&gt;&gt; string = re.sub(&quot;&lt;.*&gt;&quot;, &quot;ELEPHANTS&quot;, string)
+&gt;&gt;&gt; string
+'Everything is ELEPHANTS.'` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>也许那不是您期望的那样。</p> <p><code>re.sub()</code>使用正则表达式<code>&quot;&lt;.*&gt;&quot;</code>查找和替换第一个<code>&lt;</code>和最后一个之间的内容<code>&gt;</code>，范围从的开始<code>&lt;replaced&gt;</code>到结束<code>&lt;tags&gt;</code>。这是因为Python的正则表达式是<strong>greedy</strong>，这意味着当<code>*</code>使用like这样的字符时，它们会尝试找到最长的匹配项。</p> <p>另外，您可以使用非贪婪匹配模式<code>*?</code>，<code>*</code>除了匹配最短的文本字符串外，其工作方式与之相同：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; string = &quot;Everything is <replaced> if it's in <tags>.&quot;</tags></replaced></p> <blockquote><blockquote><blockquote><p>string = re.sub(&quot;&lt;.*?&gt;&quot;, &quot;ELEPHANTS&quot;, string)
+string
+&quot;Everything is ELEPHANTS if it's in ELEPHANTS.&quot;`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+这次，`re.sub()`找到两个匹配项`&lt;replaced&gt;`和`&lt;tags&gt;`，并用字符串替换这`&quot;ELEPHANTS&quot;`两个匹配项。
+
+[Remove ads](/account/join/)
+
+### 使用正则表达式从HTML提取文本
+
+掌握了所有这些知识之后，现在让我们尝试[从新的个人资料页面中](http://olympus.realpython.org/profiles/dionysus)解析标题，其中包括以下相当粗心编写的HTML行：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p><code>&lt;TITLE &gt;Profile: Dionysus&lt;/title / &gt;</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+该`.find()`方法将很难处理这里的不一致之处，但是通过正则表达式的巧妙使用，您可以快速有效地处理以下代码：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>`import re
+from urllib.request import urlopen</p> <p>url = &quot;http://olympus.realpython.org/profiles/dionysus&quot;
+page = urlopen(url)
+html = page.read().decode(&quot;utf-8&quot;)</p> <p>pattern = &quot;&lt;title.<em>?&gt;.</em>?&lt;/title.<em>?&gt;&quot;
+match_results = re.search(pattern, html, re.IGNORECASE)
+title = match_results.group()
+title = re.sub(&quot;&lt;.</em>?&gt;&quot;, &quot;&quot;, title) # Remove HTML tags</p> <p>print(title)`</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+让我们仔细看一下`pattern`字符串中的第一个正则表达式，将其分为三部分：
+
+1.  **`&lt;title.*?&gt;`**与中的开始`&lt;TITLE &gt;`标记匹配`html`。该`&lt;title`模式的一部分与匹配`&lt;TITLE`，因为`re.search()`被调用时`re.IGNORECASE`，和`.*?&gt;`之后的任何文本匹配`&lt;TITLE`达到的第一个实例`&gt;`。
+    
+2.  **`.*?`**开头后非贪婪地匹配所有文本`&lt;TITLE &gt;`，在的第一个匹配处停止`&lt;/title.*?&gt;`。
+    
+3.  **`&lt;/title.*?&gt;`**与第一个模式的不同之处仅在于使用`/`字符，因此它与中的结束`&lt;/title / &gt;`标记匹配`html`。
+    
+
+第二个正则表达式string `&quot;&lt;.*?&gt;&quot;`，也使用非贪心`.*?`来匹配`title`字符串中的所有HTML标签。通过将所有匹配项替换为`&quot;&quot;`，`re.sub()`将删除所有标签并仅返回文本。
+
+**注意：**用Python或任何其他语言进行的Web抓取可能很乏味。没有两个网站的组织方式相同，HTML常常很混乱。此外，网站会随着时间而变化。不能保证今天工作的刮板在明年或下周工作！
+
+正则表达式是正确使用的强大工具。此介绍几乎没有刮擦表面。有关正则表达式以及如何使用它们的更多信息，请查看分为两部分的系列[正则表达式：Python中的正则表达式](https://realpython.com/regex-python/)。
+
+### 检查您的理解
+
+展开下面的框来检查您的理解。
+
+练习：从网站上抓取数据显示隐藏
+
+Write a program that grabs the full HTML from the following URL:
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; url = &quot;http://olympus.realpython.org/profiles/dionysus&quot;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>Then use <code>.find()</code> to display the text following “Name:” and “Favorite Color:” (not including any leading spaces or trailing HTML tags that might appear on the same line).</p> <p>您可以展开下面的块以查看解决方案。</p> <p>解决方案：从网站抓取数据显示隐藏</p> <p>First, import the <code>urlopen</code> function from the <code>urlib.request</code> module:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`from urllib.request import urlopen` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>然后打开URL并使用 <code>.read()</code> method of the <code>HTTPResponse</code> object returned by <code>urlopen()</code> to read the page’s HTML:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`url = &quot;http://olympus.realpython.org/profiles/dionysus&quot;
+html_page = urlopen(url)
+html_text = html_page.read().decode(&quot;utf-8&quot;)` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>.read()</code> returns a byte string, so you use <code>.decode()</code> to decode the bytes using the UTF-8 encoding.</p> <p>Now that you have the HTML source of the web page as a string assigned to the <code>html_text</code> variable, you can extract Dionysus’s name and favorite color from his profile. The structure of the HTML for Dionysus’s profile is the same as Aphrodite’s profile that you saw earlier.</p> <p>您可以通过找到字符串来获取名称 <code>&quot;Name:&quot;</code> in the text and extracting everything that comes after the first occurence of the string and before the next HTML tag. That is, you need to extract everything after the colon (<code>:</code>) and before the first angle bracket (<code>&lt;</code>). You can use the same technique to extract the favorite color.</p> <p>以下<a href="https://realpython.com/python-for-loop/" target="_blank" rel="noopener noreferrer"><code>for</code>循环<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>为名称和收藏夹颜色提取此文本：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`for string in [&quot;Name: &quot;, &quot;Favorite Color:&quot;]:
+    string_start_idx = html_text.find(string)
+    text_start_idx = string_start_idx + len(string)
+
+    next_html_tag_offset = html_text[text_start_idx:].find(&quot;&lt;&quot;)
+    text_end_idx = text_start_idx + next_html_tag_offset
+
+    raw_text = html_text[text_start_idx : text_end_idx]
+    clean_text = raw_text.strip(&quot; \r\n\t&quot;)
+    print(clean_text)` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>看起来这件事发生了很多 <code>for</code>loop, but it’s just a little bit of arithmetic to calculate the right indices for extracting the desired text. Let’s break it down:</p> <ol><li><p>您可以使用<code>html_text.find()</code>查找的字符串的起始索引，无论是<code>&quot;Name:&quot;</code>或<code>&quot;Favorite Color:&quot;</code>，然后分配索引<code>string_start_idx</code>.</p></li> <li><p>由于要提取的文本是在<code>&quot;Name:&quot;</code>或中<code>&quot;Favorite Color:&quot;</code>的冒号之后立即开始的，因此您可以通过将字符串的长度添加到<code>start_string_idx</code>并将结果分配给来获得冒号之后的字符索引<code>text_start_idx</code>.</p></li> <li><p>You calculate the ending index of the text to extract by determining the index of the first angle bracket (<code>&lt;</code>) relative to <code>text_start_idx</code> and assign this value to <code>next_html_tag_offset</code>. Then you add that value to <code>text_start_idx</code> and assign the result to <code>text_end_idx</code>.</p></li> <li><p>You extract the text by slicing <code>html_text</code> from <code>text_start_idx</code> to <code>text_end_idx</code> and assign this string to <code>raw_text</code>.</p></li> <li><p>You remove any whitespace from the beginning and end of <code>raw_text</code> using <code>.strip()</code> and assign the result to <code>clean_text</code>.</p></li></ol> <p>At the end of the loop, you use <code>print()</code> to display the extracted text. The final output looks like this:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`Dionysus
+Wine` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>This solution is one of many that solves this problem, so if you got the same output with a different solution, then you did great!</p> <p>准备就绪后，可以继续进行下一部分。</p> <h2 id="使用html解析器在python中进行网页爬取">使用HTML解析器在Python中进行网页爬取</h2> <p>尽管一般而言，正则表达式非常适合模式匹配，但有时使用显式设计用于解析HTML页面的HTML解析器会更容易。为此目的编写了许多Python工具，但是<a href="http://www.crummy.com/software/BeautifulSoup/" target="_blank" rel="noopener noreferrer">Beautiful Soup<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>库是一个很好的开始。</p> <h3 id="安装美丽的汤">安装美丽的汤</h3> <p>要安装Beautiful Soup，您可以在终端中运行以下命令：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`$ python3 -m pip install beautifulsoup4` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>运行<code>pip show</code>以查看刚刚安装的软件包的详细信息：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`$ python3 -m pip show beautifulsoup4
+Name: beautifulsoup4
+Version: 4.9.1
+Summary: Screen-scraping library
+Home-page: http://www.crummy.com/software/BeautifulSoup/bs4/
+Author: Leonard Richardson
+Author-email: leonardr@segfault.org
+License: MIT
+Location: c:\realpython\venv\lib\site-packages
+Requires:
+Required-by:` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>特别要注意的是，撰写本文时的最新版本是4.9.1。</p> <p><a href="/VuePress-blog/account/join/">Remove ads</a></p> <h3 id="创建一个beautifulsoup对象">创建一个<code>BeautifulSoup</code>对象</h3> <p>在新的编辑器窗口中键入以下程序：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`from bs4 import BeautifulSoup
+from urllib.request import urlopen
+
+url = &quot;http://olympus.realpython.org/profiles/dionysus&quot;
+page = urlopen(url)
+html = page.read().decode(&quot;utf-8&quot;)
+soup = BeautifulSoup(html, &quot;html.parser&quot;)` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>该程序执行三件事：</p> <ol><li><p><code>http://olympus.realpython.org/profiles/dionysus</code>使用<code>urlopen()</code>来自<code>urllib.request</code>模块的URL</p></li> <li><p>从页面读取HTML作为字符串，并将其分配给<code>html</code>变量</p></li> <li><p>创建一个<code>BeautifulSoup</code>对象并将其分配给<code>soup</code>变量</p></li></ol> <p>使用两个参数创建<code>BeautifulSoup</code>分配给的对象<code>soup</code>。第一个参数是要解析的HTML，第二个参数string <code>&quot;html.parser&quot;</code>告诉对象在后台使用哪个解析器。<code>&quot;html.parser&quot;</code>表示Python的内置HTML解析器。</p> <h3 id="使用beautifulsoup物件">使用<code>BeautifulSoup</code>物件</h3> <p>保存并运行上述程序。完成运行后，您可以<code>soup</code>在交互式窗口中使用变量<code>html</code>以各种方式解析内容。</p> <p>例如，<code>BeautifulSoup</code>对象具有一种<code>.get_text()</code>可用于从文档中提取所有文本并自动删除任何HTML标记的方法。</p> <p>在IDLE的交互式窗口中输入以下代码：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; print(soup.get_text())</p> <p>Profile: Dionysus</p> <p>Name: Dionysus</p> <p>Hometown: Mount Olympus</p> <p>Favorite animal: Leopard</p> <p>Favorite Color: Wine`</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+此输出中有很多空白行。这些是HTML文档文本中换行符的结果。`.replace()`如果需要，可以使用字符串方法将其删除。
+
+通常，您只需要从HTML文档中获取特定文本。首先使用Beautiful Soup提取文本，然后使用`.find()`string方法_有时_比使用正则表达式更容易。
+
+但是，有时HTML标记本身就是指出要检索的数据的元素。例如，也许您想检索页面上所有图像的URL。这些链接包含在HTML标签的`src`属性中`&lt;img&gt;`。
+
+在这种情况下，您可以`find_all()`用来返回该特定标签的所有实例的列表：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; soup.find_all(&quot;img&quot;)
+[&lt;img src=&quot;/static/dionysus.jpg&quot;/&gt;, &lt;img src=&quot;/static/grapes.png&quot;/&gt;]` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>这将返回<code>&lt;img&gt;</code>HTML文档中所有标签的列表。列表中的对象看起来可能是代表标签的字符串，但实际上它们是<code>Tag</code>Beautiful Soup提供的对象的实例。<code>Tag</code>对象提供了一个简单的界面来处理它们包含的信息。</p> <p>首先，<code>Tag</code>从列表中解压缩对象，让我们对此进行一些探讨：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; image1, image2 = soup.find_all(&quot;img&quot;)</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+每个`Tag`对象都有一个`.name`属性，该属性返回包含HTML标签类型的字符串：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; image1.name
+'img'` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>您可以<code>Tag</code>通过将对象的名称放在方括号中来访问对象的HTML属性，就像属性是字典中的键一样。</p> <p>例如，<code>&lt;img src=&quot;/static/dionysus.jpg&quot;/&gt;</code>标记具有单个属性，<code>src</code>其值为<code>&quot;/static/dionysus.jpg&quot;</code>。同样，一个HTML标签，如链接<code>&lt;a href=&quot;https://realpython.com&quot; target=&quot;_blank&quot;&gt;</code>有两个属性，<code>href</code>和<code>target</code>。</p> <p>要在Dionysus个人资料页面中获取图像的来源，请<code>src</code>使用上述字典符号访问属性：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; image1[&quot;src&quot;]
+'/static/dionysus.jpg'</p> <blockquote><blockquote><blockquote><p>image2[&quot;src&quot;]
+'/static/grapes.png'`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+HTML文档中的某些标签可以通过`Tag`对象的属性进行访问。例如，要`&lt;title&gt;`在文档中获取标签，可以使用`.title`属性：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; soup.title
+&lt;title&gt;Profile: Dionysus&lt;/title&gt;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>如果通过导航到<a href="http://olympus.realpython.org/profiles/dionysus" target="_blank" rel="noopener noreferrer">个人资料页面<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，右键单击页面并选择_查看页面源_来_查看_ Dionysus资料的_来源_，那么您会注意到<code>&lt;title&gt;</code>文档中所写的标签如下所示：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`&lt;title &gt;Profile: Dionysus&lt;/title/&gt;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Beautiful Soup会通过删除开头标签中的多余空间和<code>/</code>结尾标签中多余的正斜杠（），自动为您清理标签。</p> <p>您还可以只检索标题标签之间带有对象<code>.string</code>属性的字符串<code>Tag</code>：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; soup.title.string 'Profile: Dionysus'</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+Beautiful Soup的更有用的功能之一是能够搜索属性与特定值匹配的特定种类的标签。例如，如果要查找`&lt;img&gt;`具有`src`等于value 的属性的所有标签，则可以为`/static/dionysus.jpg`提供以下附加参数`.find_all()`：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; soup.find_all(&quot;img&quot;, src=&quot;/static/dionysus.jpg&quot;)
+[&lt;img src=&quot;/static/dionysus.jpg&quot;/&gt;]` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>该示例在某种程度上是任意的，并且该技术的实用性从该示例可能并不明显。如果您花一些时间浏览各种网站并查看其页面源，那么您会注意到许多网站具有极其复杂的HTML结构。</p> <p>使用Python从网站抓取数据时，您通常会对页面的特定部分感兴趣。通过花一些时间浏览HTML文档，您可以识别具有唯一属性的标签，这些标签可用于提取所需的数据。</p> <p>然后，您无需依赖复杂的正则表达式或<code>.find()</code>用于搜索文档，而可以直接访问您感兴趣的特定标记并提取所需的数据。</p> <p>在某些情况下，您可能会发现Beautiful Soup没有提供您需要的功能。该<a href="http://lxml.de/" target="_blank" rel="noopener noreferrer">LXML<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>库是有点棘手上手，但提供了比美丽的汤更灵活地解析HTML文档。您可以在舒适使用美丽汤后检查一下。</p> <p>**注意：**在网页中查找特定数据时，诸如Beautiful Soup之类的HTML解析器可以为您节省大量时间和精力。但是，有时HTML编写得很差并且混乱，以至于像Beautiful Soup这样的复杂解析器也无法正确解释HTML标签。</p> <p>在这种情况下，通常会使用<code>.find()</code>正则表达式技术来尝试解析所需的信息。</p> <p>BeautifulSoup非常适合从网站的HTML抓取数据，但是它不提供使用HTML表单的任何方式。例如，如果您需要在网站上搜索某些查询，然后抓取结果，那么仅BeautifulSoup并不能帮助您。</p> <p><a href="/VuePress-blog/account/join/">Remove ads</a></p> <h3 id="检查您的理解">检查您的理解</h3> <p>展开下面的框来检查您的理解。</p> <p>练习：使用BeautifulSoup解析HTML显示隐藏</p> <p>Write a program that grabs the full HTML from the <a href="http://olympus.realpython.org/profiles" target="_blank" rel="noopener noreferrer">page<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> at the URL <code>http://olympus.realpython.org/profiles</code>.</p> <p>Using Beautiful Soup, print out a list of all the links on the page by looking for HTML tags with the name <code>a</code> and retrieving the value taken on by the <code>href</code> attribute of each tag.</p> <p>The final output should look like this:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`http://olympus.realpython.org/profiles/aphrodite
+http://olympus.realpython.org/profiles/poseidon
+http://olympus.realpython.org/profiles/dionysus` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>您可以展开下面的块以查看解决方案：</p> <p>解决方案：使用BeautifulSoup解析HTML显示隐藏</p> <p>First, import the <code>urlopen</code> function from the <code>urlib.request</code> module and the <code>BeautifulSoup</code> class from the <code>bs4</code> package:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`from urllib.request import urlopen
+from bs4 import BeautifulSoup` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>Each link URL on the <code>/profiles</code> page is a <a href="https://www.w3.org/TR/WD-html40-970917/htmlweb.html#h-5.1.2" target="_blank" rel="noopener noreferrer">relative URL<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>, so create a <code>base_url</code> variable with the base URL of the website:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`base_url = &quot;http://olympus.realpython.org&quot;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>You can build a full URL by concatenating <code>base_url</code> with a relative URL.</p> <p>Now open the <code>/profiles</code> page with <code>urlopen()</code> and use <code>.read()</code> to get the HTML source:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`html_page = urlopen(base_url + &quot;/profiles&quot;)
+html_text = html_page.read().decode(&quot;utf-8&quot;)` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>With the HTML source downloaded and decoded, you can create a new <code>BeautifulSoup</code> object to parse the HTML:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`soup = BeautifulSoup(html_text, &quot;html.parser&quot;)` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><code>soup.find_all(&quot;a&quot;)</code> returns a list of all links in the HTML source. You can loop over this list to print out all the links on the webpage:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`for link in soup.find_all(&quot;a&quot;):
+    link_url = base_url + link[&quot;href&quot;]
+    print(link_url)` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>The relative URL for each link can be accessed through the <code>&quot;href&quot;</code> subscript. Concatenate this value with <code>base_url</code> to create the full <code>link_url</code>.</p> <p>准备就绪后，可以继续进行下一部分。</p> <h2 id="与html表单交互">与HTML表单交互</h2> <p><code>urllib</code>到目前为止，您在本教程中一直使用的模块非常适合请求网页的内容。但是，有时您需要与网页进行交互以获得所需的内容。例如，您可能需要提交表单或单击按钮以显示隐藏的内容。</p> <p>**注意：**本教程改编自《<a href="https://realpython.com/products/python-basics-book/" target="_blank" rel="noopener noreferrer"><em>Python基础知识：Python 3实用介绍</em><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>》中的“与Web交互”一章。如果您喜欢阅读<a href="https://realpython.com/products/python-basics-book/" target="_blank" rel="noopener noreferrer">的书籍<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，请务必阅读<a href="https://realpython.com/products/python-basics-book/" target="_blank" rel="noopener noreferrer">本书的其余部分<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <p>Python标准库没有提供用于交互式处理网页的内置方法，但是PyPI提供了许多第三方软件包。其中，<a href="https://github.com/hickford/MechanicalSoup" target="_blank" rel="noopener noreferrer">MechanicalSoup<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>是一种流行且相对简单的软件包。</p> <p>本质上，MechanicalSoup会安装所谓的<strong>无头浏览器</strong>，它是没有图形用户界面的Web浏览器。该浏览器通过Python程序以编程方式进行控制。</p> <h3 id="安装mechanicalsoup">安装MechanicalSoup</h3> <p>您可以<a href="https://realpython.com/what-is-pip/" target="_blank" rel="noopener noreferrer"><code>pip</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>在终端中安装MechanicalSoup ：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`$ python3 -m pip install MechanicalSoup` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>您现在可以使用来查看有关软件包的一些详细信息<code>pip show</code>：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>`$ python3 -m pip show mechanicalsoup
+Name: MechanicalSoup
+Version: 0.12.0
+Summary: A Python library for automating interaction with websites
+Home-page: https://mechanicalsoup.readthedocs.io/
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: MIT
+Location: c:\realpython\venv\lib\site-packages
+Requires: requests, beautifulsoup4, six, lxml
+Required-by:` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>特别要注意的是，撰写本文时的最新版本是0.12.0。您需要关闭并重新启动IDLE会话，以便MechanicalSoup在安装后加载并被识别。</p> <h3 id="创建一个browser对象">创建一个<code>Browser</code>对象</h3> <p>在IDLE的交互式窗口中输入以下内容：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; import mechanicalsoup</p> <blockquote><blockquote><blockquote><p>browser = mechanicalsoup.Browser()`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+`Browser`对象代表无头Web浏览器。您可以通过将URL传递给他们的`.get()`方法来使用它们从Internet请求页面：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; url = &quot;http://olympus.realpython.org/login&quot;
+&gt;&gt;&gt; page = browser.get(url)` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><code>page</code>是一个<code>Response</code>对象，用于存储从浏览器请求URL的响应：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; page &lt;Response [200]&gt;</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+该数字`200`表示请求返回的[状态码](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)。状态码为`200`表示请求成功。不成功的请求可能会显示以下状态代码：`404`如果该URL不存在，或者`500`在发出请求时出现服务器错误。
+
+MechanicalSoup使用Beautiful Soup来解析请求中的HTML。`page`具有`.soup`代表`BeautifulSoup`对象的属性：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; type(page.soup)
+&lt;class 'bs4.BeautifulSoup'&gt;` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>您可以通过检查<code>.soup</code>属性来查看HTML ：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; page.soup &lt;html&gt; &lt;head&gt; &lt;title&gt;Log In&lt;/title&gt; &lt;/head&gt; &lt;body bgcolor=&quot;yellow&quot;&gt; &lt;center&gt; &lt;br/&gt;&lt;br/&gt; &lt;h2&gt;Please log in to access Mount Olympus:&lt;/h2&gt; &lt;br/&gt;&lt;br/&gt; &lt;form action=&quot;/login&quot; method=&quot;post&quot; name=&quot;login&quot;&gt; Username: &lt;input name=&quot;user&quot; type=&quot;text&quot;/&gt;&lt;br/&gt; Password: &lt;input name=&quot;pwd&quot; type=&quot;password&quot;/&gt;&lt;br/&gt;&lt;br/&gt; &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;/&gt; &lt;/form&gt; &lt;/center&gt; &lt;/body&gt; &lt;/html&gt;</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+注意这个页面有一个`&lt;form&gt;`关于它`&lt;input&gt;`的用户名和密码的元素。
+
+[Remove ads](/account/join/)
+
+### 使用MechanicalSoup提交表单
+
+[`/login`](http://olympus.realpython.org/login)在浏览器中打开上一个示例中的页面，然后继续进行浏览。尝试输入随机的用户名和密码组合。如果您猜错了，则显示消息“用户名或密码错误！” 显示在页面底部。
+
+但是，如果您提供正确的登录凭据（用户名`zeus`和密码`ThunderDude`），那么您将被重定向到[`/profiles`](http://olympus.realpython.org/profiles)页面。
+
+在下一个示例中，您将看到如何使用MechanicalSoup使用Python填写并提交此表单！
+
+HTML代码的重要部分是登录表单，即`&lt;form&gt;`标记内的所有内容。在`&lt;form&gt;`此页面上有`name`属性设置为`login`。此表单包含两个`&lt;input&gt;`元素，一个名为`user`，另一个名为`pwd`。第三个`&lt;input&gt;`元素是“提交”按钮。
+
+现在您已经知道了登录表单的基础结构以及登录所需的凭据，下面让我们看一个程序。填写表格并提交。
+
+在新的编辑器窗口中，键入以下程序：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>`import mechanicalsoup</p> <h1 id="_1">1</h1> <p>browser = mechanicalsoup.Browser()
+url = &quot;http://olympus.realpython.org/login&quot;
+login_page = browser.get(url)
+login_html = login_page.soup</p> <h1 id="_2">2</h1> <p>form = login_html.select(&quot;form&quot;)[0]
+form.select(&quot;input&quot;)[0][&quot;value&quot;] = &quot;zeus&quot;
+form.select(&quot;input&quot;)[1][&quot;value&quot;] = &quot;ThunderDude&quot;</p> <h1 id="_3">3</h1> <p>profiles_page = browser.submit(form, login_page.url)`</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+保存文件，然后按F5运行它。您可以通过在交互式窗口中键入以下内容来确认您已成功登录：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; profiles_page.url
+'http://olympus.realpython.org/profiles'` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>让我们分解上面的例子：</p> <ol><li><p>您创建一个<code>Browser</code>实例并使用它来请求URL <code>http://olympus.realpython.org/login</code>。您可以<code>login_html</code>使用<code>.soup</code>属性将页面的HTML内容分配给变量。</p></li> <li><p><code>login_html.select(&quot;form&quot;)</code>返回<code>&lt;form&gt;</code>页面上所有元素的列表。由于页面只有一个<code>&lt;form&gt;</code>元素，因此您可以通过检索<code>0</code>列表索引处的元素来访问表单。接下来的两行选择用户名和密码输入，并将其值分别设置为<code>&quot;zeus&quot;</code>和<code>&quot;ThunderDude&quot;</code>。</p></li> <li><p>您使用提交表单<code>browser.submit()</code>。请注意，您向此方法传递了两个参数，即<code>form</code>对象和URL <code>login_page</code>，您可以通过访问它们<code>login_page.url</code>。</p></li></ol> <p>在交互式窗口中，确认提交已成功重定向到<code>/profiles</code>页面。如果出了什么问题，那么的价值<code>profiles_page.url</code>仍然是<code>&quot;http://olympus.realpython.org/login&quot;</code>。</p> <p><strong>注意：<strong>黑客可以使用上述程序之类的自动化程序，通过快速尝试许多不同的用户名和密码来</strong>暴力</strong>登录，直到找到有效的组合为止。</p> <p>除了这种高度违法的行为外，如今，几乎所有网站都将您锁定并报告您的IP地址，如果他们看到您提出过多的失败请求，请不要尝试！</p> <p>现在我们已经<code>profiles_page</code>设置了变量，让我们看看如何以编程方式获取<code>/profiles</code>页面上每个链接的URL 。</p> <p>为此，请<code>.select()</code>再次使用，这次传递字符串<code>&quot;a&quot;</code>以选择<code>&lt;a&gt;</code>页面上的所有锚元素：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p><code>&gt;&gt;&gt; links = profiles_page.soup.select(&quot;a&quot;)</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+现在，您可以遍历每个链接并打印`href`属性：
+
+&gt;&gt;&gt;```
+`&gt;&gt;&gt; for link in links:
+...     address = link[&quot;href&quot;]
+...     text = link.text
+...     print(f&quot;{text}: {address}&quot;)
+...
+Aphrodite: /profiles/aphrodite
+Poseidon: /profiles/poseidon
+Dionysus: /profiles/dionysus` 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>每个<code>href</code>属性中包含的URL 是相对URL，如果以后要使用MechanicalSoup导航到它们，这些URL并不是很有用。如果您碰巧知道完整URL，则可以分配构造完整URL所需的部分。</p> <p>在这种情况下，基本网址为<code>http://olympus.realpython.org</code>。然后，您可以将基本URL与在<code>src</code>属性中找到的相对URL连接起来：</p> <blockquote><blockquote><blockquote><div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div></blockquote></blockquote></blockquote> <p>`&gt;&gt;&gt; base_url = &quot;http://olympus.realpython.org&quot;</p> <blockquote><blockquote><blockquote><p>for link in links:
+...     address = base_url + link[&quot;href&quot;]
+...     text = link.text
+...     print(f&quot;{text}: {address}&quot;)
+...
+Aphrodite: http://olympus.realpython.org/profiles/aphrodite
+Poseidon: http://olympus.realpython.org/profiles/poseidon
+Dionysus: http://olympus.realpython.org/profiles/dionysus`</p></blockquote></blockquote></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+你可以做很多事只是`.get()`，`.select()`和`.submit()`。也就是说，MechanicalSoup的功能还很多。要了解有关MechanicalSoup的更多信息，请查看[官方文档](https://mechanicalsoup.readthedocs.io/en/stable/)。
+
+[Remove ads](/account/join/)
+
+### 检查您的理解
+
+展开下面的方框以检查您的理解
+
+练习：使用MechanicalSoup提交表单显示隐藏
+
+Use MechanicalSoup to provide the correct username (`zeus`) and password (`ThunderDude`) to the [login form](http://olympus.realpython.org/login) located at the URL `http://olympus.realpython.org/login`.
+
+Once the form is submitted, display the title of the current page to determine that you’ve been redirected to the [`/profiles`](http://olympus.realpython.org/profiles) page.
+
+Your program should print the text `&lt;title&gt;All Profiles&lt;/title&gt;`.
+
+您可以展开下面的块以查看解决方案。
+
+解决方案：使用MechanicalSoup提交表单显示隐藏
+
+First, import the `mechanicalsoup` package and create a `Broswer` object:
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>`import mechanicalsoup</p> <p>browser = mechanicalsoup.Browser()`</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+Point the browser to the login page by passing the URL to `browser.get()` and grab the HTML with the `.soup` attribute:
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>login_url = &quot;http://olympus.realpython.org/login&quot; login_page = browser.get(login_url) login_html = login_page.soup</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+`login_html` is a `BeautifulSoup` instance. Since the page has only a single form on it, you can access the form via `login_html.form`. Using `.select()`, select the username and password inputs and fill them with the username `&quot;zeus&quot;` and the password `&quot;ThunderDude&quot;`:
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>form = login_html.form form.select(&quot;input&quot;)[0][&quot;value&quot;] = &quot;zeus&quot; form.select(&quot;input&quot;)[1][&quot;value&quot;] = &quot;ThunderDude&quot;</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+Now that the form is filled out, you can submit it with `browser.submit()`:
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>profiles_page = browser.submit(form, login_page.url)</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+If you filled the form with the correct username and password, then `profiles_page` should actually point to the `/profiles` page. You can confirm this by printing the title of the page assigned to `profiles_page:`
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>print(profiles_page.soup.title)</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+You should see the following text displayed:
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>&lt;title&gt;All Profiles&lt;/title&gt;</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+If instead you see the text `Log In` or something else, then the form submission failed.
+
+准备就绪后，可以继续进行下一部分。
+
+实时与网站互动
+-------
+
+有时，您希望能够从提供不断更新的信息的网站上获取实时数据。
+
+在学习Python编程之前的黑暗日子里，每次想检查是否有更新的内容时，您都必须坐在浏览器前，单击“刷新”按钮以重新加载页面。但是现在您可以使用`.get()`MechanicalSoup `Browser`对象的方法自动执行此过程。
+
+打开您选择的浏览器并导航到URL `http://olympus.realpython.org/dice`。此[`/dice`](http://olympus.realpython.org/dice)页面模拟一卷六边形的骰子，每次刷新浏览器时都会更新结果。在下面，您将编写一个程序，该程序会反复抓取页面以获得新结果。
+
+您需要做的第一件事是确定页面上的哪个元素包含冲模结果。现在，可以通过右键单击页面上的任意位置并选择_查看页面源来执行此操作_。在HTML代码的一半以下是一个`&lt;h2&gt;`看起来像这样的标记：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><code>&lt;h2 id=&quot;result&quot;&gt;4&lt;/h2&gt;</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+`&lt;h2&gt;`标签的文本可能与您有所不同，但这是抓取结果所需的页面元素。
+
+**注意：**对于本示例，您可以使用轻松检查页面上是否只有一个元素`id=&quot;result&quot;`。尽管该`id`属性应该是唯一的，但实际上，您应该始终检查是否对您感兴趣的元素进行了唯一标识。
+
+让我们从编写一个简单的程序开始，该程序打开[`/dice`](http://olympus.realpython.org/dice)页面，抓取结果，并将其打印到控制台：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>`import mechanicalsoup</p> <p>browser = mechanicalsoup.Browser()
+page = browser.get(&quot;http://olympus.realpython.org/dice&quot;)
+tag = page.soup.select(&quot;#result&quot;)[0]
+result = tag.text</p> <p>print(f&quot;The result of your dice roll is: {result}&quot;)`</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+本示例使用`BeautifulSoup`对象的`.select()`方法通过查找元素`id=result`。该字符串`&quot;#result&quot;`您传递给`.select()`使用的[CSS ID选择](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors) `#`，以表明`result`是一个`id`值。
+
+要定期获得新结果，您需要创建一个循环，以在每个步骤加载页面。因此`browser = mechanicalsoup.Browser()`，以上代码中该行下方的所有内容都需要放入循环主体中。
+
+对于此示例，让我们以十秒的间隔获得四卷骰子。为此，代码的最后一行需要告诉Python暂停运行十秒钟。您可以使用[`sleep()`](https://realpython.com/python-sleep/)Python的[`time`module进行此操作](https://realpython.com/python-time-module/)。`sleep()`接受一个参数，该参数表示以秒为单位的睡眠时间。
+
+这是一个说明如何`sleep()`工作的示例：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>`import time</p> <p>print(&quot;I'm about to wait for five seconds...&quot;)
+time.sleep(5)
+print(&quot;Done waiting!&quot;)`</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+运行此代码时，您会看到`&quot;Done waiting!&quot;`直到执行`5`第一个`print()`函数几秒钟后才显示该消息。
+
+对于冲模示例，您需要将数字传递`10`给`sleep()`。这是更新的程序：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>`import time
+import mechanicalsoup</p> <p>browser = mechanicalsoup.Browser()</p> <p>for i in range(4):
+page = browser.get(&quot;http://olympus.realpython.org/dice&quot;)
+tag = page.soup.select(&quot;#result&quot;)[0]
+result = tag.text
+print(f&quot;The result of your dice roll is: {result}&quot;)
+time.sleep(10)`</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+运行该程序时，您将立即看到第一个结果打印到控制台。十秒钟后，显示第二个结果，然后显示第三个，最后显示第四个。打印第四个结果后会发生什么？
+
+该程序将继续运行另外十秒钟，然后最终停止！
+
+好吧，_当然_可以了，那就是您告诉它要做的！但这有点浪费时间。您可以使用仅针对前三个请求运行的[`if`语句](https://realpython.com/python-conditional-statements/)来阻止它执行此操作`time.sleep()`：
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>`import time
+import mechanicalsoup</p> <p>browser = mechanicalsoup.Browser()</p> <p>for i in range(4):
+page = browser.get(&quot;http://olympus.realpython.org/dice&quot;)
+tag = page.soup.select(&quot;#result&quot;)[0]
+result = tag.text
+print(f&quot;The result of your dice roll is: {result}&quot;)</p> <div class="language- extra-class"><pre><code># Wait 10 seconds if this isn't the last request
+if i &lt; 3:
+    time.sleep(10)` 
+</code></pre></div><div class="language- line-numbers-mode"><pre class="language-text"><code>
+使用类似的技术，您可以从定期更新其数据的网站上抓取数据。但是，您应该知道，快速连续多次请求页面可能被视为可疑甚至是恶意使用网站。
+
+**重要提示：**大多数网站都会发布使用条款文档。您通常可以在网站的页脚中找到指向它的链接。
+
+尝试从网站上抓取数据之前，请务必先阅读本文档。如果找不到使用条款，请尝试与网站所有者联系，并询问他们是否对请求量有任何政策。
+
+不遵守使用条款可能会导致您的IP被阻止，因此请当心并尊重！
+
+甚至有可能使请求数量过多的服务器崩溃，因此您可以想象许多网站都在关注对其服务器的请求量！向网站发送多个请求时，请务必检查使用条款并遵守。
+
+[Remove ads](/account/join/)
+
+结论
+--
+
+尽管可以使用Python标准库中的工具从Web解析数据，但PyPI上有许多工具可以帮助简化流程。
+
+**在本教程中，您学习了如何：**
+
+*   使用Python的内置**`urllib`**模块请求网页
+*   使用**Beautiful Soup**解析HTML
+*   使用**MechanicalSoup**与Web表单进行交互
+*   反复从网站请求数据以**检查更新**
+
+编写自动的Web抓取程序很有趣，并且Internet上的内容并不短缺，可以导致各种各样令人兴奋的项目。
+
+请记住，并不是每个人都希望您从其Web服务器中提取数据。在开始抓取之前，请务必先检查网站的使用条款，并注意如何安排网络请求的时间，以免服务器流量泛滥。
+
+其他资源
+----
+
+有关使用Python进行网络抓取的更多信息，请查看以下资源：
+
+*   [美丽的汤：使用Python构建网络抓取工具](https://realpython.com/beautiful-soup-web-scraper-python/)
+*   [Python中的API集成](https://realpython.com/api-integration-in-python/)
+
+**注意：**如果您喜欢从“ [_Python基础知识：Python 3实用介绍”_](https://realpython.com/products/python-basics-book/)这个示例中学到的[_知识_](https://realpython.com/products/python-basics-book/)，请务必[阅读本书的其余部分](https://realpython.com/products/python-basics-book/)。</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/solider245/VuePress-blog/edit/master/docs/Python/爬虫案例/使用Python进行web爬取.md" target="_blank" rel="noopener noreferrer">你要教我做事咯？</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/21/2020, 11:21:21 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/VuePress-blog/Python/爬虫案例/【已解决】写Python爬虫爬取汽车之家品牌车系车型数据.html" class="prev">
+        【已解决】写Python爬虫爬取汽车之家品牌车系车型数据
+      </a></span> <span class="next"><a href="/VuePress-blog/Python/爬虫案例/基于python的链家小区房价爬取——仅需60行代码.html">
+        基于python的链家小区房价爬取——仅需60行代码
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/VuePress-blog/assets/js/app.776d277d.js" defer></script><script src="/VuePress-blog/assets/js/2.c5117f2a.js" defer></script><script src="/VuePress-blog/assets/js/73.897a92b9.js" defer></script>
+  </body>
+</html>
